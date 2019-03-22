@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/item_img"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="75dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/dept1"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="العناية بالشعر "
+        android:background="#665F5D"
+        android:textColor="@color/white"
+        android:padding="3dp"
+        android:textSize="10sp"
+        android:gravity="center"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintBottom_toBottomOf="@+id/item_img"
+        app:layout_constraintStart_toStartOf="@id/item_img"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="8dp"
+        />
+
+</android.support.constraint.ConstraintLayout>

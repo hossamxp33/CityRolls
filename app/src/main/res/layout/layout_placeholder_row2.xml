@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout android:id="@+id/doctorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/linear_background_for_rate"
+    android:layout_margin="5dp"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <View
+        android:id="@+id/itemimage"
+        android:layout_width="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="65dp"
+        android:padding="4dp"
+        android:background="@color/placeholder_bg"
+        />
+
+    <View
+        android:id="@+id/itemtxt"
+        android:maxLines="1"
+        android:layout_width="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/itemimage"
+        android:textColor="@color/black"
+        android:background="@color/placeholder_bg"
+        android:textSize="14dp"
+        />
+
+
+</android.support.constraint.ConstraintLayout>
+

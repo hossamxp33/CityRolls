@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/product_back"
+    tools:context=".presentationn.screens.feature.home.mainfragment.MainFragment">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05"
+                />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/slider"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                app:layout_constraintHeight_percent="0.35"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/slider"
+                app:layout_constraintTop_toTopOf="@+id/slider"
+                shimmer:duration="800">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/layout_placeholder_row_for_slider"/>
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.viewpagerindicator.CirclePageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingBottom="5dp"
+                app:centered="true"
+                app:fillColor="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@+id/slider"
+                app:pageColor="#fff"
+                app:snap="false" />
+
+            <TextView
+                android:id="@+id/choice_depart_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:text="@string/choice_depart"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guid"
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
+
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layoutDirection="rtl"
+                android:layout_marginBottom="25dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/choice_depart_txt"
+                app:layout_constraintTop_toTopOf="@+id/departments"
+                shimmer:duration="800">
+
+                <!-- Adding 3 rows of placeholders -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <include layout="@layout/layout_placeholder_row" />
+                    <include layout="@layout/layout_placeholder_row" />
+                    <include layout="@layout/layout_placeholder_row" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/departments"
+                android:layout_width="0dp"
+                android:layout_height="225dp"
+                android:layout_marginTop="8dp"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/choice_depart_txt"
+                app:layout_constraintWidth_percent="0.8"
+
+                />
+
+            <TextView
+                android:id="@+id/famous_products_txt"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                android:text="@string/famous_product"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guid"
+                app:layout_constraintTop_toBottomOf="@+id/departments" />
+
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/famous_products"
+                app:layout_constraintTop_toTopOf="@+id/famous_products"
+                shimmer:duration="800">
+
+                <!-- Adding 3 rows of placeholders -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/layout_placeholder_row2" />
+
+                    <include layout="@layout/layout_placeholder_row2" />
+
+                    <include layout="@layout/layout_placeholder_row2" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/famous_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/famous_products_txt" />
+
+
+            <TextView
+                android:id="@+id/diff_products_txt"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/diffs_product"
+                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guid"
+                app:layout_constraintTop_toBottomOf="@+id/famous_products" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/diff_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/diff_products_txt" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

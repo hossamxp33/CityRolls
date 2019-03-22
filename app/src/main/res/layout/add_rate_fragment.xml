@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/lightGrey"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:id="@+id/product_of"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:text="@string/rate"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        app:layout_constraintHeight_percent="0.1"
+        android:textSize="18sp"
+        />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_of"
+        >
+        <ImageView
+            android:id="@+id/item_rateimg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_rateimg"
+            app:layout_constraintBottom_toTopOf="@+id/ratecomment"
+            android:theme="@style/RatingBar"
+            android:numStars="5"/>
+
+
+        <EditText
+            android:id="@+id/ratecomment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:minLines="2"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            android:gravity="start"
+            android:padding="5dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/linear_background_for_writecomment"
+            android:hint="@string/writecomment"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/ratesend"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintWidth_percent="0.55"
+        android:text="@string/sendrate"
+        android:textSize="20dp"
+        android:layout_margin="15dp"
+        android:onClick="sendfedback"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/linear_background_for_addtocart"/>
+
+    <FrameLayout
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

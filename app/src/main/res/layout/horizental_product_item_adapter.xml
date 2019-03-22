@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/productview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/white"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinehorizental5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+
+    <ImageView
+        android:id="@+id/item_img"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:src="@drawable/product"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:layout_marginTop="10dp"
+        android:text="فازلين بترولم للعناية بالشعر وتغذبته"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toTopOf="@+id/item_img" />
+
+
+    <RatingBar
+        android:id="@+id/rates"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:isIndicator="true"
+        android:theme="@style/RatingBar"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+    <TextView
+        android:id="@+id/rate_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="(0)"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/rates"
+        app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:text="500ريال"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent "
+        app:layout_constraintStart_toEndOf="@id/quentity"
+        app:layout_constraintTop_toTopOf="@+id/rates"
+        app:layout_constraintWidth_percent="0.3" />
+
+
+    <TextView
+        android:id="@+id/quentity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_marginTop="10dp"
+        android:text="متوفر 5 قطع "
+        android:textColor="@color/colorPrimary"
+        android:gravity="start|center_vertical"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toBottomOf="@+id/rates"
+        app:layout_constraintWidth_percent="0.2" />
+
+
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/like"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toTopOf="@+id/addtocart"
+        app:layout_constraintBottom_toBottomOf="@+id/addtocart"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/add_to_cart"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/linear_background_for_addtocart"
+        android:gravity="center"
+        android:text="@string/addtocart"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/favorite"
+        app:layout_constraintTop_toBottomOf="@+id/quentity"
+        app:layout_constraintWidth_percent="0.25" />
+
+
+</android.support.constraint.ConstraintLayout>

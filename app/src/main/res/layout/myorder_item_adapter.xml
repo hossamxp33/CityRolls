@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/productview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/white"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinehorizental5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="278dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidlinevertical4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/order_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guid1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guid2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guid3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/linear_background_for_order_progress"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/progress1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selected_progress"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view1"
+            app:layout_constraintStart_toEndOf="@id/guid1"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:layout_constraintWidth_percent="0.12" />
+
+
+        <TextView
+            android:id="@+id/progress2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/unselected_progress"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/gray"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view1"
+            app:layout_constraintStart_toEndOf="@id/guid2"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/progress3"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/unselected_progress"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/gray"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view1"
+            app:layout_constraintEnd_toStartOf="@id/guid3"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:layout_constraintWidth_percent="0.12" />
+
+
+        <TextView
+            android:id="@+id/progress1txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/charge_ready"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/progress1"
+            app:layout_constraintStart_toStartOf="@id/progress1"
+            app:layout_constraintTop_toBottomOf="@+id/progress1" />
+
+
+        <TextView
+            android:id="@+id/progress2txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/under_delivery"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/progress2"
+            app:layout_constraintStart_toStartOf="@id/progress2"
+            app:layout_constraintTop_toBottomOf="@+id/progress2" />
+
+        <TextView
+            android:id="@+id/progress3txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/deliveried"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/progress3"
+            app:layout_constraintStart_toStartOf="@id/progress3"
+            app:layout_constraintTop_toBottomOf="@+id/progress3" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidcenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/order_date"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/guidstart"
+        app:layout_constraintTop_toBottomOf="@+id/order_progress" />
+
+    <TextView
+        android:id="@+id/order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="04/3/2019"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/date"
+        app:layout_constraintTop_toBottomOf="@+id/order_progress" />
+
+
+    <TextView
+        android:id="@+id/paymentway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/payment_way"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/guidcenter"
+        app:layout_constraintTop_toBottomOf="@+id/order_progress" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="بطاقة الائتمان"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/paymentway"
+        app:layout_constraintTop_toBottomOf="@+id/order_progress" />
+
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/order_num"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/guidstart"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/ordernum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="342"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/date"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/total"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/guidcenter"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/totalprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text=" 342 "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/total"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+
+    <ImageView
+        android:id="@+id/item_img"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:src="@drawable/product"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number" />
+
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="فازلين بترولم للعناية بالشعر وتغذبته"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toTopOf="@+id/item_img" />
+
+
+    <RatingBar
+        android:id="@+id/rates"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:isIndicator="true"
+        android:rating="5"
+        android:theme="@style/RatingBar"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+    <TextView
+        android:id="@+id/rate_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="(0)"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/rates"
+        app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+
+    <TextView
+        android:id="@+id/product_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="2"
+        android:text="@string/product_num"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@id/item_img"
+        app:layout_constraintTop_toBottomOf="@+id/rates"
+        app:layout_constraintWidth_percent="0.2" />
+
+
+    <TextView
+        android:id="@+id/product_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="2"
+        android:text=" 5 قطع "
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@id/product_num"
+        app:layout_constraintTop_toBottomOf="@+id/rates"
+        app:layout_constraintWidth_percent="0.2" />
+
+
+    <TextView
+        android:id="@+id/gotodetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/linear_background_go_to_details"
+        android:padding="6dp"
+        android:gravity="center"
+        android:layout_marginEnd="8dp"
+        android:text="@string/order_details"
+        android:textColor="@color/black"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/product_count"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
