@@ -37,11 +37,10 @@ public class MyOrdersFragment extends Fragment {
                 {
                     loading.setVisibility(View.GONE);
                     orders.setAdapter(new MyOrdersAdapter(getActivity(),myOrders.getData()));
-                } );
-
-               mViewModel.throwableMutableLiveData.observe(this,throwable -> Toast.makeText(getActivity(),throwable.getMessage(),Toast.LENGTH_SHORT));
+                });
+       mViewModel.throwableMutableLiveData.observe(this,throwable -> Toast.makeText(getActivity(),throwable.getMessage(),Toast.LENGTH_SHORT));
         return view;
-    }
+      }
 
     private MyOrdersViewModelFactory getViewModelFactory() {
         return new MyOrdersViewModelFactory(getActivity().getApplication(),userid);

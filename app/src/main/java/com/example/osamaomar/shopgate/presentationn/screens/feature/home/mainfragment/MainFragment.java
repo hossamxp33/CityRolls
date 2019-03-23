@@ -48,6 +48,7 @@ public class MainFragment extends Fragment {
         findViewsFromXml(view);
         mViewModel = ViewModelProviders.of(this,getViewModelFactory()).get(MainFragmentViewModel.class);
         mViewModel.mainViewMutableLiveData.observe(this,this::setDatainViews);
+
         mViewModel.throwableMutableLiveData.observe(this,throwable ->
                 {
                     progress.setVisibility(View.GONE);

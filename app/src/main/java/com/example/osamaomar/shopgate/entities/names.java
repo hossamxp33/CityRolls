@@ -11,4 +11,5 @@ public class names {
     public static String CAT_NAME = "CAT_NAME";
     public static String PRODUCT_PHOTO = "PRODUCT_PHOTO";
     public static String PRODUCT_NAME = "PRODUCT_NAME";
+    public static String ORDER = "ORDER";
 }

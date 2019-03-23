@@ -14,9 +14,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.osamaomar.shopgate.R;
+import com.example.osamaomar.shopgate.entities.MyOrders;
 import com.example.osamaomar.shopgate.entities.Products;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.myorders.productsinsideorder.adapter.AllProductsInsideOrderAdapter;
+
+import static com.example.osamaomar.shopgate.entities.names.ORDER;
 import static com.example.osamaomar.shopgate.entities.names.ORDER_ID;
 
 public class ProductsInsideorderFragment extends Fragment {
@@ -27,6 +30,7 @@ public class ProductsInsideorderFragment extends Fragment {
     private Products productsData;
     private FrameLayout progress;
     private TextView notfound;
+    private MyOrders.DataBean order;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -37,31 +41,17 @@ public class ProductsInsideorderFragment extends Fragment {
         ((MainActivity) getActivity()).head_title.setText(getText(R.string.order_details));
         ((MainActivity) getActivity()).logo.setVisibility(View.INVISIBLE);
         orderid = getArguments().getInt(ORDER_ID, 0);
+        order = (MyOrders.DataBean) getArguments().getSerializable(ORDER);
         productsRecycle = view.findViewById(R.id.allProducts);
         progress = view.findViewById(R.id.progress);
-        productsRecycle.setAdapter(new AllProductsInsideOrderAdapter(getActivity()));
+        if (order!=null)
+             productsRecycle.setAdapter(new AllProductsInsideOrderAdapter(getActivity(),order.getOrderdetails()));
+
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductsInsideOrderViewModel.class);
 
         mViewModel.productsMutableLiveData.observe(this, products ->
         {
-//                    productsData = products;
-//                    progress.setVisibility(View.GONE);
-//                    if (products.getProductsbycategory()!=null) {
-//                        if (products.getProductsbycategory().size() > 0) {
-//                            productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-//                            productsRecycle.setAdapter(new AllProductsAdapter(getActivity(), 0, products.getProductsbycategory()));
-//                        }
-//                        else {
-//                            notfound.setVisibility(View.GONE);
-//                            changeSpane.setEnabled(false);
-//                            filter.setEnabled(false);
-//                        }
-//                    }
-//                    else {
-//                        notfound.setVisibility(View.GONE);
-//                        changeSpane.setEnabled(false);
-//                        filter.setEnabled(false);
-//                    }
+
         });
 
         mViewModel.throwableMutableLiveData.observe(this, throwable ->

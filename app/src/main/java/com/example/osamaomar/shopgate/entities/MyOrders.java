@@ -1,5 +1,6 @@
 package com.example.osamaomar.shopgate.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class MyOrders {
@@ -15,7 +16,7 @@ public class MyOrders {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * id : 1
          * created : 2019-03-04T14:33:12+0000
@@ -109,7 +110,7 @@ public class MyOrders {
             this.orderdetails = orderdetails;
         }
 
-        public static class OrderdetailsBean {
+        public static class OrderdetailsBean implements Serializable {
             /**
              * id : 1
              * productsize_id : 2

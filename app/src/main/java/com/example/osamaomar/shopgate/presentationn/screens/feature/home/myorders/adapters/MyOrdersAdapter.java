@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.osamaomar.shopgate.entities.names.ORDER;
 import static com.example.osamaomar.shopgate.entities.names.ORDER_ID;
 
 public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHolder> {
@@ -76,10 +77,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
         } catch (Exception e) {
         }
 
-        holder.mView.setOnClickListener(v -> {
+        holder.gotodetails.setOnClickListener(v -> {
             Fragment fragment = new ProductsInsideorderFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(ORDER_ID, 1);
+            bundle.putSerializable(ORDER,orderdata.get(position));
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, fragment).addToBackStack(null).commit();
         });
