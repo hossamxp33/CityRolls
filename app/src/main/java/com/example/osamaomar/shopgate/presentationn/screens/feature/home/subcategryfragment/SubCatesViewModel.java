@@ -26,8 +26,9 @@ public class SubCatesViewModel extends ViewModel {
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
     private  int cattegry_id,userid;
+    public int current_item = 0;
 
-     SubCatesViewModel(ServerGateway serverGateway1, int id,int user_id) {
+     public SubCatesViewModel(ServerGateway serverGateway1, int id, int user_id) {
         serverGateway = serverGateway1;
         cattegry_id = id;
         userid = user_id;

@@ -2,8 +2,11 @@ package com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcat
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
+import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.SubCatesViewModel;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 
@@ -50,7 +54,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
-        try {
+     //   try {
         holder.quntity.setText(context.getText(R.string.remendier)+" "+String.valueOf(products.get(position).getAmount())+" "+context.getText(R.string.num));
         holder.price.setText(products.get(position).getStart_price()+" "+context.getText(R.string.realcoin));
         if (products.get(position).getProduct()!=null)
@@ -82,16 +86,12 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
                 if (userid>0) {
                     if (!favorite[position]) {
                         viewModel.AddToFav(products.get(position).getProduct().getId());
-                        viewModel.getData();
-                      //  holder.favorite.setImageResource(R.drawable.favoried);
-                      //  favorite[position]=true;
+                        viewModel.current_item = position;
                     }
                     ////////////// delete here
                     else {
                         viewModel.DeleteFav(products.get(position).getProduct().getFavourites().get(0).getId());
-                        viewModel.getData();
-                        // holder.favorite.setImageResource(R.drawable.like);
-                        //favorite[position]=false;
+                        viewModel.current_item = position;
                     }
                 }
                 else
@@ -99,10 +99,10 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
             });
 
 
-        }
+     //   }
 
-        catch (Exception e)
-        {}
+//        catch (Exception e)
+//        {}
 
         holder.ratingBar.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -112,7 +112,13 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
             }
             return true;
         });
-
+        Fragment fragment = new ProductDetailsFragment();
+        Bundle bundle = new Bundle() ;
+        bundle.putInt(PRODUCT_ID,products.get(position).getId());
+        fragment.setArguments(bundle);
+        holder.mView.setOnClickListener(v -> ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
+                replace(R.id.mainfram,fragment)
+                .addToBackStack(null).commit());
     }
 
 

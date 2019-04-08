@@ -137,8 +137,8 @@
         android:layout_margin="8dp"
         android:src="@drawable/like"
         android:background="@color/light_gray"
-        app:layout_constraintTop_toTopOf="@+id/addtocart"
-        app:layout_constraintBottom_toBottomOf="@+id/addtocart"
+        app:layout_constraintTop_toTopOf="@+id/add_to_cart"
+        app:layout_constraintBottom_toBottomOf="@+id/add_to_cart"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView

@@ -143,6 +143,7 @@ public class MainFragment extends Fragment {
                 return (position ) == 0 ? 2 : 1;
             }
         });
+
         diff_products.setLayoutManager(mng_layout);
     }
 
@@ -176,7 +177,5 @@ public class MainFragment extends Fragment {
         mShimmerViewContainer3.stopShimmerAnimation();
         super.onPause();
     }
-
-
 
 }

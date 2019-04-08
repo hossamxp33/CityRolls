@@ -4,7 +4,6 @@ import java.util.List;
 
 public class ProductDetails {
 
-
     private List<ProductdetailsBean> productdetails;
 
     public List<ProductdetailsBean> getProductdetails() {
@@ -15,7 +14,6 @@ public class ProductDetails {
         this.productdetails = productdetails;
     }
 
-
     public static class ProductdetailsBean {
         /**
          * id : 31
@@ -23,10 +21,11 @@ public class ProductDetails {
          * name_en : salt
          * description : axa
          * description_en : xaxa
-         * productsizes : [{"id":3,"product_id":31,"start_price":"1","amount":1,"size":"100"}]
-         * total_rating : [{"product_id":31,"stars":3,"count":1}]
-         * productphotos : [{"product_id":31,"id":20,"photo":"http://shopgate.codesroots.com/library/attachment/1550745371906943104.jpg"}]
-         * favourites : [{"product_id":31,"id":56,"user_id":5}]
+         * productsizes : [{"id":3,"product_id":31,"start_price":"300","amount":1,"size":"100"},{"id":81,"product_id":31,"start_price":"22","amount":0,"size":"300"}]
+         * total_rating : [{"product_id":31,"stars":5,"count":2}]
+         * productphotos : [{"product_id":31,"id":3,"photo":"http://shopgate.codesroots.com/library/attachment/pd3.jpg"},{"product_id":31,"id":20,"photo":"http://shopgate.codesroots.com/library/attachment/pd20.jpg"}]
+         * offers : [{"id":4,"percentage":"30","product_id":31}]
+         * favourites : [{"product_id":31,"id":1,"user_id":2}]
          */
 
         private int id;
@@ -37,6 +36,7 @@ public class ProductDetails {
         private List<ProductsizesBean> productsizes;
         private List<TotalRatingBean> total_rating;
         private List<ProductphotosBean> productphotos;
+        private List<OffersBean> offers;
         private List<FavouritesBean> favourites;
 
         public int getId() {
@@ -103,6 +103,14 @@ public class ProductDetails {
             this.productphotos = productphotos;
         }
 
+        public List<OffersBean> getOffers() {
+            return offers;
+        }
+
+        public void setOffers(List<OffersBean> offers) {
+            this.offers = offers;
+        }
+
         public List<FavouritesBean> getFavourites() {
             return favourites;
         }
@@ -115,7 +123,7 @@ public class ProductDetails {
             /**
              * id : 3
              * product_id : 31
-             * start_price : 1
+             * start_price : 300
              * amount : 1
              * size : 100
              */
@@ -170,8 +178,8 @@ public class ProductDetails {
         public static class TotalRatingBean {
             /**
              * product_id : 31
-             * stars : 3
-             * count : 1
+             * stars : 5
+             * count : 2
              */
 
             private int product_id;
@@ -206,8 +214,8 @@ public class ProductDetails {
         public static class ProductphotosBean {
             /**
              * product_id : 31
-             * id : 20
-             * photo : http://shopgate.codesroots.com/library/attachment/1550745371906943104.jpg
+             * id : 3
+             * photo : http://shopgate.codesroots.com/library/attachment/pd3.jpg
              */
 
             private int product_id;
@@ -239,11 +247,47 @@ public class ProductDetails {
             }
         }
 
+        public static class OffersBean {
+            /**
+             * id : 4
+             * percentage : 30
+             * product_id : 31
+             */
+
+            private int id;
+            private int percentage;
+            private int product_id;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public int getPercentage() {
+                return percentage;
+            }
+
+            public void setPercentage(int percentage) {
+                this.percentage = percentage;
+            }
+
+            public int getProduct_id() {
+                return product_id;
+            }
+
+            public void setProduct_id(int product_id) {
+                this.product_id = product_id;
+            }
+        }
+
         public static class FavouritesBean {
             /**
              * product_id : 31
-             * id : 56
-             * user_id : 5
+             * id : 1
+             * user_id : 2
              */
 
             private int product_id;

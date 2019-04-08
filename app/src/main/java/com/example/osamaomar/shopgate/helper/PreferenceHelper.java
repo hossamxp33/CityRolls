@@ -17,6 +17,9 @@ public class PreferenceHelper {
     private static String Token = "token";
     private static String UserId = "userid";
     private static String Language = "language";
+    private static String CURRENCY = "CURRENCY";
+    private static String CURRENCY_ARABIC = "CURRENCY_ARABIC";
+    private static String CURRENCY_VALUE = "CURRENCY_VALUE";
     private static final String USER_GROUP_ID = "USERGROUPID";
     private final static String USER_NAME = "USERNAME";
     private final static String CART_ARRAY = "CART_ARRAY";
@@ -37,6 +40,39 @@ public class PreferenceHelper {
         edit.putInt(USER_GROUP_ID, group);
         edit.apply();
     }
+
+    public static void setCURRENCY_VALUE(float value) {
+        Editor edit = app_prefs.edit();
+        edit.putFloat(CURRENCY_VALUE, value);
+        edit.apply();
+    }
+
+    public static void setCURRENCY(String currency) {
+        Editor edit = app_prefs.edit();
+        edit.putString(CURRENCY, currency);
+        edit.apply();
+    }
+
+    public static void setCURRENCYArabic(String Currencyar) {
+        Editor edit = app_prefs.edit();
+        edit.putString(CURRENCY_ARABIC, Currencyar);
+        edit.apply();
+    }
+
+    public static float getCurrencyValue() {
+        return app_prefs.getFloat(CURRENCY_VALUE, 0);
+    }
+
+    public static String getCurrencyArabic() {
+        return app_prefs.getString(CURRENCY_ARABIC,null);
+    }
+
+    public static String getCurrency() {
+        return app_prefs.getString(CURRENCY, null);
+    }
+
+
+
 
     public static void addItemtoCart(int product_id)
     {
@@ -59,6 +95,15 @@ public class PreferenceHelper {
         return arrPackage;
     }
 
+    public static int  retriveCartItemsSize() {
+        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
+        if (set == null)
+            return 0;
+        else
+        return set.size();
+    }
+
+
     public static  void removeItemFromCart(int product_id)
     {
         Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
@@ -69,7 +114,12 @@ public class PreferenceHelper {
 
     public static  void clearCart()
     {
+        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
+        set.clear();
         arrPackage.clear();
+        Editor editor = app_prefs.edit();
+        editor.putStringSet(CART_ARRAY, set);
+        editor.apply();
     }
 
     public static int getUSER_GROUP_ID() {

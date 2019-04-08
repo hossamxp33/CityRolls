@@ -12,11 +12,13 @@ import com.example.osamaomar.shopgate.domain.ServerGateway;
 import com.example.osamaomar.shopgate.entities.DefaultAdd;
 import com.example.osamaomar.shopgate.entities.AddToFavModel;
 import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.entities.StoreSetting;
 
 import java.util.Collections;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -33,13 +35,35 @@ public class ProductsViewModel extends ViewModel {
     private int subcattegry_id, userid,type;
     private  Products resultData;
     public int current_item = 0;
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     ProductsViewModel(ServerGateway serverGateway1, int id, int user_id,int type1) {
         serverGateway = serverGateway1;
         subcattegry_id = id;
         userid = user_id;
         type = type1;
-        getData();
+        //getData();
+    }
+
+
+    public void getSearchData(String key) {
+        mCompositeDisposable.add(
+                serverGateway.getSearchResult(key,"ar",1)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe( this::postDataResponse,
+                                this::postError));
+    }
+
+
+    private void postDataResponse(Products products) {
+        productsMutableLiveData.postValue(products);
+        resultData = products;
+    }
+
+
+    private void postError(Throwable throwable) {
+        throwableMutableLiveData.postValue(throwable);
     }
 
     public void getData() {
@@ -88,7 +112,7 @@ public class ProductsViewModel extends ViewModel {
     }
 
 
-    public  void comparelessprice ()
+    public  void  compareLessprice ()
     {
         Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
             return Float.valueOf(o1.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o2.getProductsizes().get(0).getStart_price()));
@@ -96,26 +120,21 @@ public class ProductsViewModel extends ViewModel {
         productsMutableLiveData.postValue(resultData);
     }
 
-
-    public  void comparemorerate ()
+    public  void  compareMoreprice()
     {
         Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
-            return Float.valueOf(o1.getProductsizes().get(0).getTotal_rating().get(0).getCount()/o1.getProductsizes().get(0).getTotal_rating().get(0).getStars())
-                    .compareTo(Float.valueOf(o2.getProductsizes().get(0).getTotal_rating().get(0).getCount()/o2.getProductsizes().get(0).getTotal_rating().get(0).
-                            getStars()));
+            return Float.valueOf(o2.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o1.getProductsizes().get(0).getStart_price()));
         });
         productsMutableLiveData.postValue(resultData);
     }
 
-
-    public  void comparelessrate ()
+    public  void comparemorerate ()
     {
         Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
-            return Float.valueOf(o1.getProductsizes().get(0).getTotal_rating().get(0).getCount()/o1.getProductsizes().get(0).getTotal_rating().get(0).getStars())
-                    .compareTo(Float.valueOf(o2.getProductsizes().get(0).getTotal_rating().get(0).getCount()/o2.getProductsizes().get(0).getTotal_rating().get(0).
+            return Float.valueOf(o1.getTotal_rating().get(0).getCount()/o1.getTotal_rating().get(0).getStars())
+                    .compareTo(Float.valueOf(o2.getTotal_rating().get(0).getCount()/o2.getTotal_rating().get(0).
                             getStars()));
         });
-
         productsMutableLiveData.postValue(resultData);
     }
 

@@ -10,9 +10,11 @@ import com.example.osamaomar.shopgate.domain.ServerGateway;
 import com.example.osamaomar.shopgate.entities.DefaultAdd;
 import com.example.osamaomar.shopgate.entities.AddToFavModel;
 import com.example.osamaomar.shopgate.entities.ProductDetails;
+import com.example.osamaomar.shopgate.entities.StoreSetting;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -22,21 +24,42 @@ class ProductDetailsViewModel extends ViewModel {
     public MutableLiveData<AddToFavModel> addToFavMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Boolean> deleteToFavMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<StoreSetting> storeSettingMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
     private  int product_id,userid;
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
      ProductDetailsViewModel(ServerGateway serverGateway1,int id,int user_id) {
         serverGateway = serverGateway1;
         product_id = id;
          userid = user_id;
-        getData();
+       // getData();
+         getSettingData();
     }
 
     public void getData() {
         getObservable().subscribeWith(getObserver());
     }
 
+
+    public void getSettingData() {
+        mCompositeDisposable.add(
+                serverGateway.getStorSetting()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe( this::postDataResponse,
+                                this::postError));
+    }
+
+    private void postDataResponse(StoreSetting storeSetting) {
+         storeSettingMutableLiveData.postValue(storeSetting);
+    }
+
+
+    private void postError(Throwable throwable) {
+        throwableMutableLiveData.postValue(throwable);
+    }
 
     public  void AddToFav ()
     {
@@ -56,6 +79,7 @@ class ProductDetailsViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread());
         return photographersData;
     }
+
     private DisposableObserver<ProductDetails> getObserver() {
         return new DisposableObserver<ProductDetails>() {
             @Override
@@ -112,7 +136,6 @@ class ProductDetailsViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread());
         return addToFavObservable;
     }
-
     private DisposableObserver<DefaultAdd> getObserverDeletFav() {
         return new DisposableObserver<DefaultAdd>() {
             @Override
@@ -129,5 +152,12 @@ class ProductDetailsViewModel extends ViewModel {
             public void onComplete() {
             }
         };
+    }
+
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        mCompositeDisposable.clear();
     }
 }

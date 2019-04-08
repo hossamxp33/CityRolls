@@ -5,6 +5,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="google_maps_key">AIzaSyD8z2lWzm896P2g8VhaBfrVam0JL1BaiW0</string>
+
     <string name="action_settings">Settings</string>
     <string name="searchabout">ابحث بالمنتجات</string>
     <string name="choice_depart">أختر حسب القسم</string>
@@ -67,6 +69,32 @@
     <string name="from">من</string>
     <string name="client">عميل</string>
     <string name="norates">لا يوجد تقييمات</string>
+    <string name="requestnotallow">لا يمكن طلب اكثر من الكمية المطلوبة</string>
+    <string name="payoptions">خيارات الدفع</string>
+    <string name="cannot_fetch_address">غير قادر علي ايجاد العنوان</string>
+    <string name="send">تأكيد </string>
+    <string name="search">ابحث عن مكان التوصيل</string>
+    <string name="addressdetails">تفاصيل العنوان</string>
+    <string name="choice_location">اختر مكان التوصيل</string>
+    <string name="gotoorders">الذهاب الي الطلبات</string>
+    <string name="finish_order">انهاء الطلب</string>
+    <string name="noaddress">لم يتم اختيار العنوان بعد</string>
+    <string name="adddetailsaddress">أدخل تفاصيل العنوان</string>
+    <string name="cash">cash</string>
+    <string name="paypal">Payapal</string>
+    <string name="error_in_data">خطأ في البيانات</string>
+    <string name="charge_rules">قواعد الشحن</string>
+    <string name="free_charge">شحن  مجاني</string>
+    <string name="nosearchname">أدخل اسم المنتج</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="loout">تسجيل الخروج</string>
+    <string name="password">كلمة المرور</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="title">تسجيل الدخول</string>
+    <string name="newuser">تسجيل مستخدم جديد</string>
+    <string name="repassword">تأكيد كلمة المرور</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="nothaveaccount">ليس لديك حساب . التسجيل الان</string>
 
     <string-array name="filters">
         <item>الاكثر تقييما</item>

@@ -1,5 +1,6 @@
 package com.example.osamaomar.shopgate.presentationn.screens.feature.home.offerfragment.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -18,7 +19,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
-import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.entities.offers;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 
@@ -29,11 +31,11 @@ import static com.example.osamaomar.shopgate.entities.names.PRODUCT_ID;
 public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.ViewHolder>  {
 
     private Context context;
-    private int type = 0;
-    private List<Products.ProductsbycategoryBean> productsbysubcats;
-    public AllOffersAdapter(Context mcontext) {
+    private List<offers.DataBean> offersData;
+    private float priceafteroffer = 0;
+    public AllOffersAdapter(Context mcontext, List<offers.DataBean> offers) {
         context = mcontext;
-
+        offersData = offers;
     }
 
     @NonNull
@@ -47,51 +49,73 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
     }
 
 
+    @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
-//
-//        if (productsbysubcats.get(position).getProductphotos().size()>0)
-//            Glide.with(context.getApplicationContext())
-//                    .load(productsbysubcats.get(position).getProductphotos().get(0).getPhoto()).placeholder(R.drawable.product).dontAnimate()
-//                    .into(holder.Image);
-//
-//            holder.name.setText(productsbysubcats.get(position).getName());
-//
-//
-//        if (productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating()!=null)
-//        if (productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().size()>0) {
-//            holder.ratingBar.setRating(productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getStars() /
-//                    productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount());
-//            holder.rateCount.setText("("+ productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount()+")");
-//        }
-//
-//        holder.amount.setText(context.getText(R.string.remendier)+" "+
-//                String.valueOf(productsbysubcats.get(position).getProductsizes().get(0).getAmount())+" "+context.getText(R.string.num));
-//
-//        holder.price.setText(productsbysubcats.get(position).getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
-//        Fragment fragment = new ProductDetailsFragment();
-//        Bundle bundle = new Bundle() ;
-//        bundle.putInt(PRODUCT_ID,productsbysubcats.get(position).getId());
-//        fragment.setArguments(bundle);
-//        holder.mView.setOnClickListener(v -> ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
-//                replace(R.id.mainfram,fragment)
-//                .addToBackStack(null).commit());
-//
-//        holder.ratingBar.setOnTouchListener((v, event) -> {
-//            if (event.getAction() == MotionEvent.ACTION_UP) {
-//                Intent intent = new Intent(context, RateActivity.class);
-//                intent.putExtra(PRODUCT_ID,productsbysubcats.get(position).getId());
-//                context.startActivity(intent);
-//            }
-//            return true;
-//        });
+
+        if (offersData.get(position).getProduct().getProductphotos().size()>0)
+            Glide.with(context.getApplicationContext())
+                    .load(offersData.get(position).getProduct().getProductphotos().get(0).getPhoto()).placeholder(R.drawable.product).dontAnimate()
+                    .into(holder.Image);
+
+            holder.name.setText(offersData.get(position).getProduct().getName());
+        if (offersData.get(position).getProduct().getTotal_rating()!=null)
+        if (offersData.get(position).getProduct().getTotal_rating().size()>0) {
+            holder.ratingBar.setRating(offersData.get(position).getProduct().getTotal_rating().get(0).getStars() /
+                    offersData.get(position).getProduct().getTotal_rating().get(0).getCount());
+            holder.rateCount.setText("("+ offersData.get(position).getProduct().getTotal_rating().get(0).getCount()+")");
+        }
+
+        holder.amount.setText(context.getText(R.string.remendier)+" "+
+                String.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getAmount())+" "+context.getText(R.string.num));
+
+        priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())*
+                Integer.valueOf(offersData.get(position).getPercentage())/100;
+
+
+        if (!offersData.get(position).getPercentage().matches(""))
+        {
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.price.setText(String.valueOf(Float.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency())));
+
+            else
+                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())-
+                        priceafteroffer *PreferenceHelper.getCurrencyValue())+context.getText(R.string.realcoin));
+
+        }
+        else
+        {
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
+                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+            else
+                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+        }
+
+        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+        Fragment fragment = new ProductDetailsFragment();
+        Bundle bundle = new Bundle() ;
+        bundle.putInt(PRODUCT_ID,offersData.get(position).getId());
+        fragment.setArguments(bundle);
+        holder.mView.setOnClickListener(v -> ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
+                replace(R.id.mainfram,fragment)
+                .addToBackStack(null).commit());
+
+        holder.ratingBar.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                Intent intent = new Intent(context, RateActivity.class);
+                intent.putExtra(PRODUCT_ID,offersData.get(position).getId());
+                context.startActivity(intent);
+            }
+            return true;
+        });
 
     }
 
     @Override
     public int getItemCount() {
 
-        return 5;
+        return offersData.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

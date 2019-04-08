@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.MyOrders;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.myorders.productsinsideorder.ProductsInsideorderFragment;
 
 import java.text.ParseException;
@@ -48,18 +49,23 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
-
         try {
-            holder.orderPrice.setText(orderdata.get(position).getPrice());
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.orderdate.setText(String.valueOf(Float.valueOf(orderdata.get(position).getPrice())
+                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+            else
+                holder.orderPrice.setText(orderdata.get(position).getPrice());
+
             holder.orderdate.setText(getdate(orderdata.get(position).getCreated()));
             holder.ordernum.setText(String.valueOf(orderdata.get(position).getId()));
             holder.payment.setText(orderdata.get(position).getType());
             holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().size()) +" "+ context.getText(R.string.num));
             holder.productname.setText(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getName());
+
 //           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
 //                   get(0).getTotalproducts()+")");
+
             if (orderdata.get(position).getOrder_status().matches("2")) {
                 holder.statues2.setTextColor(R.color.white);
                 holder.statues2.setBackgroundResource(R.drawable.selected_progress);
@@ -115,7 +121,6 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             gotodetails = mView.findViewById(R.id.gotodetails);
         }
     }
-
 
     private String getdate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");

@@ -113,7 +113,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/choice_depart_txt"
                 app:layout_constraintWidth_percent="0.8"
-
                 />
 
             <TextView

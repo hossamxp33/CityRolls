@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.osamaomar.shopgate">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,42 +14,65 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentationn.screens.feature.paypal.PaymentDetailsActivity"/>
-        <activity android:name=".presentationn.screens.feature.paypal.PaypalActivity"
-            android:label="@string/choice_payment_way"
-            >
+        <activity android:name=".presentationn.screens.feature.home.mainactivity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
+            android:label="@string/choice_location">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity" />
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".presentationn.screens.feature.payment.PaymentFragment"
+            android:label="@string/choice_payment_way">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity" />
+        </activity>
         <activity
             android:name=".presentationn.screens.feature.rate.RateActivity"
             android:label="@string/product_rates"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name=".presentationn.screens.feature.home.mainactivity.MainActivity"
-            android:label="@string/app_name"
+            android:name=".presentationn.screens.feature.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- <activity -->
+        <!-- android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity" -->
+        <!-- android:launchMode="singleTask"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!-- <data android:scheme="${applicationId}.braintree" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.PayPalTouchActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--<activity-->
-            <!--android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"-->
-            <!--android:launchMode="singleTask">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.VIEW" />-->
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
-                <!--<category android:name="android.intent.category.BROWSABLE" />-->
-                <!--<data android:scheme="${applicationId}.braintree" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
-
+        <service
+            android:name="com.paypal.android.sdk.payments.PayPalService"
+            android:exported="false" />
     </application>
 
 </manifest>

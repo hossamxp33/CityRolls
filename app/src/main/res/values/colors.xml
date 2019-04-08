@@ -18,5 +18,6 @@
     <color name="unselected_progress_circle">#D2D2D4</color>
     <color name="red">#FF0000</color>
     <color name="placeholder_bg">#dddddd</color>
+    <color name="pround">#EAC100</color>
 
 </resources>

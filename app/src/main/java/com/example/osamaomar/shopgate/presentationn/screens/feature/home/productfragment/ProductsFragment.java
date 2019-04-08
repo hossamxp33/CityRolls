@@ -1,6 +1,6 @@
 package com.example.osamaomar.shopgate.presentationn.screens.feature.home.productfragment;
 
-import android.arch.lifecycle.Observer;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,14 +20,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.osamaomar.shopgate.R;
-import com.example.osamaomar.shopgate.entities.AddToFavModel;
 import com.example.osamaomar.shopgate.entities.Products;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.adapters.AllProductsAdapter;
-
-import static com.example.osamaomar.shopgate.entities.names.CAT_NAME;
 import static com.example.osamaomar.shopgate.entities.names.CAT_TYPE;
 import static com.example.osamaomar.shopgate.entities.names.SUBCATES_NAME;
 import static com.example.osamaomar.shopgate.entities.names.SUB_CAT_ID;
@@ -43,8 +39,8 @@ public class ProductsFragment extends Fragment {
     private Products productsData;
     private FrameLayout progress;
     private TextView notfound, subcates_name;
-    private  AllProductsAdapter AllProductsAdapter;
-    private String title;
+    private AllProductsAdapter AllProductsAdapter;
+    private String title,name;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -55,6 +51,11 @@ public class ProductsFragment extends Fragment {
         userID = 2;
 
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductsViewModel.class);
+        name = getArguments().getString("name");
+        if (name!=null)
+            mViewModel.getSearchData(name);
+        else
+            mViewModel.getData();
         mViewModel.productsMutableLiveData.observe(this, products ->
         {
             productsData = products;
@@ -125,12 +126,13 @@ public class ProductsFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if (position == 0)
-                mViewModel.comparelessprice();
-            else if (position == 1)
                 mViewModel.comparemorerate();
+            else if (position == 1)
+                mViewModel.compareLessprice();
             else if (position == 2)
-                mViewModel.comparelessrate();
+                mViewModel.compareMoreprice();
 
+            filter_option.setVisibility(View.GONE);
             hideView(filter_option, 0);
         }
     };

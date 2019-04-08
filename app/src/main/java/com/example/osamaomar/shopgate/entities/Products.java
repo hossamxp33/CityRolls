@@ -2,6 +2,7 @@ package com.example.osamaomar.shopgate.entities;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Products {
@@ -39,6 +40,7 @@ public class Products {
         private List<ProductsizesBean> productsizes;
         private List<FavouritesBean> favourites;
         private List<ProductphotosBean> productphotos;
+        private List<TotalRatingBean> total_rating = new ArrayList<>();
 
         public float getPrice() {
             return price;
@@ -117,7 +119,6 @@ public class Products {
             private String current_price;
             private String start_price;
             private int amount;
-            private List<TotalRatingBean> total_rating;
 
             public int getId() {
                 return id;
@@ -183,56 +184,69 @@ public class Products {
                 this.amount = amount;
             }
 
-            public List<TotalRatingBean> getTotal_rating() {
-                return total_rating;
-            }
 
-            public void setTotal_rating(List<TotalRatingBean> total_rating) {
-                this.total_rating = total_rating;
-            }
 
             @Override
             public int compareTo(@NonNull ProductsizesBean o) {
                 return Float.valueOf(start_price).compareTo(Float.valueOf(o.start_price));
             }
 
-            public static class TotalRatingBean {
-                /**
-                 * productsize_id : 2
-                 * stars : 5
-                 * count : 2
-                 */
 
-                private int productsize_id;
-                private int stars;
-                private int count;
-
-                public int getProductsize_id() {
-                    return productsize_id;
-                }
-
-                public void setProductsize_id(int productsize_id) {
-                    this.productsize_id = productsize_id;
-                }
-
-                public int getStars() {
-                    return stars;
-                }
-
-                public void setStars(int stars) {
-                    this.stars = stars;
-                }
-
-                public int getCount() {
-                    return count;
-                }
-
-                public void setCount(int count) {
-                    this.count = count;
-                }
-            }
+        }
+        public List<TotalRatingBean> getTotal_rating() {
+            if (total_rating.size()==0)
+                total_rating.add(new TotalRatingBean(0,0));
+            return total_rating;
         }
 
+        public void setTotal_rating(List<TotalRatingBean> total_rating) {
+            this.total_rating = total_rating;
+        }
+        public static class TotalRatingBean {
+
+            public TotalRatingBean() {
+            }
+
+            public TotalRatingBean(float stars, int count) {
+                this.stars = stars;
+                this.count = count;
+            }
+
+            /**
+             * productsize_id : 2
+             * stars : 5
+             * count : 2
+             */
+
+
+            private int productsize_id;
+            private float stars = 0;
+            private int count=0;
+
+            public int getProductsize_id() {
+                return productsize_id;
+            }
+
+            public void setProductsize_id(int productsize_id) {
+                this.productsize_id = productsize_id;
+            }
+
+            public float getStars() {
+                return stars;
+            }
+
+            public void setStars(float stars) {
+                this.stars = stars;
+            }
+
+            public int getCount() {
+                return count;
+            }
+
+            public void setCount(int count) {
+                this.count = count;
+            }
+        }
         public static class FavouritesBean {
             public FavouritesBean(int id) {
                 this.id = id;

@@ -35,8 +35,9 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
     private List<Products.ProductsbycategoryBean> productsbysubcats;
     boolean [] favorite;
     ProductsViewModel viewModel;
-    int userid = 2 ;
-    public AllProductsAdapter(Context mcontext, int viewType, List<Products.ProductsbycategoryBean> productsbysubcats1,ProductsViewModel mViewModel) {
+    int userid = 5 ;
+    public AllProductsAdapter(Context mcontext, int viewType, List<Products.ProductsbycategoryBean> productsbysubcats1,
+                              ProductsViewModel mViewModel) {
         context = mcontext;
         type = viewType;
         productsbysubcats = productsbysubcats1;
@@ -70,11 +71,11 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
 
             holder.name.setText(productsbysubcats.get(position).getName());
 
-        if (productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating()!=null)
-        if (productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().size()>0) {
-            holder.ratingBar.setRating(productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getStars() /
-                    productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount());
-            holder.rateCount.setText("("+ productsbysubcats.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount()+")");
+        if (productsbysubcats.get(position).getTotal_rating()!=null)
+        if (productsbysubcats.get(position).getTotal_rating().size()>0) {
+            holder.ratingBar.setRating(productsbysubcats.get(position).getTotal_rating().get(0).getStars() /
+                    productsbysubcats.get(position).getTotal_rating().get(0).getCount());
+            holder.rateCount.setText("("+ productsbysubcats.get(position).getTotal_rating().get(0).getCount()+")");
         }
 
         holder.amount.setText(context.getText(R.string.remendier)+" "+
@@ -98,7 +99,6 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
             return true;
         });
 
-
         //////////////////  inialize with all product
         if (userid>0) {
             if (productsbysubcats.get(position).getFavourites().size() > 0) {
@@ -111,41 +111,17 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
             }
         }
 
-
-        holder.add_to_cart.setOnClickListener(v -> {
-            if (PreferenceHelper.retriveCartItemsValue()!= null) {
-                if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productsbysubcats.get(position).getId()))) {
-                    PreferenceHelper.addItemtoCart(productsbysubcats.get(position).getId());
-                    Toast.makeText(context, context.getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(context, context.getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                PreferenceHelper.addItemtoCart(productsbysubcats.get(position).getId());
-                Toast.makeText(context, context.getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
         holder.favorite.setOnClickListener(v -> {
 
             if (userid>0) {
                 if (!favorite[position]) {
                     viewModel.AddToFav(productsbysubcats.get(position).getId());
                     viewModel.current_item = position;
-                    //viewModel.getData();
-
-                    //  holder.favorite.setImageResource(R.drawable.favoried);
-                   // favorite[position]=true;
                 }
                 ////////////// delete here
                 else {
                     viewModel.DeleteFav(productsbysubcats.get(position).getFavourites().get(0).getId());
                     viewModel.current_item = position;
-                    //viewModel.getData();
-                   // holder.favorite.setImageResource(R.drawable.like);
-                    //favorite[position]=false;
                 }
             }
             else

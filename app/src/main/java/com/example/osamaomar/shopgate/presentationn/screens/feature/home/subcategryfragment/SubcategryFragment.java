@@ -14,9 +14,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.osamaomar.shopgate.R;
+import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.adapters.MoreSalesProductsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.adapters.SubCatsAdapter;
+
+import java.util.List;
 
 import static com.example.osamaomar.shopgate.entities.names.CAT_ID;
 import static com.example.osamaomar.shopgate.entities.names.CAT_NAME;
@@ -28,7 +32,10 @@ public class SubcategryFragment extends Fragment {
     private int catid,userid=2;
     private TextView product_notfound,text;
     private FrameLayout progress;
+    private MoreSalesProductsAdapter moreSalesProductsAdapter;
     private  String categry_name;
+    private List<SubCategriesWithProducts.ProductsbyrateBean> productsData;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -50,8 +57,11 @@ public class SubcategryFragment extends Fragment {
                     text.setVisibility(View.VISIBLE);
                     progress.setVisibility(View.GONE);
                     subCates.setAdapter(new SubCatsAdapter(getActivity(),subCategriesWithProducts.getData()));
-                    if(subCategriesWithProducts.getProductsbyrate().size()>0)
-                    MoreSaleProducts.setAdapter(new MoreSalesProductsAdapter(getActivity(),subCategriesWithProducts.getProductsbyrate(),mViewModel));
+                    if(subCategriesWithProducts.getProductsbyrate().size()>0) {
+                        moreSalesProductsAdapter = new MoreSalesProductsAdapter(getActivity(), subCategriesWithProducts.getProductsbyrate(), mViewModel);
+                        productsData = subCategriesWithProducts.getProductsbyrate();
+                        MoreSaleProducts.setAdapter(moreSalesProductsAdapter);
+                    }
                     else
                         product_notfound.setVisibility(View.VISIBLE);
                 });
@@ -62,6 +72,17 @@ public class SubcategryFragment extends Fragment {
                     Snackbar.make(view,throwable.toString(),Snackbar.LENGTH_SHORT).show();
                 });
 
+        mViewModel.addToFavMutableLiveData.observe(this, addToFavModel -> {
+            productsData.get(mViewModel.current_item).getProduct()
+                    .getFavourites().add(new SubCategriesWithProducts.ProductsbyrateBean.ProductBean.FavouritesBean(addToFavModel.getFavid()));
+            moreSalesProductsAdapter.notifyItemChanged(mViewModel.current_item);
+        });
+
+        mViewModel.deleteToFavMutableLiveData.observe(this, aBoolean -> {
+            productsData.get(mViewModel.current_item).getProduct()
+                    .getFavourites().clear();
+            moreSalesProductsAdapter.notifyDataSetChanged();
+        });
         return  view;
     }
 

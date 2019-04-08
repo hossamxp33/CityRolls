@@ -7,10 +7,13 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.osamaomar.shopgate.domain.ServerGateway;
+import com.example.osamaomar.shopgate.entities.MyOrders;
 import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.entities.offers;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -18,50 +21,32 @@ import io.reactivex.schedulers.Schedulers;
 class OffersViewModel extends ViewModel {
 
 
-    public MutableLiveData<Products> productsMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<offers> offersMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private ServerGateway serverGateway;
-    private int subcattegry_id, userid,type;
 
-    OffersViewModel(ServerGateway serverGateway1, int id, int user_id, int type1) {
+    OffersViewModel(ServerGateway serverGateway1) {
         serverGateway = serverGateway1;
-        subcattegry_id = id;
-        userid = user_id;
-        type = type1;
-        getData();
+        getOffersData();
     }
 
-    public void getData() {
-        getObservable().subscribeWith(getObserver());
+    private void getOffersData(){
+        mCompositeDisposable.add(
+                serverGateway.retrieveOffers()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe( this::postDataResponse,
+                                this::postError));
+    }
+
+    private void postDataResponse(offers productRates) {
+        offersMutableLiveData.postValue(productRates);
+    }
+
+    private void postError(Throwable throwable) {
+        throwableMutableLiveData.postValue(throwable);
     }
 
 
-    @SuppressLint("CheckResult")
-    private Observable<Products> getObservable() {
-        Observable<Products> productsObservable = serverGateway.getProducts(subcattegry_id,type,userid);
-        productsObservable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-        return productsObservable;
-    }
-
-    private DisposableObserver<Products> getObserver() {
-        return new DisposableObserver<Products>() {
-            @Override
-            public void onNext(@NonNull Products result) {
-                if (productsMutableLiveData != null)
-                    productsMutableLiveData.postValue(result);
-            }
-
-            @Override
-            public void onError(@NonNull Throwable e) {
-                Log.d("Errors", "Error" + e);
-                e.printStackTrace();
-                throwableMutableLiveData.postValue(e);
-            }
-
-            @Override
-            public void onComplete() {
-            }
-        };
-    }
 }

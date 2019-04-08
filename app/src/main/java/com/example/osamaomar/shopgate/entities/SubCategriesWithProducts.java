@@ -360,11 +360,16 @@ public class SubCategriesWithProducts {
             }
 
             public static class FavouritesBean {
+                public FavouritesBean(int id) {
+                    this.id = id;
+                }
+
                 /**
                  * id : 73
                  * product_id : 31
                  * user_id : 2
                  */
+
 
                 private int id;
                 private int product_id;
@@ -403,7 +408,7 @@ public class SubCategriesWithProducts {
                  */
 
                 private int product_id;
-                private int stars;
+                private float stars;
                 private int count;
 
                 public int getProduct_id() {
@@ -414,11 +419,11 @@ public class SubCategriesWithProducts {
                     this.product_id = product_id;
                 }
 
-                public int getStars() {
+                public float getStars() {
                     return stars;
                 }
 
-                public void setStars(int stars) {
+                public void setStars(float stars) {
                     this.stars = stars;
                 }
 

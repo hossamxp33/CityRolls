@@ -2,11 +2,8 @@ package com.example.osamaomar.shopgate.presentationn.screens.feature.home.myorde
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-
 import com.example.osamaomar.shopgate.domain.ServerGateway;
 import com.example.osamaomar.shopgate.entities.MyOrders;
-import com.example.osamaomar.shopgate.entities.ProductRate;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;

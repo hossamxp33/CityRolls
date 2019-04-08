@@ -36,7 +36,7 @@ class ProductsInsideOrderViewModel extends ViewModel {
 //
 //    @SuppressLint("CheckResult")
 //    private Observable<Products> getObservable() {
-//        Observable<Products> productsObservable = serverGateway.getProducts(subcattegry_id,type,userid);
+//        Observable<Products> productsObservable = serverGateway.getOrderdetails(subcattegry_id,type,userid);
 //        productsObservable.subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread());
 //        return productsObservable;

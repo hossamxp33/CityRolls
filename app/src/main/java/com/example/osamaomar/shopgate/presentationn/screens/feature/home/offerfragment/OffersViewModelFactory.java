@@ -12,13 +12,9 @@ public class OffersViewModelFactory implements ViewModelProvider.Factory {
 
 
     private Application application;
-    private int subcategry_id,user_Id,type;
 
-    public OffersViewModelFactory(Application application1, int id, int userid, int type1) {
+    public OffersViewModelFactory(Application application1) {
         application = application1;
-        subcategry_id = id;
-        user_Id = userid;
-        type =type1;
     }
 
     @SuppressWarnings("SingleStatementInBlock")
@@ -27,12 +23,10 @@ public class OffersViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
          if (modelClass == OffersViewModel.class)
         {
-            return (T) new OffersViewModel(getApiService(), subcategry_id,user_Id,type);
+            return (T) new OffersViewModel(getApiService());
         }
-
         throw new IllegalArgumentException("Invalid view model class type");
     }
-
 
     private ServerGateway getApiService() {
         return ApiClient.getClient().create(ServerGateway.class);

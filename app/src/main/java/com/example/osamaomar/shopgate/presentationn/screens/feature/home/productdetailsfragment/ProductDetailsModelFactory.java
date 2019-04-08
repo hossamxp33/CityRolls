@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.example.osamaomar.shopgate.domain.ApiClient;
 import com.example.osamaomar.shopgate.domain.ServerGateway;
+import com.example.osamaomar.shopgate.presentationn.screens.feature.home.morefragment.MenuViewModel;
 
 public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
 
@@ -20,6 +21,11 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
         userid = user_id;
     }
 
+    /////// for menu viewmodel
+    public ProductDetailsModelFactory(Application application1) {
+        application = application1;
+    }
+
     @SuppressWarnings("SingleStatementInBlock")
     @NonNull
     @Override
@@ -28,6 +34,11 @@ public class ProductDetailsModelFactory implements ViewModelProvider.Factory {
         {
             return (T) new ProductDetailsViewModel(getApiService(),productid,userid);
         }
+        else   if (modelClass == MenuViewModel.class)
+         {
+             return (T) new MenuViewModel(getApiService());
+         }
+
 
         throw new IllegalArgumentException("Invalid view model class type");
     }

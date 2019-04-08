@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.MainView;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 
@@ -65,7 +66,11 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                             famousProduct.get(position).getProduct().getTotal_rating().get(0).getCount());
             }
         }
-        holder.price.setText(famousProduct.get(position).getStart_price()+" "+context.getText(R.string.coin));
+
+        if (PreferenceHelper.getCurrencyValue()>0)
+        holder.price.setText(Float.valueOf(famousProduct.get(position).getStart_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
+        else
+            holder.price.setText(famousProduct.get(position).getStart_price()+" "+context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->

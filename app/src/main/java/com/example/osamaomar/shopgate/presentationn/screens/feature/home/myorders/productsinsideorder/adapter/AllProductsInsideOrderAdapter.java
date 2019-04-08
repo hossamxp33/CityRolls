@@ -85,7 +85,7 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
     @Override
     public int getItemCount() {
 
-        return 5;
+        return orderdetailsBeans.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
