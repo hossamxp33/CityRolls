@@ -5,20 +5,20 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".helper.MyApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentationn.screens.feature.home.mainactivity.MainActivity"
+        <activity
+            android:name=".presentationn.screens.feature.home.mainactivity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
             android:label="@string/choice_location">
@@ -45,8 +45,7 @@
         <activity
             android:name=".presentationn.screens.feature.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
-
-            >
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,6 +72,9 @@
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b1a071ee6c852956ac6fd3305a4c7c10ca07e420" />
     </application>
 
 </manifest>

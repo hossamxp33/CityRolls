@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateViewModelFactory;
 
 import static com.example.osamaomar.shopgate.entities.names.PRODUCT_ID;
@@ -37,7 +38,7 @@ public class AddRateFragment extends Fragment {
     private FrameLayout progress;
     private RatingBar ratingBar;
     private EditText comment;
-    private int userid = 5; // TODO change userid : 20/03/2019
+    private int userid = PreferenceHelper.getUserId(); // TODO change userid : 20/03/2019
 
 
     @Override

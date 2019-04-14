@@ -183,7 +183,7 @@ public class ProductDetails {
              */
 
             private int product_id;
-            private int stars;
+            private float stars;
             private int count;
 
             public int getProduct_id() {
@@ -194,11 +194,11 @@ public class ProductDetails {
                 this.product_id = product_id;
             }
 
-            public int getStars() {
+            public float getStars() {
                 return stars;
             }
 
-            public void setStars(int stars) {
+            public void setStars(float stars) {
                 this.stars = stars;
             }
 

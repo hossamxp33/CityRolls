@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="@color/white"
-    android:layoutDirection="rtl"
+
     android:orientation="horizontal">
 
     <android.support.constraint.Guideline
@@ -81,7 +81,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:isIndicator="true"
-        android:rating="5"
         android:theme="@style/RatingBar"
         app:layout_constraintStart_toEndOf="@id/item_img"
         app:layout_constraintTop_toBottomOf="@+id/item_name" />
@@ -120,6 +119,7 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="2"
+        android:visibility="gone"
         android:text=" ريال  "
         android:textColor="@color/black"
         android:textSize="14dp"

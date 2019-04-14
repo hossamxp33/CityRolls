@@ -17,8 +17,8 @@
         android:icon="@drawable/discount"/>
     <item
         android:id="@+id/notifications"
-        android:title="@string/notifications"
-        android:icon="@drawable/notification"/>
+        android:title="@string/favorite"
+        android:icon="@drawable/like"/>
     <item
         android:id="@+id/more"
         android:title="@string/more"

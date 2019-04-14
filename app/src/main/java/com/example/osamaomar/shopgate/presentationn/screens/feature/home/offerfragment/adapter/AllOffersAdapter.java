@@ -72,25 +72,25 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
         priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())*
                 Integer.valueOf(offersData.get(position).getPercentage())/100;
 
+        holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");
 
-        if (!offersData.get(position).getPercentage().matches(""))
-        {
+//        if (!offersData.get(position).getPercentage().matches(""))
+//        {
             if (PreferenceHelper.getCurrencyValue()>0)
                 holder.price.setText(String.valueOf(Float.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency())));
 
             else
-                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())-
-                        priceafteroffer *PreferenceHelper.getCurrencyValue())+context.getText(R.string.realcoin));
+                holder.price.setText(String.valueOf(priceafteroffer)+context.getText(R.string.realcoin));
 
-        }
-        else
-        {
-            if (PreferenceHelper.getCurrencyValue()>0)
-                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
-                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
-            else
-                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
-        }
+//        }
+//        else
+//        {
+//            if (PreferenceHelper.getCurrencyValue()>0)
+//                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
+//                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+//            else
+//                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+//        }
 
         holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
         Fragment fragment = new ProductDetailsFragment();
@@ -122,7 +122,7 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
 
         final View mView;
         private ImageView Image;
-        private TextView name,rateCount,amount,price,oldprice;
+        private TextView name,rateCount,amount,price,oldprice,discount;
         private RatingBar ratingBar;
         ViewHolder(View view) {
             super(view);
@@ -133,9 +133,9 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
             amount = mView.findViewById(R.id.quentity);
             rateCount = mView.findViewById(R.id.rate_count);
             ratingBar = mView.findViewById(R.id.rates);
+            discount = mView.findViewById(R.id.discount);
             oldprice = mView.findViewById(R.id.old_price);
             oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-
         }
     }
 }

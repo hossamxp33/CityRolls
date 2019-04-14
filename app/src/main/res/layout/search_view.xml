@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="2dp"
-    android:layoutDirection="rtl"
     android:background="@drawable/linear_background_for_search"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -32,7 +31,7 @@
         android:hint="@string/searchabout"
         android:textSize="12dp"
         android:padding="7dp"
-        android:gravity="right"
+        android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

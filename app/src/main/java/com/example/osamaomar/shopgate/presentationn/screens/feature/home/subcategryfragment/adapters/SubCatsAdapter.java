@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
+import com.example.osamaomar.shopgate.helper.ResourceUtil;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
 
 import java.util.List;
@@ -42,6 +43,9 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
         holder.name.setText(subcates.get(position).getName());
+        if (ResourceUtil.getCurrentLanguage(context).matches("en"))
+            holder.name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
+
         holder.itemView.setOnClickListener(v -> {
             Fragment fragment = new ProductsFragment();
             Bundle bundle = new Bundle();
@@ -50,7 +54,6 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
             bundle.putInt(CAT_TYPE,0);
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
-
         });
     }
 

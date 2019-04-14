@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.Products;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.adapters.MoreSalesProductsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.adapters.SubCatsAdapter;
@@ -29,7 +30,7 @@ public class SubcategryFragment extends Fragment {
 
     private SubCatesViewModel mViewModel;
     RecyclerView subCates,MoreSaleProducts;
-    private int catid,userid=2;
+    private int catid,userid= PreferenceHelper.getUserId();
     private TextView product_notfound,text;
     private FrameLayout progress;
     private MoreSalesProductsAdapter moreSalesProductsAdapter;

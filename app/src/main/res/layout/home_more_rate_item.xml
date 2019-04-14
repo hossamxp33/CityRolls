@@ -5,7 +5,7 @@
     android:layout_marginRight="7dp"
     android:layout_marginLeft="7dp"
     android:padding="5dp"
-    android:layoutDirection="rtl"
+
     android:layout_height="wrap_content"
     android:background="@drawable/background_for_famousproduct"
     xmlns:android="http://schemas.android.com/apk/res/android">

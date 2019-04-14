@@ -5,20 +5,19 @@ import com.example.osamaomar.shopgate.entities.DefaultAdd;
 import com.example.osamaomar.shopgate.entities.AddToFavModel;
 import com.example.osamaomar.shopgate.entities.CartItems;
 import com.example.osamaomar.shopgate.entities.Favoriets;
+import com.example.osamaomar.shopgate.entities.LoginResponse;
 import com.example.osamaomar.shopgate.entities.MainView;
 import com.example.osamaomar.shopgate.entities.MyOrders;
 import com.example.osamaomar.shopgate.entities.OrderModel;
 import com.example.osamaomar.shopgate.entities.ProductDetails;
 import com.example.osamaomar.shopgate.entities.ProductRate;
 import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.entities.Register;
 import com.example.osamaomar.shopgate.entities.Sidemenu;
 import com.example.osamaomar.shopgate.entities.StoreSetting;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.example.osamaomar.shopgate.entities.offers;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -26,7 +25,6 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -44,7 +42,6 @@ public interface ServerGateway {
             @Path("product_id") int product_id,
             @Path("user_id") int user_id
     );
-
 
 
     @GET("Subcats/getsubcats/{cat_id}/{user_id}.json")
@@ -140,5 +137,23 @@ public interface ServerGateway {
     @Headers("Accept: Application/json")
     Observable<Currency> Currency();
 
+
+       @FormUrlEncoded
+    @POST("users/add.json")
+    Observable<Register> userregister(
+            @Field("username") String  username,
+            @Field("password") String password,
+            @Field("phone") String phone,
+            @Field("email_verified") int email_verified,
+            @Field("active") int active,
+            @Field("user_group_id") int user_group_id
+    );
+
+    @FormUrlEncoded
+    @POST("users/token.json")
+    Observable<LoginResponse> userlogin(
+            @Field("username") String  username,
+            @Field("password") String password
+    );
 
 }

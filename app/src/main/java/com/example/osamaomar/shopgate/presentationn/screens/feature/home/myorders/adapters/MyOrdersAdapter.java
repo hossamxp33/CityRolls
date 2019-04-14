@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -63,8 +64,12 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             holder.productname.setText(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getName());
 
-//           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
-//                   get(0).getTotalproducts()+")");
+           holder.ratecount.setText("("+orderdata.get(position).getOrderdetails().
+                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getCount()+")");
+
+           holder.ratingBar.setRating(orderdata.get(position).getOrderdetails().
+                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getStars()/orderdata.get(position).getOrderdetails().
+                   get(0).getProductsize().getProduct().getTotal_rating().get(0).getCount());
 
             if (orderdata.get(position).getOrder_status().matches("2")) {
                 holder.statues2.setTextColor(R.color.white);
@@ -103,7 +108,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
         final View mView;
         private ImageView Image;
         private TextView statues1, statues2, statues3, orderPrice, productCount, orderdate, ordernum, productname, ratecount, gotodetails, payment;
-
+        private RatingBar ratingBar;
         ViewHolder(View view) {
             super(view);
             mView = view;
@@ -118,6 +123,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             payment = mView.findViewById(R.id.payment);
             productname = mView.findViewById(R.id.item_name);
             ratecount = mView.findViewById(R.id.rate_count);
+            ratingBar = mView.findViewById(R.id.rates);
             gotodetails = mView.findViewById(R.id.gotodetails);
         }
     }

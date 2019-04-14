@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,21 +20,20 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.ProductDetails;
 import com.example.osamaomar.shopgate.entities.StoreSetting;
 import com.example.osamaomar.shopgate.helper.AddorRemoveCallbacks;
 import com.example.osamaomar.shopgate.helper.PreferenceHelper;
+import com.example.osamaomar.shopgate.helper.ResourceUtil;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductImagesAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductSizesAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
-
 import java.util.ArrayList;
-
 import static com.example.osamaomar.shopgate.entities.names.PRODUCT_ID;
+
 
 public class ProductDetailsFragment extends Fragment {
 
@@ -43,7 +44,7 @@ public class ProductDetailsFragment extends Fragment {
     public TextView product_name, description, price, ratecount,amount,addtocart,charege;
     RatingBar ratingBar;
     public ImageView item_img;
-    int userid = 2,favid =0;
+    int userid = PreferenceHelper.getUserId(),favid =0;
     ProductSizesAdapter productSizesAdapter;
     ProductImagesAdapter productImagesAdapter;
     ArrayList<String> images = new ArrayList<>();
@@ -51,18 +52,26 @@ public class ProductDetailsFragment extends Fragment {
     boolean productfav;
     ProductDetails.ProductdetailsBean productdetails;
     public StoreSetting setting;
-    public   boolean  freecharg = false;
+    public  boolean  freecharg = false;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.product_details_fragment, container, false);
-
         ((MainActivity) getActivity()).head_title.setText(getText(R.string.product_details));
         ((MainActivity) getActivity()).logo.setVisibility(View.INVISIBLE);
         productid = getArguments().getInt(PRODUCT_ID, 0);
         findViewsFromXml(view);
+
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductDetailsViewModel.class);
+
+        if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en"))
+            description.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_next,0);
+
+        mViewModel.throwableMutableLiveData.observe(this,throwable -> Toast.makeText(getActivity(),throwable.toString(),Toast.LENGTH_SHORT));
         mViewModel.storeSettingMutableLiveData.observe(this,storeSetting ->
                 {
                     mViewModel.getData();
@@ -70,7 +79,6 @@ public class ProductDetailsFragment extends Fragment {
                 });
 
         charege.setOnClickListener(v -> {
-
             if (!freecharg)
                     new AlertDialog.Builder(getActivity())
                             .setTitle(getText(R.string.charge_rules))
@@ -93,20 +101,23 @@ public class ProductDetailsFragment extends Fragment {
         });
 
         addtocart.setOnClickListener(v -> {
-            if (PreferenceHelper.retriveCartItemsValue()!= null) {
-                if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId()))) {
+            if (userid>0) {
+                if (PreferenceHelper.retriveCartItemsValue() != null) {
+                    if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId()))) {
+                        PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId());
+                        ((AddorRemoveCallbacks) getActivity()).onAddProduct();
+                        Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getActivity(), getActivity().getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
+                } else {
                     PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId());
-                    ((AddorRemoveCallbacks)getActivity()).onAddProduct();
+                    ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                     Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(getActivity(), getActivity().getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
+                }
             }
             else
-            {
-                PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId());
-                ((AddorRemoveCallbacks)getActivity()).onAddProduct();
-                Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
-            }
+                Toast.makeText(getActivity(), getActivity().getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
+
         });
 
         addToFav.setOnClickListener(v ->
@@ -149,7 +160,6 @@ public class ProductDetailsFragment extends Fragment {
             }
             return true;
         });
-
 
         return view;
     }

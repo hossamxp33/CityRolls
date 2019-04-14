@@ -174,6 +174,25 @@ public class MyOrders {
 
                 private int id;
                 private int product_id;
+                private int amount;
+
+                public int getAmount() {
+                    return amount;
+                }
+
+                public void setAmount(int amount) {
+                    this.amount = amount;
+                }
+
+                public float getStart_price() {
+                    return start_price;
+                }
+
+                public void setStart_price(float start_price) {
+                    this.start_price = start_price;
+                }
+
+                private float start_price;
                 private ProductBean product;
 
                 public int getId() {
@@ -212,6 +231,7 @@ public class MyOrders {
                     private String name;
                     private String name_en;
                     private List<ProductphotosBean> productphotos;
+                    private List<TotalRatingBean> total_rating;
 
                     public int getId() {
                         return id;
@@ -241,10 +261,62 @@ public class MyOrders {
                         return productphotos;
                     }
 
+                    public List<TotalRatingBean> getTotal_rating() {
+                        return total_rating;
+                    }
+
+                    public void setTotal_rating(List<TotalRatingBean> total_rating) {
+                        this.total_rating = total_rating;
+                    }
+
                     public void setProductphotos(List<ProductphotosBean> productphotos) {
                         this.productphotos = productphotos;
                     }
+                    public static class TotalRatingBean {
 
+                        public TotalRatingBean() {
+                        }
+
+                        public TotalRatingBean(float stars, int count) {
+                            this.stars = stars;
+                            this.count = count;
+                        }
+
+                        /**
+                         * productsize_id : 2
+                         * stars : 5
+                         * count : 2
+                         */
+
+
+                        private int product_id;
+                        private float stars = 0;
+                        private int count=0;
+
+                        public int getProductsize_id() {
+                            return product_id;
+                        }
+
+                        public void setProductsize_id(int productsize_id) {
+                            this.product_id = productsize_id;
+                        }
+
+                        public float getStars() {
+                            return stars;
+                        }
+
+                        public void setStars(float stars) {
+                            this.stars = stars;
+                        }
+
+                        public int getCount() {
+                            return count;
+                        }
+
+                        public void setCount(int count) {
+                            this.count = count;
+                        }
+                    }
                     public static class ProductphotosBean {
                         /**
                          * id : 1

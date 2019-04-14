@@ -23,6 +23,7 @@ public class PreferenceHelper {
     private static final String USER_GROUP_ID = "USERGROUPID";
     private final static String USER_NAME = "USERNAME";
     private final static String CART_ARRAY = "CART_ARRAY";
+    private final static String Doller_value = "Doller_value";
     private final static  ArrayList arrPackage = new ArrayList<>();
     private Context context;
 
@@ -53,11 +54,20 @@ public class PreferenceHelper {
         edit.apply();
     }
 
+    public static void setDoller_value(float doller_value) {
+        Editor edit = app_prefs.edit();
+        edit.putFloat(Doller_value, doller_value);
+        edit.apply();
+    }
     public static void setCURRENCYArabic(String Currencyar) {
         Editor edit = app_prefs.edit();
         edit.putString(CURRENCY_ARABIC, Currencyar);
         edit.apply();
     }
+    public static float getDoller() {
+        return app_prefs.getFloat(Doller_value, 1);
+    }
+
 
     public static float getCurrencyValue() {
         return app_prefs.getFloat(CURRENCY_VALUE, 0);
@@ -159,7 +169,7 @@ public class PreferenceHelper {
     }
 
 
-    public void setUserId(int user_id) {
+    public static void setUserId(int user_id) {
         Editor edit = app_prefs.edit();
         edit.putInt(UserId, user_id);
         edit.apply();

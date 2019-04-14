@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.favorite.adapter.AllFavProductsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.adapters.AllProductsAdapter;
 
@@ -40,7 +41,7 @@ public class FavoritsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.favorites_fragment, container, false);
-        userID = 2;
+        userID = PreferenceHelper.getUserId();
 
         productsRecycle = view.findViewById(R.id.allfavProducts);
         progress = view.findViewById(R.id.progress);

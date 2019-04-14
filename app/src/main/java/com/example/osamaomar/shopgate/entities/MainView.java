@@ -8,6 +8,15 @@ public class MainView {
     private List<CategoryBean> category;
     private List<ProductsbyrateBean> productsbyrate;
     private List<SubcatsBeanX> subcats;
+    private CurrencyBean currency;
+
+    public CurrencyBean getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(CurrencyBean currency) {
+        this.currency = currency;
+    }
 
     public List<SlidersBean> getSliders() {
         return sliders;
@@ -39,6 +48,62 @@ public class MainView {
 
     public void setSubcats(List<SubcatsBeanX> subcats) {
         this.subcats = subcats;
+    }
+
+    public static class CurrencyBean {
+        /**
+         * id : 1
+         * name : dollar
+         * value : 18
+         * basic_value : 1
+         * name_ar : دولار
+         */
+
+        private int id;
+        private String name;
+        private int value;
+        private int basic_value;
+        private String name_ar;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+
+        public int getBasic_value() {
+            return basic_value;
+        }
+
+        public void setBasic_value(int basic_value) {
+            this.basic_value = basic_value;
+        }
+
+        public String getName_ar() {
+            return name_ar;
+        }
+
+        public void setName_ar(String name_ar) {
+            this.name_ar = name_ar;
+        }
     }
 
     public static class SlidersBean {

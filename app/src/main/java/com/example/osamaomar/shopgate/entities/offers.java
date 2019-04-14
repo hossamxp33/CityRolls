@@ -24,7 +24,7 @@ public class offers {
          */
 
         private int id;
-        private String percentage;
+        private String percentage="1";
         private int product_id;
         private String end_date;
         private ProductBean product;
@@ -38,6 +38,9 @@ public class offers {
         }
 
         public String getPercentage() {
+            if (percentage.matches(""))
+                return "1";
+            else
             return percentage;
         }
 

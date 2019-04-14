@@ -23,6 +23,7 @@ import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.OrderModel;
 import com.example.osamaomar.shopgate.helper.AddorRemoveCallbacks;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.confirmorder.FinishOrderFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.MainFragment;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -63,7 +64,7 @@ public class PaymentFragment extends Fragment {
         getActivity().startService(intent);
         orderModel = (OrderModel) getArguments().getSerializable(ORDER);
         assert orderModel != null;
-        orderModel.setUser_id(5);
+        orderModel.setUser_id(PreferenceHelper.getUserId());
         for (int i = 0; i<orderModel.getOrderdetails().size(); i++)
             Total+=Float.valueOf(orderModel.getOrderdetails().get(i).getTotal());
 
@@ -98,14 +99,7 @@ public class PaymentFragment extends Fragment {
 
     private void processpayment()  {
 
-//        try {
-//            mBraintreeFragment = BraintreeFragment.newInstance(getActivity(), mAuthorization);
-//        } catch (InvalidArgumentException e) {
-//            e.printStackTrace();
-//        }
-        // startActivityForResult(getDropInRequest().getIntent(this), DROP_IN_REQUEST);
-
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(Total)),"USD","cairo",PayPalPayment.PAYMENT_INTENT_SALE);
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(Total * PreferenceHelper.getDoller())),"USD","cairo",PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,configuration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);

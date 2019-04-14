@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.Products;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.adapters.AllProductsAdapter;
 import static com.example.osamaomar.shopgate.entities.names.CAT_TYPE;
@@ -48,7 +49,7 @@ public class ProductsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.products_fragment, container, false);
         initialize(view);
-        userID = 2;
+        userID = PreferenceHelper.getUserId();
 
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductsViewModel.class);
         name = getArguments().getString("name");

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.MainView;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DiffProductsAdapter;
@@ -77,6 +78,7 @@ public class MainFragment extends Fragment {
         mShimmerViewContainer3.setVisibility(View.GONE);
         progress.setVisibility(View.GONE);
         setupDiffRecycle();
+        PreferenceHelper.setDoller_value(mainView.getCurrency().getValue());
         setupviewPager(slider);
         init(mainView.getSliders().size());
         slider.setAdapter(new SliderPagerAdapter(getActivity(),mainView.getSliders()));

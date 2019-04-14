@@ -66,18 +66,19 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
                     .into(holder.Image);
             holder.name.setText(orderdetailsBeans.get(position).getProductsize().getProduct().getName());
 
-//
-//        if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating()!=null)
-//        if (orderdetailsBeans.get(position).getProductsizes().get(0).getTotal_rating().size()>0) {
-//            holder.ratingBar.setRating(orderdetailsBeans.get(position).getProductsizes().get(0).getTotal_rating().get(0).getStars() /
-//                    orderdetailsBeans.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount());
-//            holder.rateCount.setText("("+ orderdetailsBeans.get(position).getProductsizes().get(0).getTotal_rating().get(0).getCount()+")");
-//        }
 
-//        holder.amount.setText(context.getText(R.string.remendier)+" "+
-//                String.valueOf(productsbysubcats.get(position).getProductsizes().get(0).getAmount())+" "+context.getText(R.string.num));
-//
-      // holder.price.setText(orderdetailsBeans.get(position).get.get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+        if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating()!=null)
+        if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().size()>0) {
+            holder.rateCount.setText("("+orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getCount()+")");
+            holder.ratingBar.setRating(orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getStars()/
+                    orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating().get(0).getCount());
+
+        }
+
+        holder.amount.setText(context.getText(R.string.remendier)+" "+
+                String.valueOf(orderdetailsBeans.get(position).getProductsize().getAmount())+" "+context.getText(R.string.num));
+
+       holder.price.setText(orderdetailsBeans.get(position).getProductsize().getStart_price()+" "+context.getText(R.string.realcoin));
 
 
     }

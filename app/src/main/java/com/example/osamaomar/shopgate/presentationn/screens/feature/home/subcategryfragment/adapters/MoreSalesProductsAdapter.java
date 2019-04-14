@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.SubCatesViewModel;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
@@ -32,7 +33,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
     private Context context;
     private  List<SubCategriesWithProducts.ProductsbyrateBean> products;
     SubCatesViewModel viewModel;
-    int userid = 2;
+    int userid = PreferenceHelper.getUserId();
     boolean [] favorite;
 
     public MoreSalesProductsAdapter(Context mcontext, List<SubCategriesWithProducts.ProductsbyrateBean> productsbyrate,
