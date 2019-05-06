@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 ResourceUtil.changeLang("en",SplashActivity.this);
 
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+
             startActivity(mainIntent);
             finish();
         }, 5000);

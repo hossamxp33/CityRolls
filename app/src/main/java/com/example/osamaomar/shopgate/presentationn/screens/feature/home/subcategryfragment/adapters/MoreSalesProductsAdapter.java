@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.SubCategriesWithProducts;
@@ -23,9 +22,7 @@ import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.SubCatesViewModel;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
-
 import java.util.List;
-
 import static com.example.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
 public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProductsAdapter.ViewHolder>  {
@@ -98,8 +95,6 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
                 else
                     Snackbar.make(v,context.getText(R.string.loginfirst),Snackbar.LENGTH_LONG).show();
             });
-
-
      //   }
 
 //        catch (Exception e)
@@ -113,9 +108,11 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
             }
             return true;
         });
+
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle() ;
-        bundle.putInt(PRODUCT_ID,products.get(position).getId());
+
+        bundle.putInt(PRODUCT_ID,products.get(position).getProduct_id());
         fragment.setArguments(bundle);
         holder.mView.setOnClickListener(v -> ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram,fragment)
@@ -145,7 +142,6 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
             ratecount = mView.findViewById(R.id.rate_count);
             ratingBar = mView.findViewById(R.id.rates);
             favorite = mView.findViewById(R.id.favorite);
-
         }
     }
 }

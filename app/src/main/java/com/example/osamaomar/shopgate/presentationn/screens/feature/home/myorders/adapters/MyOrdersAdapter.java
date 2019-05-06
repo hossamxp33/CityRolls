@@ -88,7 +88,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
         } catch (Exception e) {
         }
 
-        holder.gotodetails.setOnClickListener(v -> {
+        holder.mView.setOnClickListener(v -> {
             Fragment fragment = new ProductsInsideorderFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(ORDER_ID, 1);
@@ -96,6 +96,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, fragment).addToBackStack(null).commit();
         });
+
+
+        holder.mView.setOnClickListener(v -> {
+          });
+
     }
 
     @Override

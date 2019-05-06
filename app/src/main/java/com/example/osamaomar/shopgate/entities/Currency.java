@@ -24,7 +24,7 @@ public class Currency {
 
         private int id;
         private String name;
-        private int value;
+        private float value;
         private String name_ar;
 
         public int getId() {
@@ -43,7 +43,7 @@ public class Currency {
             this.name = name;
         }
 
-        public int getValue() {
+        public float getValue() {
             return value;
         }
 

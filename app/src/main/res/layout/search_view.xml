@@ -32,6 +32,8 @@
         android:textSize="12dp"
         android:padding="7dp"
         android:gravity="start"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

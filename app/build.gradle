@@ -16,7 +16,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.osamaomar.shopgate"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -80,6 +80,7 @@ dependencies {
     implementation 'com.braintreepayments.api:braintree:2.22.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    implementation 'com.makeramen:roundedimageview:2.2.1'
 
 }
 repositories {

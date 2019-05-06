@@ -112,5 +112,19 @@
     <string name="favorite">المفضلة</string>
     <string name="orderfound">لا يوجد طلبات خاصة بك</string>
     <string name="youlogout">تم تسجيل خروجك</string>
+    <string name="product_name">اسم المنتج</string>
 
+
+    <string name="popular_products">Popular products</string>
+    <string name="error">Error</string>
+    <string name="frame_load_failed">Failed to load, Please try again later or contact us if this error continue</string>
+    <string name="tab_to_retry">Tab to try again</string>
+    <string name="press_back">Press Back again to Exit</string>
+    <string name="close">Close</string>
+    <string name="glasses">Glasses</string>
+    <string name="homegard"><![CDATA[Home & Gardens]]></string>
+    <string name="electronics">Electronics</string>
+    <string name="mobiles">Mobiles</string>
+    <string name="cloth">Cloth</string>
+    <string name="currency">pound</string>
 </resources>

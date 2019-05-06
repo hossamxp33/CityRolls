@@ -95,7 +95,7 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
         holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle() ;
-        bundle.putInt(PRODUCT_ID,offersData.get(position).getId());
+        bundle.putInt(PRODUCT_ID,offersData.get(position).getProduct_id());
         fragment.setArguments(bundle);
         holder.mView.setOnClickListener(v -> ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram,fragment)

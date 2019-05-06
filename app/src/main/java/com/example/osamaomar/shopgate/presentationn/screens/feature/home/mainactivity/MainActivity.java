@@ -1,6 +1,7 @@
 package com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.MenuInflater;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,21 +66,19 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferenceHelper  = new PreferenceHelper(this);
-
         initialize();
         setUpToggle();
         search.setOnClickListener(v -> {
-            if (!searchName.getText().toString().matches(""))
-            {
-                Fragment fragment = new ProductsFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("name",searchName.getText().toString());
-                fragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
-            }
-            else
-                searchName.setError(getText(R.string.nosearchname));
+            performSearch();
         });
+        searchName.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                performSearch();
+                return true;
+            }
+            return false;
+        });
+
         getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,new MainFragment()).addToBackStack(null).commit();
 
     }
@@ -90,7 +92,8 @@ public class MainActivity extends AppCompatActivity
          toggle = new ActionBarDrawerToggle(
                 this,drawer,toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        toggle.syncState
+                ();
         alldepartsinNavigation = findViewById(R.id.all_departs);
         logo = findViewById(R.id.logo);
         head_title = findViewById(R.id.head_title);
@@ -103,6 +106,20 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},112);
+
+    }
+
+    private void performSearch() {
+        if (!searchName.getText().toString().matches(""))
+        {
+            Fragment fragment = new ProductsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("name",searchName.getText().toString());
+            fragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
+        }
+        else
+            searchName.setError(getText(R.string.nosearchname));
     }
 
     private MainActivityModelFactory getViewModelFactory() {
@@ -220,15 +237,12 @@ public class MainActivity extends AppCompatActivity
         toggle.setHomeAsUpIndicator(drawable);
 
         drawer.addDrawerListener(toggle);
-        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (drawer.isDrawerVisible(GravityCompat.START)) {
+        toggle.setToolbarNavigationClickListener(v -> {
+            if (drawer.isDrawerVisible(GravityCompat.START)) {
 
-                    drawer.closeDrawer(GravityCompat.START);
-                } else {
-                    drawer.openDrawer(GravityCompat.START);
-                }
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                drawer.openDrawer(GravityCompat.START);
             }
         });
         toggle.syncState();

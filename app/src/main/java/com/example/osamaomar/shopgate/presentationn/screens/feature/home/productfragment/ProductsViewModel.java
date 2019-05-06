@@ -13,6 +13,7 @@ import com.example.osamaomar.shopgate.entities.DefaultAdd;
 import com.example.osamaomar.shopgate.entities.AddToFavModel;
 import com.example.osamaomar.shopgate.entities.Products;
 import com.example.osamaomar.shopgate.entities.StoreSetting;
+import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 
 import java.util.Collections;
 
@@ -48,7 +49,7 @@ public class ProductsViewModel extends ViewModel {
 
     public void getSearchData(String key) {
         mCompositeDisposable.add(
-                serverGateway.getSearchResult(key,"ar",1)
+                serverGateway.getSearchResult(key,"ar", PreferenceHelper.getUserId())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe( this::postDataResponse,

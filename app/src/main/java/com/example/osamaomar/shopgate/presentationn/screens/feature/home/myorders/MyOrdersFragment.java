@@ -48,6 +48,7 @@ public class MyOrdersFragment extends Fragment {
                 product_notfound.setVisibility(View.VISIBLE);
 
         });
+
         mViewModel.throwableMutableLiveData.observe(this, throwable -> Toast.makeText(getActivity(), throwable.getMessage(), Toast.LENGTH_SHORT));
         return view;
     }

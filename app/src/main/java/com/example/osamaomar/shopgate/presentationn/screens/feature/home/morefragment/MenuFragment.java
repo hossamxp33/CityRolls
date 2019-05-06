@@ -48,7 +48,8 @@ public class MenuFragment extends Fragment {
         lang = view.findViewById(R.id.lang);
         logout = view.findViewById(R.id.logout);
         currency.setOnClickListener(v -> mViewModel.getCurrencyData());
-        login.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit());
+        login.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit());
 
         if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en")) {
             login.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
@@ -68,7 +69,6 @@ public class MenuFragment extends Fragment {
                 fm.popBackStack();
             }
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MainFragment()).addToBackStack(null).commit();
-
             Toast.makeText(getActivity(),getText(R.string.youlogout),Toast.LENGTH_SHORT).show();
         });
         mViewModel.currencyMutableLiveData.observe(this, currency1 ->

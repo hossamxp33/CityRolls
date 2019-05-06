@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,7 +42,7 @@ public class ProductDetailsFragment extends Fragment {
     RecyclerView images_rec, sizes_rec;
     private int productid;
     FrameLayout loading;
-    public TextView product_name, description, price, ratecount,amount,addtocart,charege;
+    public TextView product_name, description, price, ratecount,amount,addtocart,charege,oldprice;
     RatingBar ratingBar;
     public ImageView item_img;
     int userid = PreferenceHelper.getUserId(),favid =0;
@@ -178,6 +179,9 @@ public class ProductDetailsFragment extends Fragment {
         amount = view.findViewById(R.id.amount);
         addtocart = view.findViewById(R.id.addtocart);
         charege = view.findViewById(R.id.charge);
+        oldprice = view.findViewById(R.id.oldprice);
+        oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -199,18 +203,24 @@ public class ProductDetailsFragment extends Fragment {
         product_name.setText(productdetailsBean.getName());
         if (productdetailsBean.getOffers().size()>0)
         {
-
-            float priceafteroffer =Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price())- Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price())*
+            float priceafteroffer =Float.valueOf(productdetailsBean.getProductsizes().
+                    get(productSizesAdapter.mSelectedItem).getStart_price())- Float.valueOf(productdetailsBean.getProductsizes()
+                    .get(productSizesAdapter.mSelectedItem).getStart_price())*
                     productdetailsBean.getOffers().get(0).getPercentage()/100;
             if (PreferenceHelper.getCurrencyValue()>0)
-                price.setText(String.valueOf(priceafteroffer)+PreferenceHelper.getCurrency());
+            { price.setText(String.valueOf(priceafteroffer)+PreferenceHelper.getCurrency());
+                oldprice.setText(productdetailsBean.getProductsizes().
+                        get(productSizesAdapter.mSelectedItem).getStart_price()+PreferenceHelper.getCurrency());}
            else
-            price.setText(String.valueOf(priceafteroffer)+getText(R.string.realcoin));
+            {price.setText(String.valueOf(priceafteroffer)+getText(R.string.realcoin));
+             oldprice.setText(productdetailsBean.getProductsizes().
+                   get(productSizesAdapter.mSelectedItem).getStart_price()+getText(R.string.realcoin));}
         }
         else
         price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price() + getText(R.string.realcoin));
 
-     if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price())<setting.getData().get(0).getShippingPrice())
+     if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price())<
+             setting.getData().get(0).getShippingPrice())
         {  freecharg = false;
             charege.setText(R.string.charge_rules);
         }
