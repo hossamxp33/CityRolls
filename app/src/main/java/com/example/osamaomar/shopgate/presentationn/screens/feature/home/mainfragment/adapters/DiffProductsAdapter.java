@@ -31,10 +31,10 @@ import static com.example.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class DiffProductsAdapter extends RecyclerView.Adapter<DiffProductsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<MainView.SubcatsBeanX> subcatsBeans;
-    public DiffProductsAdapter(Context mcontext, List<MainView.SubcatsBeanX> categories1) {
+ //   private List<MainView.SubcatsBeanX> subcatsBeans;
+    public DiffProductsAdapter(Context mcontext) {
         context = mcontext;
-        subcatsBeans = categories1;
+        //subcatsBeans = categories1;
     }
 
     @NonNull
@@ -55,23 +55,24 @@ public class DiffProductsAdapter extends RecyclerView.Adapter<DiffProductsAdapte
             holder.Image.setLayoutParams(layoutParams);
         }
 
-        holder.name.setText(subcatsBeans.get(position).getName());
-        Glide.with(context).load(subcatsBeans.get(position).getPhoto()).dontAnimate().placeholder(R.drawable.dept1).into(holder.Image);
-
-        holder.mView.setOnClickListener(v ->
-        {
-            Bundle bundle = new Bundle();
-            bundle.putInt(SUB_CAT_ID,subcatsBeans.get(position).getId());
-            bundle.putString(SUBCATES_NAME,subcatsBeans.get(position).getName());
-            Fragment fragment  = new ProductsFragment();
-            fragment.setArguments(bundle);
-            ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
-        });
+//        holder.name.setText(subcatsBeans.get(position).getName());
+//        Glide.with(context).load(subcatsBeans.get(position).getPhoto()).dontAnimate().placeholder(R.drawable.dept1).into(holder.Image);
+//
+//        holder.mView.setOnClickListener(v ->
+//        {
+//            Bundle bundle = new Bundle();
+//            bundle.putInt(SUB_CAT_ID,subcatsBeans.get(position).getId());
+//            bundle.putString(SUBCATES_NAME,subcatsBeans.get(position).getName());
+//            Fragment fragment  = new ProductsFragment();
+//            fragment.setArguments(bundle);
+//            ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
+//        });
     }
+
 
     @Override
     public int getItemCount() {
-        return subcatsBeans.size();
+        return 5;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

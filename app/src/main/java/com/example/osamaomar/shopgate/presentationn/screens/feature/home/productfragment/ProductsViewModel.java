@@ -86,7 +86,7 @@ public class ProductsViewModel extends ViewModel {
     //////////// get productsData
     @SuppressLint("CheckResult")
     private Observable<Products> getObservable() {
-        Observable<Products> productsObservable = serverGateway.getProducts(subcattegry_id,type,userid);
+        Observable<Products> productsObservable = serverGateway.getProducts(type,subcattegry_id,userid);
         productsObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return productsObservable;

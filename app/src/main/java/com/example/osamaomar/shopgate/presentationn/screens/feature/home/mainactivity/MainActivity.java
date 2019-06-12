@@ -1,5 +1,6 @@
 package com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity;
 
+import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity
             return false;
         });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,new MainFragment()).addToBackStack(null).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,new MainFragment()).commit();
 
     }
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActivityCompat.requestPermissions(this,
-                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},112);
+                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE},112);
 
     }
 

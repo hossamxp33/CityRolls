@@ -39,6 +39,8 @@ public interface ServerGateway {
 
     @GET("Productsizes/productdetails/{product_id}/{user_id}.json")
     Observable<ProductDetails> getProductDetails(
+
+
             @Path("product_id") int product_id,
             @Path("user_id") int user_id
     );
@@ -51,7 +53,8 @@ public interface ServerGateway {
     );
 
 
-    @GET("Productsizes/getallproducts/{subcat_id}/{type}/{user_id}.json")
+
+    @GET(" products/getproductsbycatid/{subcat_id}/{type}/{user_id}.json")
     Observable<Products> getProducts(
             @Path("subcat_id") int cat_id,
             @Path("type") int type,

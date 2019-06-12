@@ -26,22 +26,22 @@ import java.util.List;
 
 import static com.example.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
-public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAdapter.ViewHolder> {
+public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProductsAdapter.ViewHolder> {
 
 
     private Context context;
-    List<MainView.ProductsbyrateBean> famousProduct;
+    List<MainView.ProductsbysalesBean> productsbysales;
 
-    public FamousProductsAdapter(Context context, List<MainView.ProductsbyrateBean> productsbyrate) {
+    public MoreSalesProductsAdapter(Context context, List<MainView.ProductsbysalesBean> productsbyrate) {
         this.context = context;
-        this.famousProduct = productsbyrate;
+        this.productsbysales = productsbyrate;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.home_more_rate_item, parent, false);
+                .inflate(R.layout.more_sales_item, parent, false);
 
         return new ViewHolder(view);
     }
@@ -50,36 +50,35 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         try {
-
-
-        holder.name.setText(famousProduct.get(position).getName());
-        if (famousProduct.get(position).getProductphotos() != null) {
-            if (famousProduct.get(position).getProductphotos().size() > 0)
+        holder.name.setText(productsbysales.get(position).getProduct().getName());
+        if (productsbysales.get(position).getProduct().getProductphotos() != null) {
+            if (productsbysales.get(position).getProduct().getProductphotos().size() > 0)
                 Glide.with(context.getApplicationContext())
-                        .load(famousProduct.get(position).getProductphotos().get(0).getPhoto())
+                        .load(productsbysales.get(position).getProduct().getProductphotos().get(0).getPhoto())
+                        .placeholder(R.drawable.product)
                         .into(holder.item_img);
         }
 
 
-        if (famousProduct.get(position).getTotal_rating() != null) {
-            if (famousProduct.get(position).getTotal_rating().size() > 0)
-                holder.ratingBar.setRating(famousProduct.get(position).getTotal_rating().get(0).getStars() /
-                        famousProduct.get(position).getTotal_rating().get(0).getCount());
+        if (productsbysales.get(position).getProduct().getTotal_rating() != null) {
+            if (productsbysales.get(position).getProduct().getTotal_rating().size() > 0)
+                holder.ratingBar.setRating(productsbysales.get(position).getProduct().getTotal_rating().get(0).getStars() /
+                        productsbysales.get(position).getProduct().getTotal_rating().get(0).getCount());
         }
 
         if (PreferenceHelper.getCurrencyValue() > 0)
-            holder.price.setText(Float.valueOf(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price()) *
+            holder.price.setText(Float.valueOf(productsbysales.get(position).getProduct().getProductsizes().get(0).getStart_price()) *
                     PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
         else
-            holder.price.setText(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price() + " " + context.getText(R.string.coin));
+            holder.price.setText(productsbysales.get(position).getProduct().getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->
         {
             Fragment fragment = new ProductDetailsFragment();
             Bundle bundle = new Bundle();
-            if (famousProduct.get(position) != null)
-                bundle.putInt(PRODUCT_ID, famousProduct.get(position).getId());
+            if (productsbysales.get(position) != null)
+                bundle.putInt(PRODUCT_ID, productsbysales.get(position).getId());
             fragment.setArguments(bundle);
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                     replace(R.id.mainfram, fragment)
@@ -89,23 +88,33 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
         holder.ratingBar.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID, famousProduct.get(position).getId());
+                intent.putExtra(PRODUCT_ID, productsbysales.get(position).getId());
                 context.startActivity(intent);
             }
             return true;
         });
-        }catch (Exception e)
-        {}
 
+            holder.mView.setOnClickListener(v ->
+            {
+                Fragment fragment = new ProductDetailsFragment();
+                Bundle bundle = new Bundle();
+                if (productsbysales.get(position) != null)
+                    bundle.putInt(PRODUCT_ID, productsbysales.get(position).getId());
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+                        replace(R.id.mainfram, fragment)
+                        .addToBackStack(null).commit();
+            });
+
+        }
+        catch (Exception e)
+        {}
     }
 
     @Override
     public int getItemCount() {
-        if (famousProduct != null) {
-            if (famousProduct.size() > 6)
-                return 6;
-            else
-                return famousProduct.size();
+        if (productsbysales != null) {
+                return productsbysales.size();
         } else
             return 0;
     }

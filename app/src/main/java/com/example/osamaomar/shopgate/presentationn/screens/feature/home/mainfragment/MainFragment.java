@@ -22,8 +22,9 @@ import com.example.osamaomar.shopgate.entities.MainView;
 import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
-import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DiffProductsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.FamousProductsAdapter;
+import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.MoreSalesProductsAdapter;
+import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.RecommendedProductsAdapter;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.viewpagerindicator.CirclePageIndicator;
@@ -33,14 +34,14 @@ import java.util.TimerTask;
 public class MainFragment extends Fragment {
 
     private MainFragmentViewModel mViewModel;
-    RecyclerView departments,famous_products,diff_products;
+    RecyclerView departments, morerate_products, more_sales,recommended_products;
     ViewPager slider;
     CirclePageIndicator indicator;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private FrameLayout progress;
     private TextView product_notfound;
-    private ShimmerFrameLayout mShimmerViewContainer,mShimmerViewContainer2,mShimmerViewContainer3;
+    private ShimmerFrameLayout mShimmerViewContainer,mShimmerViewContainer2,mShimmerViewContainer3,shimmer_view_container4,shimmer_view_container5;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
@@ -57,9 +58,13 @@ public class MainFragment extends Fragment {
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
                     mShimmerViewContainer2.stopShimmerAnimation();
+                    shimmer_view_container4.stopShimmerAnimation();
                     mShimmerViewContainer2.setVisibility(View.GONE);
                     mShimmerViewContainer3.stopShimmerAnimation();
+                    shimmer_view_container5.stopShimmerAnimation();
                     mShimmerViewContainer3.setVisibility(View.GONE);
+                    shimmer_view_container4.setVisibility(View.GONE);
+                    shimmer_view_container5.setVisibility(View.GONE);
                 });
         return view;
     }
@@ -73,20 +78,25 @@ public class MainFragment extends Fragment {
         mShimmerViewContainer.stopShimmerAnimation();
         mShimmerViewContainer.setVisibility(View.GONE);
         mShimmerViewContainer2.stopShimmerAnimation();
+        shimmer_view_container4.stopShimmerAnimation();
         mShimmerViewContainer2.setVisibility(View.GONE);
         mShimmerViewContainer3.stopShimmerAnimation();
+        shimmer_view_container5.stopShimmerAnimation();
         mShimmerViewContainer3.setVisibility(View.GONE);
+        shimmer_view_container4.setVisibility(View.GONE);
+        shimmer_view_container5.setVisibility(View.GONE);
         progress.setVisibility(View.GONE);
-        setupDiffRecycle();
         PreferenceHelper.setDoller_value(mainView.getCurrency().getValue());
         setupviewPager(slider);
         init(mainView.getSliders().size());
         slider.setAdapter(new SliderPagerAdapter(getActivity(),mainView.getSliders()));
         indicator.setViewPager(slider);
-        famous_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getProductsbyrate()));
-        diff_products.setAdapter(new DiffProductsAdapter(getActivity(),mainView.getSubcats()));
+        morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getProductsbyrate()));
+        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getProductsbysales()));
+        recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getRandproducts()));
         departments.setAdapter(new DepartmentsAdapter(getActivity(),mainView.getCategory()));
     }
+
 
     private void setupviewPager(ViewPager viewPager) {
         viewPager.setPageTransformer(true, (view, position) -> {
@@ -136,30 +146,20 @@ public class MainFragment extends Fragment {
         Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
     }
 
-    private void setupDiffRecycle() {
-        final GridLayoutManager mng_layout = new GridLayoutManager(this.getActivity(), 2);
-        mng_layout.setOrientation(LinearLayout.HORIZONTAL);
-        mng_layout.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                return (position ) == 0 ? 2 : 1;
-            }
-        });
-
-        diff_products.setLayoutManager(mng_layout);
-    }
-
     private void findViewsFromXml(View view) {
-        diff_products = view.findViewById(R.id.diff_products);
+        more_sales = view.findViewById(R.id.sales_products);
         departments = view.findViewById(R.id.departments);
         slider = view.findViewById(R.id.slider);
         indicator = view.findViewById(R.id.indicator);
-        famous_products = view.findViewById(R.id.famous_products);
+        morerate_products = view.findViewById(R.id.famous_products);
+        recommended_products = view.findViewById(R.id.recommended_products);
         progress = view.findViewById(R.id.progress);
      //   product_notfound = view.findViewById(R.id.product_notfound);
         mShimmerViewContainer = view.findViewById(R.id.shimmer_view_container1);
         mShimmerViewContainer2 = view.findViewById(R.id.shimmer_view_container2);
         mShimmerViewContainer3 = view.findViewById(R.id.shimmer_view_container3);
+        shimmer_view_container4 = view.findViewById(R.id.shimmer_view_container4);
+        shimmer_view_container5 = view.findViewById(R.id.shimmer_view_container5);
         ((MainActivity) getActivity()).head_title.setVisibility(View.GONE);
         ((MainActivity) getActivity()).logo.setVisibility(View.VISIBLE);
     }
@@ -170,6 +170,8 @@ public class MainFragment extends Fragment {
         mShimmerViewContainer.startShimmerAnimation();
         mShimmerViewContainer2.startShimmerAnimation();
         mShimmerViewContainer3.startShimmerAnimation();
+        shimmer_view_container4.startShimmerAnimation();
+        shimmer_view_container5.startShimmerAnimation();
     }
 
     @Override
@@ -177,6 +179,8 @@ public class MainFragment extends Fragment {
         mShimmerViewContainer.stopShimmerAnimation();
         mShimmerViewContainer2.stopShimmerAnimation();
         mShimmerViewContainer3.stopShimmerAnimation();
+        shimmer_view_container4.stopShimmerAnimation();
+        shimmer_view_container5.stopShimmerAnimation();
         super.onPause();
     }
 

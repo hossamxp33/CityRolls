@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -20,6 +21,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.osamaomar.shopgate.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public class ResourceUtil {
             Manifest.permission.CALL_PHONE
     };
 
+
 //    public static void showAlertCall(final Context context, final String number) {
 //        try {
 //            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
@@ -62,6 +66,21 @@ public class ResourceUtil {
 //        }
 //    }
 
+
+    public static void openWhatsApp(String smsNumber,Context context) {
+
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_TEXT,context.getResources().getString(R.string.sendreq));
+        sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
+        sendIntent.setPackage("com.whatsapp");
+        if (sendIntent.resolveActivity(context.getPackageManager()) == null) {
+            Toast.makeText(context, "Error/n" , Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        context.startActivity(sendIntent);
+    }
 
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
@@ -191,15 +210,17 @@ public class ResourceUtil {
         spinner.setAdapter(adapter);
     }
 
-//
-//    public static void callNumber(String number, Context context) {
-//        Intent callIntent = new Intent(Intent.ACTION_CALL);
-//        callIntent.setData(Uri.parse("tel:" + number));
-//        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//            return;
-//        }
-//        context.startActivity(callIntent);
-//    }
+
+    public static void callNumber(String number, Context context) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + number));
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        context.startActivity(callIntent);
+    }
+
+
 
 
     public static void verifyPermissions(Activity context) {

@@ -63,7 +63,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
                 replace(R.id.mainfram, sucCates_fragment).addToBackStack(null).commit());
         else
         {
-            bundle.putInt(CAT_TYPE,1);
+            bundle.putInt(CAT_TYPE,0);
             bundle.putInt(SUB_CAT_ID,categories.get(position).getId());
             holder.mView.setOnClickListener(v -> ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                     replace(R.id.mainfram, product_fragment).addToBackStack(null).commit());

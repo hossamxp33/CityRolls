@@ -106,12 +106,14 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
 
         //////////////////  inialize with all product
         if (userid > 0) {
-            if (productsbysubcats.get(position).getFavourites().size() > 0) {
-                holder.favorite.setImageResource(R.drawable.favoried);
-                favorite[position] = true;
-            } else {
-                holder.favorite.setImageResource(R.drawable.like);
-                favorite[position] = false;
+            if (productsbysubcats.get(position).getFavourites()!=null) {
+                if (productsbysubcats.get(position).getFavourites().size() > 0) {
+                    holder.favorite.setImageResource(R.drawable.favoried);
+                    favorite[position] = true;
+                } else {
+                    holder.favorite.setImageResource(R.drawable.like);
+                    favorite[position] = false;
+                }
             }
         }
 

@@ -51,7 +51,7 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
             Bundle bundle = new Bundle();
             bundle.putInt(SUB_CAT_ID,subcates.get(position).getId());
             bundle.putString(SUBCATES_NAME,subcates.get(position).getName());
-            bundle.putInt(CAT_TYPE,0);
+            bundle.putInt(CAT_TYPE,1);
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
         });

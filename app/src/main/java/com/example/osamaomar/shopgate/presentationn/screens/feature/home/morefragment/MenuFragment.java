@@ -19,6 +19,7 @@ import com.example.osamaomar.shopgate.R;
 import com.example.osamaomar.shopgate.entities.Currency;
 import com.example.osamaomar.shopgate.helper.PreferenceHelper;
 import com.example.osamaomar.shopgate.helper.ResourceUtil;
+import com.example.osamaomar.shopgate.presentationn.screens.feature.contact.ContactFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.MainFragment;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsModelFactory;
 import com.example.osamaomar.shopgate.presentationn.screens.feature.login.LoginFragment;
@@ -29,7 +30,7 @@ import java.util.List;
 public class MenuFragment extends Fragment {
 
     private MenuViewModel mViewModel;
-    private TextView currency, lang, login,logout;
+    private TextView currency, lang, login,logout,contact;
     private List<Currency.DataBean> dataBeanList = new ArrayList<>();
 
     public static MenuFragment newInstance() {
@@ -47,15 +48,23 @@ public class MenuFragment extends Fragment {
         login = view.findViewById(R.id.login);
         lang = view.findViewById(R.id.lang);
         logout = view.findViewById(R.id.logout);
+        contact = view.findViewById(R.id.contact);
+
         currency.setOnClickListener(v -> mViewModel.getCurrencyData());
         login.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram, new LoginFragment()).addToBackStack(null).commit());
+
+
+        contact.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.mainfram, new ContactFragment()).addToBackStack(null).commit());
+
 
         if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en")) {
             login.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
             lang.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
             logout.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
             currency.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
+            contact.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
         }
         if (PreferenceHelper.getUserId()>0)
             login.setVisibility(View.GONE);
