@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/menu_item_back"
-        android:text="العربية"
+        android:text=""
         android:textSize="18dp"
         android:padding="12dp"
         android:drawableEnd="@drawable/ic_arrow"
@@ -56,8 +56,58 @@
         android:drawableRight="@drawable/ic_arrow" />
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/conditions"
         app:layout_constraintTop_toBottomOf="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/menu_item_back"
+        android:text="@string/conditions"
+        android:textSize="18dp"
+        android:padding="12dp"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableRight="@drawable/ic_arrow" />
+
+
+    <TextView
+        android:id="@+id/aboutus"
+        app:layout_constraintTop_toBottomOf="@+id/conditions"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/menu_item_back"
+        android:text="@string/aboutus"
+        android:textSize="18dp"
+        android:padding="12dp"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableRight="@drawable/ic_arrow" />
+
+
+    <TextView
+        android:id="@+id/chat"
+        app:layout_constraintTop_toBottomOf="@+id/aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/menu_item_back"
+        android:text="@string/chat"
+        android:textSize="18dp"
+        android:padding="12dp"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableRight="@drawable/ic_arrow" />
+
+    <TextView
+        android:id="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/chat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/menu_item_back"

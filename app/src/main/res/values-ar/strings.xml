@@ -128,4 +128,19 @@
     <string name="mobiles">Mobiles</string>
     <string name="cloth">Cloth</string>
     <string name="currency">pound</string>
+    <string name="more_sales">الاكثر مبيعا</string>
+    <string name="more_rates"> أحدث المنتجات </string>
+    <string name="suggestedproduct">منتجات يوصي بها</string>
+    <string name="aboutus">اتصل بنا</string>
+    <string name="conditions">الشروط والاحكام</string>
+    <string name="chat">الرسائل الخاصة </string>
+    <string name="empty">اكتب رسالتك</string>
+    <string name="now">الان</string>
+    <string name="bank">معلومات التحويل البنكي</string>
+    <string name="bankname">اسم البنك : </string>
+    <string name="benfitname">اسم المستفيد :</string>
+    <string name="accountnum">  رقم الحساب  : </string>
+    <string name="ok">تأكيد</string>
+    <string name="notesvalue">لن يتم اعتماد الطلب بشكل نهائي حتى يتم تحويل المبلغ عبر الحساب وإرسال صورة من إيصال التحويل ورقم الطلب على الواتس اب أو البريد الالكتروني.</string>
+    <string name="notes">  *ملاحظات </string>
 </resources>

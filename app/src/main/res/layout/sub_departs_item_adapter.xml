@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <ImageView
         android:id="@+id/item_img"
         android:layout_width="50dp"
@@ -12,7 +11,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/hair_dryer"
         android:layout_marginStart="20dp"
-
         />
 
     <TextView
@@ -27,10 +25,11 @@
         android:layout_marginStart="9dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_img"
         />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.7dp"
         android:background="@color/light_gray"
-        app:layout_constraintTop_toBottomOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         />
 </android.support.constraint.ConstraintLayout>
