@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.codesroots.osamaomar.shopgate">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -8,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.codesroots.osamaomar.shopgate.helper.MyApplication"
+        android:name=".helper.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,20 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.chating.MessagesChatingActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.conditions.ConditionsActivity"
-            android:label="@string/conditions"
-           />
-        <activity android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.aboutus.contactus" />
+        <activity android:name=".presentationn.screens.feature.showimage.ImageActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity"
+            android:name=".presentationn.screens.feature.chating.MessagesChatingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".presentationn.screens.feature.conditions.ConditionsActivity"
+            android:label="@string/conditions" />
+        <activity android:name=".presentationn.screens.feature.aboutus.contactus" />
+        <activity
+            android:name=".presentationn.screens.feature.home.mainactivity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
+            android:name=".presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
             android:label="@string/choice_location">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,18 +44,18 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.payment.PaymentFragment"
+            android:name=".presentationn.screens.feature.payment.PaymentFragment"
             android:label="@string/choice_payment_way">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity" />
         </activity>
         <activity
-            android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity"
+            android:name=".presentationn.screens.feature.rate.RateActivity"
             android:label="@string/product_rates"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.codesroots.osamaomar.shopgate.presentationn.screens.feature.splash.SplashActivity"
+            android:name=".presentationn.screens.feature.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
