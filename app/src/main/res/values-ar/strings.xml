@@ -7,6 +7,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="google_maps_key">AIzaSyD8z2lWzm896P2g8VhaBfrVam0JL1BaiW0</string>
+    <string name="notexists">هذا الرقم غير مسجل علي هاتفك يجب تسجيله اولا لامكانية الدردشة علي الواتساب</string>
 
     <string name="action_settings">Settings</string>
     <string name="searchabout">ابحث بالمنتجات</string>
@@ -36,6 +37,10 @@
     <string name="day_offers">عروض اليوم </string>
     <string name="notifications">اشعارات</string>
     <string name="charge_ready">جاهزة للشحن</string>
+    <string name="statues1">قيد المراجعة</string>
+    <string name="statues2">قيد الشحن</string>
+    <string name="statues3">جاري الشحن</string>
+    <string name="statues4">تم التوصيل</string>
     <string name="under_delivery">قيد التوصيل</string>
     <string name="deliveried">تم استلامها</string>
     <string name="order_date">   تاريخ الطلب : </string>
@@ -143,4 +148,12 @@
     <string name="ok">تأكيد</string>
     <string name="notesvalue">لن يتم اعتماد الطلب بشكل نهائي حتى يتم تحويل المبلغ عبر الحساب وإرسال صورة من إيصال التحويل ورقم الطلب على الواتس اب أو البريد الالكتروني.</string>
     <string name="notes">  *ملاحظات </string>
+    <string name="change_country">تغيير الدولة</string>
+    <string name="charge"> سعر التوصيل : </string>
+    <string name="cancel">الغاء</string>
+    <string name="alltotal">الاجمالي :</string>
+    <string name="no">لا</string>
+    <string name="mail">البريد الالكتروني</string>
+    <string name="success">شكرا .. تمت العملية بنجاح</string>
+
 </resources>

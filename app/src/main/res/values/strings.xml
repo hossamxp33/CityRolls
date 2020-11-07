@@ -25,6 +25,11 @@
     <string name="charge_rules">charge rules</string>
     <string name="choice_depart">Choice Department</string>
     <string name="choice_location">Choice delivery place</string>
+    <string name="statues1">Under review</string>
+    <string name="statues2">Shipped</string>
+    <string name="statues3">Charging</string>
+    <string name="statues4">Delivered</string>
+
     <string name="choice_payment_way">Choice Payment Way</string>
     <string name="choice_size">Choice Size</string>
     <string name="client">Client</string>
@@ -186,4 +191,14 @@
     <string name="notesvalue">order not confirm untile translate the cost to bank account and send transformation photo to email or whatsapp</string>
 
     <string name="notes">*notes</string>
+    <string name="change_country">change country </string>
+    <string name="charge"> Delivery cost :  </string>
+    <string name="cancel">cancel</string>
+    <string name="alltotal">Total :</string>
+    <string name="no">لا</string>
+    <string name="notexists">
+This number is not registered on your phone must be registered first to the possibility of chatting on WhatsApp</string>
+    <string name="mail">E-mail</string>
+    <string name="success">thanks..success operation</string>
+
 </resources>

@@ -19,5 +19,7 @@
     <color name="red">#FF0000</color>
     <color name="placeholder_bg">#dddddd</color>
     <color name="pround">#EAC100</color>
+    <color name="back">#e6eaed</color>
+
 
 </resources>

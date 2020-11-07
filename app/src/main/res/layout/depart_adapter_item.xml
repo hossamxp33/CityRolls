@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="@id/item_img"
         app:layout_constraintEnd_toEndOf="@id/item_img"
         android:gravity="center"
+        android:textColor="@color/black"
         android:minWidth="68dp"
         android:textSize="11sp" />
 

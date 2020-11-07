@@ -136,17 +136,32 @@
 
         <Button
             android:id="@+id/buttonOk"
-            android:layout_width="200dp"
+            android:layout_width="00dp"
+            app:layout_constraintWidth_percent="0.4"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hinttext"
             android:background="@drawable/button_background"
             android:text="@string/ok"
             android:textColor="@color/colorPrimary" />
 
+
+        <Button
+            android:id="@+id/buttoncancel"
+            android:layout_width="00dp"
+            app:layout_constraintWidth_percent="0.4"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hinttext"
+            android:background="@drawable/button_background"
+            android:text="@string/cancel"
+            android:textColor="@color/colorPrimary" />
 
 
     </android.support.constraint.ConstraintLayout>

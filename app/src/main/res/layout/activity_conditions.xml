@@ -7,14 +7,20 @@
     tools:context=".presentationn.screens.feature.conditions.ConditionsActivity">
 
 
-    <TextView
+    <!--<TextView-->
+        <!--android:id="@+id/conditions"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:text="@string/condition"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textColor="@color/black"-->
+        <!--/>-->
+
+    <WebView
         android:id="@+id/conditions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:text="@string/condition"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        />
+        android:layout_height="match_parent">
 
+    </WebView>
 </android.support.constraint.ConstraintLayout>

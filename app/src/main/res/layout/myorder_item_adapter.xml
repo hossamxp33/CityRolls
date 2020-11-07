@@ -70,15 +70,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.45" />
+            app:layout_constraintGuide_percent="0.32" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guid3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.67" />
 
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guid4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
         <View
             android:id="@+id/view1"
             android:layout_width="0dp"
@@ -132,6 +139,20 @@
 
 
         <TextView
+            android:id="@+id/progress4"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/unselected_progress"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/gray"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view1"
+            app:layout_constraintEnd_toStartOf="@id/guid4"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
             android:id="@+id/progress1txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +160,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
-            android:text="@string/charge_ready"
+            android:text="@string/statues1"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@id/progress1"
@@ -155,7 +176,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
-            android:text="@string/under_delivery"
+            android:text="@string/statues2"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@id/progress2"
@@ -170,12 +191,27 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
-            android:text="@string/deliveried"
+            android:text="@string/statues3"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@id/progress3"
             app:layout_constraintStart_toStartOf="@id/progress3"
             app:layout_constraintTop_toBottomOf="@+id/progress3" />
+
+        <TextView
+            android:id="@+id/progress4txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/statues4"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/progress4"
+            app:layout_constraintStart_toStartOf="@id/progress4"
+            app:layout_constraintTop_toBottomOf="@+id/progress4" />
 
 
     </android.support.constraint.ConstraintLayout>

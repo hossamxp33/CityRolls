@@ -106,9 +106,28 @@
         android:layout_marginBottom="8dp"
         android:drawableRight="@drawable/ic_arrow" />
 
+
+
+    <TextView
+        android:id="@+id/change_country"
+        app:layout_constraintTop_toBottomOf="@+id/chat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/menu_item_back"
+        android:text="@string/change_country"
+        android:textSize="18dp"
+        android:padding="12dp"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableRight="@drawable/ic_arrow" />
+
+
     <TextView
         android:id="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/chat"
+        app:layout_constraintTop_toBottomOf="@+id/change_country"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/menu_item_back"

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/white">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"
+        />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/logo"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/guid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="الرجاء اختيار الدولة "
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/img"
+        />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="choice country,please "
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        />
+
+
+        <TextView
+            android:id="@+id/country"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text=" "
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/text2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.4"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/linear_background_for_addtocart"
+            />
+
+
+    <TextView
+        android:id="@+id/done"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Done "
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/country"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/linear_background_for_choice"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/country"
+        app:layout_constraintEnd_toStartOf="@id/country"
+        android:src="@drawable/next"
+
+        />
+
+    <ImageView
+        android:id="@+id/prev"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/country"
+        app:layout_constraintStart_toEndOf="@id/country"
+        android:src="@drawable/prev"
+        />
+
+    <TextView
+        android:id="@+id/change2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/change"
+        android:text="يمكنك تغيير الدولة من الاعدادات "
+        />
+
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Go to Setting to change Country"
+        />
+
+</android.support.constraint.ConstraintLayout>

@@ -93,7 +93,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="+9689418519"
+            android:text="+96894189519"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guidd2"
             app:layout_constraintTop_toTopOf="parent"
@@ -162,7 +162,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:text="sales@shopgate.com"
+        android:text="sales@shopgate.om"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/guid2"
         />

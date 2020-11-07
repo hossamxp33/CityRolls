@@ -23,8 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05"
-                />
+                app:layout_constraintGuide_percent="0" />
             <android.support.v4.view.ViewPager
                 android:id="@+id/slider"
                 android:layout_width="wrap_content"
@@ -61,35 +60,21 @@
                 android:paddingBottom="5dp"
                 app:centered="true"
                 app:fillColor="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@+id/slider"
+                app:layout_constraintTop_toBottomOf="@+id/slider"
                 app:pageColor="#fff"
                 app:snap="false" />
-
-            <TextView
-                android:id="@+id/choice_depart_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textStyle="bold"
-                android:text="@string/choice_depart"
-                android:textColor="@color/gray"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/guid"
-                app:layout_constraintTop_toBottomOf="@+id/slider" />
-
 
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/choice_depart_txt"
-                app:layout_constraintTop_toTopOf="@+id/departments"
-                app:layout_constraintBottom_toBottomOf="@+id/departments"
+                app:layout_constraintTop_toBottomOf="@+id/indicator"
                 shimmer:duration="800">
 
                 <!-- Adding 3 rows of placeholders -->
@@ -97,9 +82,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <include layout="@layout/layout_placeholder_categry" />
+
                     <include layout="@layout/layout_placeholder_categry" />
+
                     <include layout="@layout/layout_placeholder_categry" />
+
                     <include layout="@layout/layout_placeholder_categry" />
 
 
@@ -108,28 +97,54 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
 
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/departments"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
                 android:minHeight="100dp"
+                android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/choice_depart_txt"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/indicator" />
+
+            <View
+                android:id="@+id/view3"
+                style="@style/Divider.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="16dp"
+                android:background="#16736a"
+                app:layout_constraintEnd_toStartOf="@+id/famous_products_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/departments" />
+
+            <View
+                android:id="@+id/view2"
+                style="@style/Divider.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:background="#16736a"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/famous_products_txt"
+                app:layout_constraintTop_toBottomOf="@+id/departments" />
 
             <TextView
                 android:id="@+id/famous_products_txt"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/gray"
-                android:textSize="18sp"
                 android:text="@string/more_rates"
-                android:layout_width="0dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guid"

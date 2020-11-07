@@ -26,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="@+id/guidline"
-        android:text="شكرا .. تمت العملية بنجاح"
+        android:text="@string/success"
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold"
