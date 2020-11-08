@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/doctorlayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:padding="10dp"
-    android:orientation="vertical"
+    android:layout_margin="4dp"
     android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    android:padding="7dp">
 
     <View
         android:id="@+id/itemimage"
-        android:layout_width="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="70dp"
         android:layout_height="65dp"
-        android:padding="4dp"
         android:background="@drawable/cat_item"
-        />
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="10dp" />
 
     <View
         android:id="@+id/itemtxt"
-        android:maxLines="1"
         android:layout_width="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="10dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/itemimage"
-        android:textColor="@color/black"
         android:background="@color/placeholder_bg"
+        android:maxLines="1"
+        android:textColor="@color/black"
         android:textSize="14dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemimage" />
 
 
 </android.support.constraint.ConstraintLayout>

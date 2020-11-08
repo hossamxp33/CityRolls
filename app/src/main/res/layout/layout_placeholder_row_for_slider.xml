@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout android:id="@+id/doctorlayout"
+<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/doctorlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/linear_background_for_rate"
@@ -15,12 +16,12 @@
     <View
         android:id="@+id/itemimage"
         android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="140dp"
-        android:padding="4dp"
+        android:layout_height="150dp"
         android:background="@color/placeholder_bg"
-        />
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="15dp" />
 
 
 </android.support.constraint.ConstraintLayout>

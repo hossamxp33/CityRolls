@@ -24,6 +24,9 @@
         android:background="@drawable/linear_background_for_footer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation"
+        app:labelVisibilityMode="labeled"
+
+
         />
 
 

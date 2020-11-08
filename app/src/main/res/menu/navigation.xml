@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <item
         android:id="@+id/main"
         android:title="@string/main"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/icon_home"/>
 
     <item
         android:id="@+id/myorders"
         android:title="@string/my_order"
-        android:icon="@drawable/cart"/>
+        android:icon="@drawable/bag"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/offers"
         android:title="@string/offers"
-        android:icon="@drawable/discount"/>
+        android:icon="@drawable/material_local_offer"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/notifications"
         android:title="@string/favorite"
-        android:icon="@drawable/like"/>
+        android:icon="@drawable/awesome_heart"/>
     <item
         android:id="@+id/more"
         android:title="@string/more"
-        android:icon="@drawable/more"/>
+        android:icon="@drawable/feather_menu"
+        app:showAsAction="always"/>
 
 </menu>

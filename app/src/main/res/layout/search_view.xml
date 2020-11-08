@@ -12,7 +12,7 @@
         android:background="@drawable/border_product"
         android:hint="@string/searchabout"
         android:textSize="12dp"
-        android:padding="15dp"
+        android:padding="12dp"
         android:gravity="start"
         android:inputType="text"
         android:imeOptions="actionSearch"
