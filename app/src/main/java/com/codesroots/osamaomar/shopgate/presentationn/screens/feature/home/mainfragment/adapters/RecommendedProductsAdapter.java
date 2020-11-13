@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -75,14 +76,24 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
             {
                 Fragment fragment = new ProductDetailsFragment();
                 Bundle bundle = new Bundle();
-                if (recommendesProducts.get(position).getProduct() != null)
-                    bundle.putInt(PRODUCT_ID, recommendesProducts.get(position).getProduct().getId());
+                if (recommendesProducts.get(position) != null)
+                    bundle.putInt(PRODUCT_ID, recommendesProducts.get(position).getId());
                 fragment.setArguments(bundle);
                 ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                         replace(R.id.mainfram, fragment)
                         .addToBackStack(null).commit();
             });
-
+            holder.mView.setOnClickListener(v ->
+            {
+                Fragment fragment = new ProductDetailsFragment();
+                Bundle bundle = new Bundle();
+                if (recommendesProducts.get(position).getProduct() != null)
+                    bundle.putInt(PRODUCT_ID, recommendesProducts.get(position).getProduct_id());
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+                        replace(R.id.mainfram, fragment)
+                        .addToBackStack(null).commit();
+            });
 
             holder.ratingBar.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -93,17 +104,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
                 return true;
             });
 
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (recommendesProducts.get(position) != null)
-                    bundle.putInt(PRODUCT_ID, recommendesProducts.get(position).getId());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
+
 
 
         } catch (Exception e) {
@@ -128,7 +129,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
         private ImageView item_img;
         TextView price, name;
         RatingBar ratingBar;
-
+        ConstraintLayout productview;
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -136,6 +137,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
             name = view.findViewById(R.id.item_name);
             price = view.findViewById(R.id.price);
             ratingBar = view.findViewById(R.id.rates);
+            productview = view.findViewById(R.id.productview);
         }
     }
 

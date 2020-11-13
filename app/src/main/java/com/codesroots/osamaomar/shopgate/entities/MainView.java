@@ -363,10 +363,19 @@ public class MainView {
         private List<ProductphotosBeanX> productphotos;
         private List<ProductsizesBeanX> productsizes;
         private ProductBean product;
+        private int product_id;
 
+        public int getProduct_id() {
+            return product_id;
+        }
+
+        public void setProduct_id(int product_id) {
+            this.product_id = product_id;
+        }
         public int getId() {
             return id;
         }
+
         public ProductBean getProduct() {
             return product;
         }

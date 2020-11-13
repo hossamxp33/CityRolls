@@ -74,6 +74,18 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                     replace(R.id.mainfram, fragment)
                     .addToBackStack(null).commit();
         });
+
+            holder.mView.setOnClickListener(v ->
+            {
+                Fragment fragment = new ProductDetailsFragment();
+                Bundle bundle = new Bundle();
+                if (famousProduct.get(position) != null)
+                    bundle.putInt(PRODUCT_ID, famousProduct.get(position).getId());
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+                        replace(R.id.mainfram, fragment)
+                        .addToBackStack(null).commit();
+            });
 //
 //            holder.item_img.setOnClickListener(v ->
 //                    {
