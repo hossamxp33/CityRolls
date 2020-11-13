@@ -27,7 +27,8 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/slider"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintHeight_percent="0.35"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -38,7 +39,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="@+id/slider"
                 app:layout_constraintTop_toTopOf="@+id/slider"
@@ -90,7 +90,7 @@
                     <include layout="@layout/layout_placeholder_categry" />
 
                     <include layout="@layout/layout_placeholder_categry" />
-
+                    <include layout="@layout/layout_placeholder_categry" />
 
                 </LinearLayout>
 
@@ -108,7 +108,7 @@
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guid"
                 app:layout_constraintTop_toBottomOf="@+id/indicator" />
 
             <View
@@ -265,6 +265,8 @@
                 android:minHeight="100dp"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/diff_products_txt" />
 
             <View

@@ -15,7 +15,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.codesroots.shopgate"
+        applicationId "com.codesroots.agwad"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1

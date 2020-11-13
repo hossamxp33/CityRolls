@@ -79,6 +79,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />

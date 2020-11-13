@@ -8,9 +8,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_img"
-        android:layout_width="55dp"
+        android:layout_width="50dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:civ_border_width="0dp" />
 

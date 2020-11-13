@@ -155,5 +155,9 @@
     <string name="no">لا</string>
     <string name="mail">البريد الالكتروني</string>
     <string name="success">شكرا .. تمت العملية بنجاح</string>
+    <string name="available">متوفر</string>
+    <string name="piece">قطعة</string>
+    <string name="color">اختر اللون</string>
+
 
 </resources>

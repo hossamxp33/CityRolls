@@ -15,6 +15,7 @@
         android:padding="12dp"
         android:gravity="start"
         android:inputType="text"
+        android:textColorHint="@color/black"
         android:imeOptions="actionSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_margin="5dp"
-        android:src="@drawable/search"
+        android:src="@drawable/loupe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -142,7 +142,9 @@
     <string name="chat">private messages </string>
     <string name="empty">write your message </string>
     <string name="now">now</string>
-
+    <string name="available">available</string>
+    <string name="piece">piece</string>
+    <string name="color">Chose color</string>
 
     <string name="condition" translatable="false">
 نتمنى من جميع زبائننا الكرام الاطلاع على هذه الاتفاقية لتوضيح طرق الدفع والشحن ونحوها وهي كالآتي:
