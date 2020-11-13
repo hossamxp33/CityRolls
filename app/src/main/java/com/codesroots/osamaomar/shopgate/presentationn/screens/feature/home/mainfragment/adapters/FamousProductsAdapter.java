@@ -75,25 +75,8 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                     .addToBackStack(null).commit();
         });
 
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (famousProduct.get(position) != null)
-                    bundle.putInt(PRODUCT_ID, famousProduct.get(position).getId());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
+
 //
-//            holder.item_img.setOnClickListener(v ->
-//                    {
-//                        Intent intent = new Intent(context, ImageActivity.class);
-//                        intent.putExtra("url",famousProduct.get(position).img);
-//                        context.startActivity(intent);
-//                    }
-//            );
         holder.ratingBar.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 Intent intent = new Intent(context, RateActivity.class);

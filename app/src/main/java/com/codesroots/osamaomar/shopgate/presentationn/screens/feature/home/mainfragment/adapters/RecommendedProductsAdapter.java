@@ -51,7 +51,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        try {
+
             holder.name.setText(recommendesProducts.get(position).getProduct().getName());
             if (recommendesProducts.get(position).getProduct().getImg() != null) {
                     Glide.with(context.getApplicationContext())
@@ -65,12 +65,12 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
                     holder.ratingBar.setRating(recommendesProducts.get(position).getTotal_rating().get(0).getStars() /
                             recommendesProducts.get(position).getTotal_rating().get(0).getCount());
             }
-            if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getProductsizes().get(0).getStart_price()) *
-                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-            else
-                holder.price.setText(recommendesProducts.get(position).getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.coin));
-
+//            if (PreferenceHelper.getCurrencyValue() > 0)
+//                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getProductsizes().get(0).getStart_price()) *
+//                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+//            else
+//                holder.price.setText(recommendesProducts.get(position).getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.coin));
+//
 
             holder.mView.setOnClickListener(v ->
             {
@@ -95,20 +95,12 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
                         .addToBackStack(null).commit();
             });
 
-            holder.ratingBar.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Intent intent = new Intent(context, RateActivity.class);
-                    intent.putExtra(PRODUCT_ID, recommendesProducts.get(position).getId());
-                    context.startActivity(intent);
-                }
-                return true;
-            });
 
 
 
 
-        } catch (Exception e) {
-        }
+
+
 
     }
 
