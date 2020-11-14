@@ -51,7 +51,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-
+        try {
             holder.name.setText(recommendesProducts.get(position).getProduct().getName());
             if (recommendesProducts.get(position).getProduct().getImg() != null) {
                     Glide.with(context.getApplicationContext())
@@ -60,11 +60,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
                             .into(holder.item_img);
             }
 
-            if (recommendesProducts.get(position).getTotal_rating() != null) {
-                if (recommendesProducts.get(position).getTotal_rating().size() > 0)
-                    holder.ratingBar.setRating(recommendesProducts.get(position).getTotal_rating().get(0).getStars() /
-                            recommendesProducts.get(position).getTotal_rating().get(0).getCount());
-            }
+
 //            if (PreferenceHelper.getCurrencyValue() > 0)
 //                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getProductsizes().get(0).getStart_price()) *
 //                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
@@ -98,7 +94,8 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
 
 
-
+        }catch (Exception e)
+        {}
 
 
 

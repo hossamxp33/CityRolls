@@ -118,6 +118,7 @@
     <string name="orderfound">No Orders Found for you</string>
     <string name="youlogout">You Are Logout</string>
     <string name="product_name">Product name</string>
+    <string name="related">Related Products</string>
 
 
     <string name="popular_products">Popular products</string>

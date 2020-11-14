@@ -45,6 +45,7 @@ import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.main
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductImagesAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductSizesAdapter;
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.RelatedProductsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.SliderProductDetailsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.showimage.ImageActivity;
@@ -234,12 +235,20 @@ share.setOnClickListener(v -> {
 //        oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         slider = view.findViewById(R.id.sliderr);
         indicator = view.findViewById(R.id.indicatorProductDetails);
+        recommended_products = view.findViewById(R.id.recommended_products);
     }
     private void setDatainViews(ProductDetails productDetails) {
-        slider.setAdapter(new SliderProductDetailsAdapter(getActivity(),productDetails.getProductdetails().get(0).getProductphotos()));
-       indicator.setViewPager(slider);
-        init(productDetails.getProductdetails().get(0).getProductphotos().size());
-        product_name.setText(productDetails.getProductdetails().get(0).getName());
+        recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.getRelated()));
+
+        if (productDetails.getProductdetails().size() > 0) {
+            slider.setAdapter(new SliderProductDetailsAdapter(getActivity(), productDetails.getProductdetails().get(0).getProductphotos()));
+            indicator.setViewPager(slider);
+            init(productDetails.getProductdetails().get(0).getProductphotos().size());
+            product_name.setText(productDetails.getProductdetails().get(0).getName());
+        } else {
+            slider.setVisibility(View.GONE);
+        }
+
 
 
     }

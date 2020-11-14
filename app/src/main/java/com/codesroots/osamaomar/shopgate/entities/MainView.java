@@ -253,7 +253,7 @@ public class MainView {
         private String description;
         private String img;
 
-        private MatchingDataBean _matchingData;
+     //   private MatchingDataBean _matchingData;
 
 
         public int getId() {
@@ -295,14 +295,14 @@ public class MainView {
         public void setDescription(String description) {
             this.description = description;
         }
-
-        public MatchingDataBean get_matchingData() {
-            return _matchingData;
-        }
-
-        public void set_matchingData(MatchingDataBean _matchingData) {
-            this._matchingData = _matchingData;
-        }
+//
+//        public MatchingDataBean get_matchingData() {
+//            return _matchingData;
+//        }
+//
+//        public void set_matchingData(MatchingDataBean _matchingData) {
+//            this._matchingData = _matchingData;
+//        }
 
 
 
@@ -356,12 +356,6 @@ public class MainView {
          */
 
         private int id;
-        private String name;
-        private String description;
-        private String img;
-        private List<TotalRatingBeanX> total_rating;
-        private List<ProductphotosBeanX> productphotos;
-        private List<ProductsizesBeanX> productsizes;
         private ProductBean product;
         private int product_id;
 
@@ -387,261 +381,17 @@ public class MainView {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
-        }
 
-        public void setName(String name) {
-            this.name = name;
-        }
 
-        public void setImg(String img) {
-            this.img = img;
-        }
 
-        public String getImg() {
-            return img;
-        }
 
-        public String getDescription() {
-            return description;
-        }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
 
-        public List<TotalRatingBeanX> getTotal_rating() {
-            return total_rating;
-        }
 
-        public void setTotal_rating(List<TotalRatingBeanX> total_rating) {
-            this.total_rating = total_rating;
-        }
 
-        public List<ProductphotosBeanX> getProductphotos() {
-            return productphotos;
-        }
 
-        public void setProductphotos(List<ProductphotosBeanX> productphotos) {
-            this.productphotos = productphotos;
-        }
-
-        public List<ProductsizesBeanX> getProductsizes() {
-            return productsizes;
-        }
-
-        public void setProductsizes(List<ProductsizesBeanX> productsizes) {
-            this.productsizes = productsizes;
-        }
-
-        public static class TotalRatingBeanX {
-            /**
-             * product_id : 18
-             * stars : 5
-             * count : 1
-             */
-
-            private int product_id;
-            private float stars;
-            private int count;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public float getStars() {
-                return stars;
-            }
-
-            public void setStars(float stars) {
-                this.stars = stars;
-            }
-
-            public int getCount() {
-                return count;
-            }
-
-            public void setCount(int count) {
-                this.count = count;
-            }
-        }
-
-        public static class ProductphotosBeanX {
-            /**
-             * id : 59
-             * photo : http://shopgate.codesroots.com/library/attachment/15567465531278776543.jpg
-             * main :
-             * created : 2019-05-01T17:35:53+0000
-             * modified : 2019-05-01T17:35:53+0000
-             * product_id : 18
-             */
-
-            private int id;
-            private String photo;
-            private String main;
-            private String created;
-            private String modified;
-            private int product_id;
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getPhoto() {
-                return photo;
-            }
-
-            public void setPhoto(String photo) {
-                this.photo = photo;
-            }
-
-            public String getMain() {
-                return main;
-            }
-
-            public void setMain(String main) {
-                this.main = main;
-            }
-
-            public String getCreated() {
-                return created;
-            }
-
-            public void setCreated(String created) {
-                this.created = created;
-            }
-
-            public String getModified() {
-                return modified;
-            }
-
-            public void setModified(String modified) {
-                this.modified = modified;
-            }
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-        }
-
-        public static class ProductsizesBeanX {
-            /**
-             * id : 126
-             * product_id : 18
-             * size : 1
-             * created : 2019-05-01T17:36:04+0000
-             * modified : 2019-05-01T17:36:04+0000
-             * current_price : 15
-             * start_price : 15
-             * amount : 20
-             */
-
-            private int id;
-            private int product_id;
-            private String size;
-            private String created;
-            private String modified;
-            private double current_price;
-            private int start_price;
-            private int amount;
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public String getSize() {
-                return size;
-            }
-
-            public void setSize(String size) {
-                this.size = size;
-            }
-
-            public String getCreated() {
-                return created;
-            }
-
-            public void setCreated(String created) {
-                this.created = created;
-            }
-
-            public String getModified() {
-                return modified;
-            }
-
-            public void setModified(String modified) {
-                this.modified = modified;
-            }
-
-            public double getCurrent_price() {
-                return current_price;
-            }
-
-            public void setCurrent_price(double current_price) {
-                this.current_price = current_price;
-            }
-
-            public int getStart_price() {
-                return start_price;
-            }
-
-            public void setStart_price(int start_price) {
-                this.start_price = start_price;
-            }
-
-            public int getAmount() {
-                return amount;
-            }
-
-            public void setAmount(int amount) {
-                this.amount = amount;
-            }
-        }
 
         public static class ProductBean {
-            /**
-             * id : 24
-             * name : كريم الكولاجين
-             * name_en : Collagen Cream
-             * cat_id : 22
-             * subcat_id : 13
-             * created : 2019-05-01T17:48:15+0000
-             * modified : 2019-05-01T17:48:15+0000
-             * description : كريم الكولاجين
-             * description_en : Collagen Cream
-             * red : 0
-             * green : 0
-             * blue : 0
-             * visible : 1
-             * total_rating : [{"product_id":24,"stars":4,"count":1}]
-             * productphotos : [{"product_id":24,"id":65,"photo":"http://shopgate.codesroots.com/library/attachment/1556747295732838734.jpg"}]
-             * productsizes : [{"id":132,"product_id":24,"size":"114g","created":"2019-05-01T17:48:33+0000","modified":"2019-05-01T17:48:33+0000","current_price":7,"start_price":7,"amount":5}]
-             */
 
             private int id;
             private String name;

@@ -1,4 +1,4 @@
-package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters;
+package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,31 +18,30 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.MainView;
-import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
+import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.showimage.ImageActivity;
 
 import java.util.List;
 
 import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
-public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAdapter.ViewHolder> {
+public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProductsAdapter.ViewHolder> {
 
 
     private Context context;
-    List<MainView.Newdata> famousProduct;
+    List<ProductDetails.Related> famousProduct;
 
-    public FamousProductsAdapter(Context context, List<MainView.Newdata> newdata) {
+    public RelatedProductsAdapter(Context context, List<ProductDetails.Related> relateds) {
         this.context = context;
-        this.famousProduct = newdata;
+        this.famousProduct = relateds;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.home_more_rate_item, parent, false);
+                .inflate(R.layout.related_item, parent, false);
 
         return new ViewHolder(view);
     }
