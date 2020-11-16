@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -56,8 +57,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.stream.Collectors;
 
 import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
@@ -257,16 +260,27 @@ share.setOnClickListener(v -> {
 
     private void setDataToViews(@NotNull ProductDetails.ProductdetailsBean productdetailsBean) {
    amount.setText(productdetailsBean.getProductsizes().get(0).getAmount());
-   price.setText(productdetailsBean.getProductsizes().get(0).getStart_price());
+   price.setText(productdetailsBean.getProductsizes().get(0).getCurrent_price());
 
-
-
-
-            String values =
-                 productdetailsBean.getProductsizes().get(0).getSize();
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, Collections.singletonList(values));
+            ////////////////////////// Spinner /////////////////////////////////
+            String values = productdetailsBean.getProductsizes().get(0).getSize();
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
+                     android.R.layout.simple_spinner_item, Collections.singletonList(values));
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            adapter.notifyDataSetChanged();
             spinner.setAdapter(adapter);
+             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String  SpinerValue = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(), "You have selected  : " + SpinerValue,
+                        Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
 
 
@@ -296,22 +310,22 @@ share.setOnClickListener(v -> {
 
         if (productdetailsBean.getOffers().size() > 0) {
             float priceafteroffer = Float.valueOf(productdetailsBean.getProductsizes().
-                    get(productSizesAdapter.mSelectedItem).getStart_price()) - Float.valueOf(productdetailsBean.getProductsizes()
-                    .get(productSizesAdapter.mSelectedItem).getStart_price()) *
+                    get(productSizesAdapter.mSelectedItem).getCurrent_price()) - Float.valueOf(productdetailsBean.getProductsizes()
+                    .get(productSizesAdapter.mSelectedItem).getCurrent_price()) *
                     productdetailsBean.getOffers().get(0).getPercentage() / 100;
             if (PreferenceHelper.getCurrencyValue() > 0) {
                 price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
                 oldprice.setText(productdetailsBean.getProductsizes().
-                        get(productSizesAdapter.mSelectedItem).getStart_price() + PreferenceHelper.getCurrency());
+                        get(productSizesAdapter.mSelectedItem).getCurrent_price() + PreferenceHelper.getCurrency());
             } else {
                 price.setText(String.valueOf(priceafteroffer) + getText(R.string.realcoin));
                 oldprice.setText(productdetailsBean.getProductsizes().
-                        get(productSizesAdapter.mSelectedItem).getStart_price() + getText(R.string.realcoin));
+                        get(productSizesAdapter.mSelectedItem).getCurrent_price() + getText(R.string.realcoin));
             }
         } else
-            price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price() + getText(R.string.realcoin));
+            price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() + getText(R.string.realcoin));
 
-        if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getStart_price()) <
+        if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price()) <
                 setting.getData().get(0).getShippingPrice()) {
             if (PreferenceHelper.getCOUNTRY_ID()==1)
             charege.setText(String.valueOf(PreferenceHelper.getIN_OMAN())+" "+getString(R.string.coin));

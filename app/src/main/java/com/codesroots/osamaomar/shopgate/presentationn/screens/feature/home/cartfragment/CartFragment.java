@@ -129,8 +129,8 @@ public class CartFragment extends Fragment implements EditCallbacks {
         alltotalvalue = view.findViewById(R.id.alltotalvalue);
         charge = view.findViewById(R.id.chargevalue);
         progress = view.findViewById(R.id.progress);
-        ((MainActivity) Objects.requireNonNull(getActivity())).head_title.setText(getText(R.string.cart));
-        ((MainActivity) getActivity()).logo.setVisibility(View.INVISIBLE);
+   //     ((MainActivity) Objects.requireNonNull(getActivity())).head_title.setText(getText(R.string.cart));
+        ((MainActivity) getActivity()).logo.setVisibility(View.VISIBLE);
     }
 
     private ViewModelProvider.Factory getViewModelFactory() {

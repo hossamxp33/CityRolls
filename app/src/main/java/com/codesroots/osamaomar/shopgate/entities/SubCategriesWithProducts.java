@@ -70,19 +70,6 @@ public class SubCategriesWithProducts {
     }
 
     public static class ProductsbyrateBean {
-        /**
-         * total_result : 4
-         * id : 3
-         * start_price : 1
-         * product_id : 31
-         * size : 100
-         * created : 2019-02-19T07:04:34+0000
-         * modified : 2019-02-19T07:04:34+0000
-         * current_price : 1
-         * amount : 1
-         * orderdetails : [{"productsize_id":3,"order_id":2,"count":4}]
-         * product : {"id":31,"name":"zzzz","name_en":"salt","cat_id":2,"subcat_id":2,"color_hex":"#408080","created":"2019-02-19T08:20:47+0000","modified":"2019-02-19T08:20:47+0000","description":"axa","description_en":"xaxa","red":"64","green":"128","blue":"128","visible":null,"favourites":[{"id":73,"product_id":31,"user_id":2}],"total_rating":[{"product_id":31,"stars":5,"count":2}],"productphotos":[{"product_id":31,"id":20,"photo":"http://shopgate.codesroots.com/library/attachment/1550745371906943104.jpg"}]}
-         */
 
         private int total_result;
         private int id;

@@ -295,12 +295,10 @@
             android:layout_height="25dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
             android:background="@drawable/rounded_corner"
             android:ellipsize="marquee"
 
             android:singleLine="true"
-            app:layout_constraintBottom_toTopOf="@+id/recommended_products"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/size_title" />
 
@@ -308,13 +306,13 @@
             android:id="@+id/relatedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/related"
             app:layout_constraintBottom_toTopOf="@+id/recommended_products"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/color_spinner" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recommended_products"
