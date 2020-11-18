@@ -38,6 +38,7 @@ import com.codesroots.osamaomar.shopgate.entities.StoreSetting;
 import com.codesroots.osamaomar.shopgate.helper.AddorRemoveCallbacks;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
+import com.codesroots.osamaomar.shopgate.helper.kotlinusercase;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.FamousProductsAdapter;
@@ -74,6 +75,8 @@ public class ProductDetailsFragment extends Fragment {
     private ProductDetailsViewModel mViewModel;
     RecyclerView images_rec, sizes_rec,recommended_products;
     private int productid;
+    private int sizeid;
+
     FrameLayout loading;
     public TextView product_name, description, price, ratecount, amount, addtocart, charege, oldprice;
     RatingBar ratingBar;
@@ -153,14 +156,14 @@ share.setOnClickListener(v -> {
         addtocart.setOnClickListener(v -> {
             if (userid > 0) {
                 if (PreferenceHelper.retriveCartItemsValue() != null) {
-                    if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId()))) {
-                        PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId());
+                    if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productdetails.getProductsizes().get(0).getId()))) {
+                        PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(0).getId());
                         ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                         Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
                     } else
                         Toast.makeText(getActivity(), getActivity().getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
                 } else {
-                    PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(productSizesAdapter.mSelectedItem).getId());
+                    PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(0).getId());
                     ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                     Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
                 }
@@ -263,19 +266,23 @@ share.setOnClickListener(v -> {
    price.setText(productdetailsBean.getProductsizes().get(0).getCurrent_price());
 
             ////////////////////////// Spinner /////////////////////////////////
-            String values = productdetailsBean.getProductsizes().get(0).getSize();
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
-                     android.R.layout.simple_spinner_item, Collections.singletonList(values));
+        List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
+
+      //  String values = productdetailsBean.getProductsizes().get(0).getSize();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapter);
+
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             adapter.notifyDataSetChanged();
             spinner.setAdapter(adapter);
+
              spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String  SpinerValue = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(), "You have selected  : " + SpinerValue,
-                        Toast.LENGTH_SHORT).show();
+                sizeid = productdetailsBean.getProductsizes().get(position).getId();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
