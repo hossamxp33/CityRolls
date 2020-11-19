@@ -76,11 +76,11 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
 
 //        if (!offersData.get(position).getPercentage().matches(""))
 //        {
-            if (PreferenceHelper.getCurrencyValue()>0)
-                holder.price.setText(String.valueOf(Float.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+
-                        PreferenceHelper.getCurrency())));
-
-            else
+//            if (PreferenceHelper.getCurrencyValue()>0)
+//                holder.price.setText(String.valueOf(Float.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+
+//                        PreferenceHelper.getCurrency())));
+//
+//            else
                 holder.price.setText(String.valueOf(priceafteroffer)+context.getText(R.string.realcoin));
 
 //        }

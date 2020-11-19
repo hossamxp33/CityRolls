@@ -77,7 +77,6 @@ public class SubCategriesWithProducts {
         private int product_id;
         private String size;
         private String img;
-
         private String created;
         private String modified;
         private String current_price;
@@ -206,7 +205,6 @@ public class SubCategriesWithProducts {
             private String description;
             private String description_en;
             private String img;
-
             private String red;
             private String green;
             private String blue;

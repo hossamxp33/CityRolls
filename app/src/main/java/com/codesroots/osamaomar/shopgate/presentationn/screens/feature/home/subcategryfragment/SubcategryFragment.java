@@ -56,7 +56,7 @@ public class SubcategryFragment extends Fragment {
                 {
                     text.setVisibility(View.VISIBLE);
                     progress.setVisibility(View.GONE);
-                    subCates.setAdapter(new SubCatsAdapter(getActivity(),subCategriesWithProducts.getData()));
+                    subCates.setAdapter(new SubCatsAdapter(getActivity(),subCategriesWithProducts.getProductsbyrate()));
                     if(subCategriesWithProducts.getProductsbyrate().size()>0) {
                         moreSalesProductsAdapter = new MoreSalesProductsAdapter(getActivity(), subCategriesWithProducts.getProductsbyrate(), mViewModel);
                         productsData = subCategriesWithProducts.getProductsbyrate();

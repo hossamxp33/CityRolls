@@ -25,8 +25,8 @@ import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<SubCategriesWithProducts.DataBean> subcates;
-    public SubCatsAdapter(Context mcontext, List<SubCategriesWithProducts.DataBean> data) {
+    private List<SubCategriesWithProducts.ProductsbyrateBean> subcates;
+    public SubCatsAdapter(Context mcontext, List<SubCategriesWithProducts.ProductsbyrateBean> data) {
         context = mcontext;
         subcates = data;
     }
@@ -42,7 +42,7 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
-        holder.name.setText(subcates.get(position).getName());
+        holder.name.setText(subcates.get(position).getProduct().getName());
         if (ResourceUtil.getCurrentLanguage(context).matches("en"))
             holder.name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
 
@@ -50,7 +50,7 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
             Fragment fragment = new ProductsFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(SUB_CAT_ID,subcates.get(position).getId());
-            bundle.putString(SUBCATES_NAME,subcates.get(position).getName());
+            bundle.putString(SUBCATES_NAME,subcates.get(position).getProduct().getName());
             bundle.putInt(CAT_TYPE,1);
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();

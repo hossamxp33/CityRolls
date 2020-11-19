@@ -68,6 +68,7 @@ import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
 public class ProductDetailsFragment extends Fragment {
     CirclePageIndicator indicator;
+
     ViewPager slider;
     Spinner spinner;
     private static int currentPage = 0;
