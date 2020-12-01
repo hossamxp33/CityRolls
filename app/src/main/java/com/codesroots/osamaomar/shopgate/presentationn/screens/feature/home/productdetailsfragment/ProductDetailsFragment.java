@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -68,7 +69,7 @@ import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
 public class ProductDetailsFragment extends Fragment {
     CirclePageIndicator indicator;
-
+ConstraintLayout product_view;
     ViewPager slider;
     Spinner spinner;
     private static int currentPage = 0;
@@ -238,6 +239,7 @@ share.setOnClickListener(v -> {
         addtocart = view.findViewById(R.id.addtocart);
         charege = view.findViewById(R.id.charge);
         share = view.findViewById(R.id.share_button);
+        product_view = view.findViewById(R.id.product_view);
      //   oldprice = view.findViewById(R.id.oldprice);
 //        oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         slider = view.findViewById(R.id.sliderr);
@@ -263,9 +265,15 @@ share.setOnClickListener(v -> {
 
 
     private void setDataToViews(@NotNull ProductDetails.ProductdetailsBean productdetailsBean) {
-   amount.setText(productdetailsBean.getProductsizes().get(0).getAmount());
-   price.setText(productdetailsBean.getProductsizes().get(0).getCurrent_price());
+         loading.setVisibility(View.GONE);
 
+        if (productdetailsBean.getProductsizes().size() > 0) {
+            amount.setText(productdetailsBean.getProductsizes().get(0).getAmount());
+            price.setText(Float.valueOf(productdetailsBean.getProductsizes().get(0).getCurrent_price()) *
+                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+        }else {
+            Toast.makeText(getActivity(), getActivity().getText(R.string.error_in_data), Toast.LENGTH_SHORT).show();
+        }
             ////////////////////////// Spinner /////////////////////////////////
         List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
 

@@ -56,11 +56,11 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                         .load(famousProduct.get(position).getImg())
                         .into(holder.item_img);
         }
-//        if (PreferenceHelper.getCurrencyValue() > 0)
-//            holder.price.setText(Float.valueOf(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price()) *
-//                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-//        else
-//            holder.price.setText(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price() + " " + context.getText(R.string.coin));
+        if (PreferenceHelper.getCurrencyValue() > 0)
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(position).getStart_price()) *
+                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+        else
+            holder.price.setText(famousProduct.get(position).getProductsizes().get(position).getStart_price() + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->
@@ -74,7 +74,17 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                     replace(R.id.mainfram, fragment)
                     .addToBackStack(null).commit();
         });
-
+            holder.mView.setOnClickListener(v ->
+            {
+                Fragment fragment = new ProductDetailsFragment();
+                Bundle bundle = new Bundle();
+                if (famousProduct.get(position).getProductsizes() != null)
+                    bundle.putInt(PRODUCT_ID, famousProduct.get(position).getProductsizes().get(position).getProduct_id());
+                fragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+                        replace(R.id.mainfram, fragment)
+                        .addToBackStack(null).commit();
+            });
 
 //
 //            holder.item_img.setOnClickListener(v ->

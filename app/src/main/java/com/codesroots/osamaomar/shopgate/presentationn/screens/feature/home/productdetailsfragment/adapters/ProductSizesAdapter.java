@@ -18,7 +18,7 @@ import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.prod
 
 import java.util.List;
 
-public class ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapter.ViewHolder> {
+public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapter.ViewHolder> {
 
     private Context context;
     ProductDetailsFragment fragment;

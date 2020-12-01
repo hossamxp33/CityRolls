@@ -4,13 +4,19 @@ import java.util.List;
 
 public class MainView {
 
+    private List<CategoryBean> category;
 
     private CurrencyBean currency;
-    private List<SlidersBean> sliders;
-    private List<CategoryBean> category;
+
     private  List<Newdata> newdata;
+    private List<Offerproducts> offernew;
     private List<Productsbysales> productsbysales;
-    private List<RandproductsBean> offernew;
+
+    private List<SlidersBean> sliders;
+
+
+
+
 
     public CurrencyBean getCurrency() {
         return currency;
@@ -44,11 +50,11 @@ public class MainView {
         this.newdata = productsbyrate;
     }
 
-    public List<RandproductsBean> getRandproducts() {
+    public List<Offerproducts> getOfferproducts() {
         return offernew;
     }
 
-    public void setRandproducts(List<RandproductsBean> randproducts) {
+    public void setOfferproducts(List<Offerproducts> randproducts) {
         this.offernew = randproducts;
     }
 
@@ -133,14 +139,22 @@ public class MainView {
     }
 
     public static class CategoryBean {
-
         private int id;
         private String name;
         private String name_en;
         private String created;
+        private int number;
         private String photo;
         private String modified;
         private List<SubcatsBean> subcats;
+
+        public int getNumber() {
+            return number;
+        }
+
+        public void setNumber(int number) {
+            this.id = number;
+        }
 
         public int getId() {
             return id;
@@ -149,6 +163,8 @@ public class MainView {
         public void setId(int id) {
             this.id = id;
         }
+
+
 
         public String getName() {
             return name;
@@ -248,12 +264,21 @@ public class MainView {
     public static class Newdata {
 
         private int id;
+        private int cat_id;
         private String name_en;
         private String name;
         private String description;
+        private String description_en;
         private String img;
+        private String blue;
+        private String created;
+        private  List<ProductsizesBean> productsizes;
 
-     //   private MatchingDataBean _matchingData;
+        private int store_id;
+        private int subcat_id;
+        private String visible;
+
+
 
 
         public int getId() {
@@ -264,12 +289,36 @@ public class MainView {
             this.id = id;
         }
 
+        public int getCat_id() {
+            return cat_id;
+        }
+
+        public void setCat_id(int cat_id) {
+            this.cat_id = cat_id;
+        }
+
+        public String getBlue() {
+            return blue;
+        }
+
+        public void setBlue(String blue) {
+            this.blue = blue;
+        }
+
         public String getName_en() {
             return name_en;
         }
 
         public void setTotal_result(String total_result) {
             this.name_en = total_result;
+        }
+
+        public String getCreated() {
+            return created;
+        }
+
+        public void setCreated(String created) {
+            this.created = created;
         }
 
         public String getName() {
@@ -288,6 +337,14 @@ public class MainView {
             this.name = name;
         }
 
+        public String getDescription_en() {
+            return description_en;
+        }
+
+        public void setDescription_en(String description_en) {
+            this.description_en = description_en;
+        }
+
         public String getDescription() {
             return description;
         }
@@ -295,7 +352,22 @@ public class MainView {
         public void setDescription(String description) {
             this.description = description;
         }
-//
+        //
+        public int getStore_id() {
+            return store_id;
+        }
+
+        public void setStore_id(int store_id) {
+            this.store_id = store_id;
+        }
+
+        public int getSubcat_id() {
+            return subcat_id;
+        }
+
+        public void setSubcat_id(int subcat_id) {
+            this.subcat_id = subcat_id;
+        }
 //        public MatchingDataBean get_matchingData() {
 //            return _matchingData;
 //        }
@@ -305,59 +377,113 @@ public class MainView {
 //        }
 
 
+        public  List<ProductsizesBean> getProductsizes() {
+            return productsizes;
+        }
 
-
-
-        public static class MatchingDataBean {
-            /**
-             * Productsizes : {"start_price":15}
-             */
-
-            private ProductsizesBean Productsizes;
-
-            public ProductsizesBean getProductsizes() {
-                return Productsizes;
-            }
-
-            public void setProductsizes(ProductsizesBean Productsizes) {
-                this.Productsizes = Productsizes;
-            }
-
-            public static class ProductsizesBean {
-                /**
-                 * start_price : 15
-                 */
-
-                private int start_price;
-
-                public int getStart_price() {
-                    return start_price;
-                }
-
-                public void setStart_price(int start_price) {
-                    this.start_price = start_price;
-                }
-            }
+        public void setProductsizes( List<ProductsizesBean> Productsizes) {
+            this.productsizes = Productsizes;
         }
 
 
 
 
+
+        public static class ProductsizesBean {
+            /**
+             * start_price : 15
+             */
+//            val amount: Int,
+//            val created: String,
+//            val current_price: Int,
+//            val id: Int,
+//            val modified: String,
+//            val product_id: Int,
+//            val size: String,
+//            val start_price: Int
+
+
+            private int start_price;
+            private int amount;
+            private String created;
+            private int current_price;
+            private int id;
+            private int product_id;
+            private String size;
+
+
+
+
+
+            public int getStart_price() { return start_price; }
+
+            public void setStart_price(int start_price) {
+                this.start_price = start_price;
+            }
+
+            public int getAmount() {
+                return amount;
+            }
+
+            public void setAmount(int amount) {
+                this.amount = amount;
+            }
+
+            public String getCreated() {
+                return created;
+            }
+
+            public void setCreated(String created) {
+                this.created = created;
+            }
+
+            public int getCurrent_price() {
+                return current_price;
+            }
+
+            public void setCurrent_price(int current_price) {
+                this.current_price = current_price;
+            }
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public int getProduct_id() {
+                return product_id;
+            }
+
+            public void setProduct_id(int product_id) {
+                this.product_id = product_id;
+            }
+            public String getSize() {
+                return size;
+            }
+
+            public void setSize(String size) {
+                this.size = size;
+            }
+        }
+
+
     }
 
-    public static class RandproductsBean {
-        /**
-         * id : 18
-         * name : منتج تبييض الأسنان
-         * description : منتج تبييض الأسنان
-         * total_rating : [{"product_id":18,"stars":5,"count":1}]
-         * productphotos : [{"id":59,"photo":"http://shopgate.codesroots.com/library/attachment/15567465531278776543.jpg","main":"","created":"2019-05-01T17:35:53+0000","modified":"2019-05-01T17:35:53+0000","product_id":18}]
-         * productsizes : [{"id":126,"product_id":18,"size":"1","created":"2019-05-01T17:36:04+0000","modified":"2019-05-01T17:36:04+0000","current_price":15,"start_price":15,"amount":20}]
-         */
+    public static class Offerproducts {
+//        val created: String,
+//        val end_date: String,
+//        val id: Int,
+//        val percentage: String,
+//        val product: Product,
+//        val product_id: Int,
+//        val start_date: String
 
         private int id;
         private ProductBean product;
         private int product_id;
+        private String percentage;
 
         public int getProduct_id() {
             return product_id;
@@ -373,22 +499,21 @@ public class MainView {
         public ProductBean getProduct() {
             return product;
         }
-
         public void setProduct(ProductBean product) {
             this.product = product;
         }
+
         public void setId(int id) {
             this.id = id;
         }
 
+        public String getPercentage() {
+            return percentage;
+        }
 
-
-
-
-
-
-
-
+        public void setPercentage(String percentage) {
+            this.percentage = percentage;
+        }
 
 
         public static class ProductBean {
@@ -397,6 +522,8 @@ public class MainView {
             private String name;
             private String name_en;
             private  String img;
+            private List<Offer> offers;
+            private List<ProductsizesBean> productsizes;
             public void setImg(String img) {
                 this.img = img;
             }
@@ -428,7 +555,148 @@ public class MainView {
                 this.name_en = name_en;
             }
 
+            public List<ProductsizesBean> getProductsizes() {
+                return productsizes;
+            }
 
+            public void setProductsizes(List<ProductsizesBean> productsizes) {
+                this.productsizes = productsizes;
+            }
+            public static class ProductsizesBean {
+//                val amount: Int,
+//                val created: String,
+//                val current_price: Int,
+//                val id: Int,
+//                val modified: String,
+//                val product_id: Int,
+//                val size: String,
+//                val start_price: Int
+
+                private int id;
+                private int product_id;
+                private String size;
+                private String created;
+                private String modified;
+                private double current_price;
+                private int start_price;
+                private int amount;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+
+                public String getSize() {
+                    return size;
+                }
+
+                public void setSize(String size) {
+                    this.size = size;
+                }
+
+                public String getCreated() {
+                    return created;
+                }
+
+                public void setCreated(String created) {
+                    this.created = created;
+                }
+
+                public String getModified() {
+                    return modified;
+                }
+
+                public void setModified(String modified) {
+                    this.modified = modified;
+                }
+
+                public double getCurrent_price() {
+                    return current_price;
+                }
+
+                public void setCurrent_price(double current_price) {
+                    this.current_price = current_price;
+                }
+
+                public int getStart_price() {
+                    return start_price;
+                }
+
+                public void setStart_price(int start_price) {
+                    this.start_price = start_price;
+                }
+
+                public int getAmount() {
+                    return amount;
+                }
+
+                public void setAmount(int amount) {
+                    this.amount = amount;
+                }
+
+            }
+
+            public static class Offer {
+//                val created: String,
+//                val end_date: String,
+//                val percentage: String,
+//                val product_id: Int,
+//                val start_date: String
+
+                private int product_id;
+                private String created;
+                private String start_date;
+                private  String percentage;
+
+
+                public void setPercentage(String percentage) {
+                    this.percentage = percentage;
+                }
+
+                public String getPercentage() {
+                    return percentage;
+                }
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+
+                public String getCreated() {
+                    return created;
+                }
+
+                public void setCreated(String created) {
+                    this.created = created;
+                }
+
+                public String getStart_date() {
+                    return start_date;
+                }
+
+                public void setStart_date(String start_date) {
+                    this.start_date = start_date;
+                }
+
+
+
+
+
+            }
 
 
 
@@ -436,19 +704,17 @@ public class MainView {
     }
 
     public static class Productsbysales {
-        /**
-         * total_result : 6
-         * id : 132
-         * start_price : 7
-         * product_id : 24
-         * size : 114g
-         * created : 2019-05-01T17:48:33+0000
-         * modified : 2019-05-01T17:48:33+0000
-         * current_price : 7
-         * amount : 5
-         * orderdetails : [{"productsize_id":132,"order_id":567,"count":6}]
-         * product : {"id":24,"name":"كريم الكولاجين","name_en":"Collagen Cream","cat_id":22,"subcat_id":13,"created":"2019-05-01T17:48:15+0000","modified":"2019-05-01T17:48:15+0000","description":"كريم الكولاجين","description_en":"Collagen Cream","red":"0","green":"0","blue":"0","visible":"1","total_rating":[{"product_id":24,"stars":4,"count":1}],"productphotos":[{"product_id":24,"id":65,"photo":"http://shopgate.codesroots.com/library/attachment/1556747295732838734.jpg"}],"productsizes":[{"id":132,"product_id":24,"size":"114g","created":"2019-05-01T17:48:33+0000","modified":"2019-05-01T17:48:33+0000","current_price":7,"start_price":7,"amount":5}]}
-         */
+//        val amount: Int,
+//        val created: String,
+//        val current_price: Int,
+//        val id: Int,
+//        val modified: String,
+//        val orderdetails: List<Orderdetail>,
+//        val product: ProductX,
+//        val product_id: Int,
+//        val size: String,
+//        val start_price: Int,
+//        val total_result: Int
 
         private int total_result;
         private int id;
@@ -551,25 +817,6 @@ public class MainView {
         }
 
         public static class ProductBean {
-            /**
-             * id : 24
-             * name : كريم الكولاجين
-             * name_en : Collagen Cream
-             * cat_id : 22
-             * subcat_id : 13
-             * created : 2019-05-01T17:48:15+0000
-             * modified : 2019-05-01T17:48:15+0000
-             * description : كريم الكولاجين
-             * description_en : Collagen Cream
-             * red : 0
-             * green : 0
-             * blue : 0
-             * visible : 1
-             * total_rating : [{"product_id":24,"stars":4,"count":1}]
-             * productphotos : [{"product_id":24,"id":65,"photo":"http://shopgate.codesroots.com/library/attachment/1556747295732838734.jpg"}]
-             * productsizes : [{"id":132,"product_id":24,"size":"114g","created":"2019-05-01T17:48:33+0000","modified":"2019-05-01T17:48:33+0000","current_price":7,"start_price":7,"amount":5}]
-             */
-
             private int id;
             private String name;
             private String name_en;
@@ -586,7 +833,7 @@ public class MainView {
 
             private List<TotalRatingBeanXX> total_rating;
             private List<ProductphotosBeanXX> productphotos;
-            private List<ProductsizesBeanXX> productsizes;
+            private List<ProductsizesBean> productsizes;
             private  String img;
             public void setImg(String img) {
                 this.img = img;
@@ -715,11 +962,11 @@ public class MainView {
                 this.productphotos = productphotos;
             }
 
-            public List<ProductsizesBeanXX> getProductsizes() {
+            public List<ProductsizesBean> getProductsizes() {
                 return productsizes;
             }
 
-            public void setProductsizes(List<ProductsizesBeanXX> productsizes) {
+            public void setProductsizes(List<ProductsizesBean> productsizes) {
                 this.productsizes = productsizes;
             }
 
@@ -795,17 +1042,15 @@ public class MainView {
                 }
             }
 
-            public static class ProductsizesBeanXX {
-                /**
-                 * id : 132
-                 * product_id : 24
-                 * size : 114g
-                 * created : 2019-05-01T17:48:33+0000
-                 * modified : 2019-05-01T17:48:33+0000
-                 * current_price : 7
-                 * start_price : 7
-                 * amount : 5
-                 */
+            public static class ProductsizesBean {
+//                val amount: Int,
+//                val created: String,
+//                val current_price: Int,
+//                val id: Int,
+//                val modified: String,
+//                val product_id: Int,
+//                val size: String,
+//                val start_price: Int
 
                 private int id;
                 private int product_id;

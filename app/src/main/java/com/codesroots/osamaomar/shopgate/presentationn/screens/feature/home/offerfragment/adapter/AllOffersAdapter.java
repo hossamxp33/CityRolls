@@ -74,24 +74,24 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
 
         holder.discount.setText(context.getText(R.string.disscount)+" "+offersData.get(position).getPercentage()+" "+"%");
 
-//        if (!offersData.get(position).getPercentage().matches(""))
-//        {
-//            if (PreferenceHelper.getCurrencyValue()>0)
-//                holder.price.setText(String.valueOf(Float.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+
-//                        PreferenceHelper.getCurrency())));
-//
-//            else
+        if (!offersData.get(position).getPercentage().matches(""))
+        {
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.price.setText(String.valueOf(String.valueOf(priceafteroffer *PreferenceHelper.getCurrencyValue()+" "+
+                        PreferenceHelper.getCurrency())));
+
+            else
                 holder.price.setText(String.valueOf(priceafteroffer)+context.getText(R.string.realcoin));
 
-//        }
-//        else
-//        {
-//            if (PreferenceHelper.getCurrencyValue()>0)
-//                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
-//                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
-//            else
-//                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
-//        }
+      }
+        else
+        {
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
+                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+            else
+                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+        }
 
         holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
         Fragment fragment = new ProductDetailsFragment();

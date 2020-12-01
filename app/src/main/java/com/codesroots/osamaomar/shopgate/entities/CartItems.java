@@ -27,7 +27,7 @@ public class CartItems {
         private int id;
         private int amount;
         private int product_id;
-        private Float start_price;
+        private int start_price;
         private ProductBean product;
 
         public int getId() {
@@ -54,11 +54,11 @@ public class CartItems {
             this.product_id = product_id;
         }
 
-        public Float getStart_price() {
+        public float getStart_price() {
             return start_price;
         }
 
-        public void setStart_price(Float start_price) {
+        public void setStart_price(int start_price) {
             this.start_price = start_price;
         }
 
@@ -71,16 +71,6 @@ public class CartItems {
         }
 
         public static class ProductBean {
-            /**
-             * id : 32
-             * name : zzzz
-             * name_en : salt
-             * description : axa
-             * description_en : xaxa
-             * total_rating : [{"product_id":32,"stars":6,"count":2}]
-             * offers : [{"id":2,"product_id":32,"percentage":"20"}]
-             * productphotos : [{"id":4,"product_id":32,"photo":"http://shopgate.codesroots.com/library/attachment/pd4.jpg"}]
-             */
 
             private int id;
             private String name;
@@ -88,10 +78,15 @@ public class CartItems {
             private String img;
             private String description;
             private String description_en;
+            private List<ProductsizesBean> productsizes;
             private List<TotalRatingBean> total_rating;
-            private List<OffersBean> offers;
             private List<ProductphotosBean> productphotos;
+            private List<OffersBean> offers;
+            private List<FavouritesBean> favourites;
 
+            public int getId() {
+                return id;
+            }
             public void setImg(String img) {
                 this.img = img;
             }
@@ -99,10 +94,6 @@ public class CartItems {
             public String getImg() {
                 return img;
             }
-            public int getId() {
-                return id;
-            }
-
             public void setId(int id) {
                 this.id = id;
             }
@@ -139,20 +130,20 @@ public class CartItems {
                 this.description_en = description_en;
             }
 
+            public List<ProductsizesBean> getProductsizes() {
+                return productsizes;
+            }
+
+            public void setProductsizes(List<ProductsizesBean> productsizes) {
+                this.productsizes = productsizes;
+            }
+
             public List<TotalRatingBean> getTotal_rating() {
                 return total_rating;
             }
 
             public void setTotal_rating(List<TotalRatingBean> total_rating) {
                 this.total_rating = total_rating;
-            }
-
-            public List<OffersBean> getOffers() {
-                return offers;
-            }
-
-            public void setOffers(List<OffersBean> offers) {
-                this.offers = offers;
             }
 
             public List<ProductphotosBean> getProductphotos() {
@@ -163,10 +154,82 @@ public class CartItems {
                 this.productphotos = productphotos;
             }
 
+            public List<OffersBean> getOffers() {
+                return offers;
+            }
+
+            public void setOffers(List<OffersBean> offers) {
+                this.offers = offers;
+            }
+
+            public List<FavouritesBean> getFavourites() {
+                return favourites;
+            }
+
+            public void setFavourites(List<FavouritesBean> favourites) {
+                this.favourites = favourites;
+            }
+
+            public static class ProductsizesBean {
+                /**
+                 * id : 3
+                 * product_id : 31
+                 * start_price : 300
+                 * amount : 1
+                 * size : 100
+                 */
+
+                private int id;
+                private int product_id;
+                private int current_price;
+                private int amount;
+                private String size;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+
+                public int getCurrent_price() {
+                    return current_price;
+                }
+
+                public void setCurrent_price(int current_price) {
+                    this.current_price = current_price;
+                }
+
+                public int getAmount() {
+                    return amount;
+                }
+
+                public void setAmount(int amount) {
+                    this.amount = amount;
+                }
+
+                public String getSize() {
+                    return size;
+                }
+
+                public void setSize(String size) {
+                    this.size = size;
+                }
+            }
+
             public static class TotalRatingBean {
                 /**
-                 * product_id : 32
-                 * stars : 6
+                 * product_id : 31
+                 * stars : 5
                  * count : 2
                  */
 
@@ -199,60 +262,16 @@ public class CartItems {
                 }
             }
 
-            public static class OffersBean {
-                /**
-                 * id : 2
-                 * product_id : 32
-                 * percentage : 20
-                 */
-
-                private int id;
-                private int product_id;
-                private String percentage;
-
-                public int getId() {
-                    return id;
-                }
-
-                public void setId(int id) {
-                    this.id = id;
-                }
-
-                public int getProduct_id() {
-                    return product_id;
-                }
-
-                public void setProduct_id(int product_id) {
-                    this.product_id = product_id;
-                }
-
-                public String getPercentage() {
-                    return percentage;
-                }
-
-                public void setPercentage(String percentage) {
-                    this.percentage = percentage;
-                }
-            }
-
             public static class ProductphotosBean {
                 /**
-                 * id : 4
-                 * product_id : 32
-                 * photo : http://shopgate.codesroots.com/library/attachment/pd4.jpg
+                 * product_id : 31
+                 * id : 3
+                 * photo : http://shopgate.codesroots.com/library/attachment/pd3.jpg
                  */
 
-                private int id;
                 private int product_id;
+                private int id;
                 private String photo;
-
-                public int getId() {
-                    return id;
-                }
-
-                public void setId(int id) {
-                    this.id = id;
-                }
 
                 public int getProduct_id() {
                     return product_id;
@@ -260,6 +279,14 @@ public class CartItems {
 
                 public void setProduct_id(int product_id) {
                     this.product_id = product_id;
+                }
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
                 }
 
                 public String getPhoto() {
@@ -269,6 +296,79 @@ public class CartItems {
                 public void setPhoto(String photo) {
                     this.photo = photo;
                 }
+            }
+
+            public static class OffersBean {
+                /**
+                 * id : 4
+                 * percentage : 30
+                 * product_id : 31
+                 */
+
+                private int id;
+                private String percentage;
+                private int product_id;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public String getPercentage() {
+                    return percentage;
+                }
+
+                public void setPercentage(String percentage) {
+                    this.percentage = percentage;
+                }
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+            }
+
+            public static class FavouritesBean {
+                /**
+                 * product_id : 31
+                 * id : 1
+                 * user_id : 2
+                 */
+
+                private int product_id;
+                private int id;
+                private int user_id;
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public int getUser_id() {
+                    return user_id;
+                }
+
+                public void setUser_id(int user_id) {
+                    this.user_id = user_id;
+                }
+
             }
         }
     }

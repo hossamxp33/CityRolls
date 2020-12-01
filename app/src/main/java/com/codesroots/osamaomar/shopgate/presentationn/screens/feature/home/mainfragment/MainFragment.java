@@ -99,8 +99,8 @@ public class MainFragment extends Fragment {
         slider.setClipChildren(false);
         indicator.setViewPager(slider);
         morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getProductsbyrate()));
-        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getProductsbysales()));
-        recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getRandproducts()));
+        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getOfferproducts()));
+        recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getProductsbysales()));
         departments.setAdapter(new DepartmentsAdapter(getActivity(),mainView.getCategory()));
 
     }

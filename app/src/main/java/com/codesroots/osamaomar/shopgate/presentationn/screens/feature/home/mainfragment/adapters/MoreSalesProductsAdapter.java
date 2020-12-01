@@ -31,11 +31,11 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
 
     private Context context;
-    List<MainView.Productsbysales> productsbysales;
+    List<MainView.Offerproducts> offerproducts;
 
-    public MoreSalesProductsAdapter(Context context, List<MainView.Productsbysales> productsbyrate) {
+    public MoreSalesProductsAdapter(Context context, List<MainView.Offerproducts> offers) {
         this.context = context;
-        this.productsbysales = productsbyrate;
+        this.offerproducts = offers;
     }
 
     @NonNull
@@ -51,29 +51,32 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         try {
-            holder.name.setText(productsbysales.get(position).getProduct().getName());
+            holder.name.setText(offerproducts.get(position).getProduct().getName());
+            holder.discount.setText(context.getText(R.string.disscount)+" "+offerproducts.get(position).getPercentage()+" "+"%");
 
-
-            if (productsbysales.get(position).getProduct() != null) {
+            if (offerproducts.get(position).getProduct() != null) {
                     Glide.with(context.getApplicationContext())
-                            .load(productsbysales.get(position).getProduct().getImg())
+                            .load(offerproducts.get(position).getProduct().getImg())
                             .placeholder(R.drawable.product)
                             .into(holder.item_img);
             }
-
-
-            if (productsbysales.get(position).getProduct().getTotal_rating() != null) {
-                if (productsbysales.get(position).getProduct().getTotal_rating().size() > 0)
-                    holder.ratingBar.setRating(productsbysales.get(position).getProduct().getTotal_rating().get(0).getStars() /
-                            productsbysales.get(position).getProduct().getTotal_rating().get(0).getCount());
-            }
-
             if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Float.valueOf(productsbysales.get(position).getProduct().getProductsizes().get(0).getStart_price()) *
+                holder.price.setText(Float.valueOf((float) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
                         PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+
             else
-                holder.price.setText(productsbysales.get(position).getProduct().getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.coin));
-//
+                holder.price.setText(offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));
+
+
+            //
+
+//            if (productsbysales.get(position).getProduct().getTotal_rating() != null) {
+//                if (productsbysales.get(position).getProduct().getTotal_rating().size() > 0)
+//                    holder.ratingBar.setRating(productsbysales.get(position).getProduct().getTotal_rating().get(0).getStars() /
+//                            productsbysales.get(position).getProduct().getTotal_rating().get(0).getCount());
+//            }
+
+
 //            holder.item_img.setOnClickListener(v ->
 //                    {
 //                        Intent intent = new Intent(context, ImageActivity.class);
@@ -81,38 +84,28 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 //                        context.startActivity(intent);
 //                    }
 //            );
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (productsbysales.get(position) != null)
-                    bundle.putInt(PRODUCT_ID, productsbysales.get(position).getId());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
-
-            holder.ratingBar.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Intent intent = new Intent(context, RateActivity.class);
-                    intent.putExtra(PRODUCT_ID, productsbysales.get(position).getId());
-                    context.startActivity(intent);
-                }
-                return true;
-            });
 
             holder.mView.setOnClickListener(v ->
             {
                 Fragment fragment = new ProductDetailsFragment();
                 Bundle bundle = new Bundle();
-                if (productsbysales.get(position) != null)
-                    bundle.putInt(PRODUCT_ID, productsbysales.get(position).getProduct_id());
+                if (offerproducts.get(position).getProduct() != null)
+                    bundle.putInt(PRODUCT_ID, offerproducts.get(position).getProduct_id());
                 fragment.setArguments(bundle);
                 ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                         replace(R.id.mainfram, fragment)
                         .addToBackStack(null).commit();
             });
+//            holder.ratingBar.setOnTouchListener((v, event) -> {
+//                if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    Intent intent = new Intent(context, RateActivity.class);
+//                    intent.putExtra(PRODUCT_ID, offerproducts.get(position).getId());
+//                    context.startActivity(intent);
+//                }
+//                return true;
+//            });
+
+
 
         } catch (Exception e) {
         }
@@ -120,8 +113,8 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
     @Override
     public int getItemCount() {
-        if (productsbysales != null) {
-            return productsbysales.size();
+        if (offerproducts != null) {
+            return offerproducts.size();
         } else
             return 0;
     }
@@ -130,7 +123,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
         public final View mView;
         private ImageView item_img;
-        TextView price, name;
+        TextView price, name,discount;
         RatingBar ratingBar;
 
         public ViewHolder(View view) {
@@ -140,6 +133,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
             name = view.findViewById(R.id.item_name);
             price = view.findViewById(R.id.price);
             ratingBar = view.findViewById(R.id.rates);
+            discount = mView.findViewById(R.id.discount);
         }
     }
 

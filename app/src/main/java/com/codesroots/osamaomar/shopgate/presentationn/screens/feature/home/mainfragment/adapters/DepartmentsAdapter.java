@@ -61,7 +61,8 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
         product_fragment.setArguments(bundle);
 
         if (categories.get(position).getSubcats().size()>0)
-        holder.mView.setOnClickListener(v -> ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+        holder.mView.setOnClickListener(v ->
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram, sucCates_fragment).addToBackStack(null).commit());
         else
         {

@@ -3,20 +3,24 @@ package com.codesroots.osamaomar.shopgate.entities;
 import java.util.List;
 
 public class ProductDetails {
+//    val cat: Int,
+//    val productdetails: List<Productdetail>,
+//    val related: List<Related>,
+//    val subcat: Int
 
     private List<ProductdetailsBean> productdetails;
     private List<Related> related;
-    private List<Related> product_colors;
-
-
     private int cat;
     private int subcat;
+
     public List<ProductdetailsBean> getProductdetails() {
         return productdetails;
     }
+
     public List<Related> getRelated() {
         return related;
     }
+
     public void setRelated (List <Related> related) {
         this.related = related;
     }
@@ -24,14 +28,15 @@ public class ProductDetails {
     public void setSubcat(int subcat) {
         this.subcat = subcat;
     }
-    public int subcat() {
+
+    public int getSubcat() {
         return subcat;
     }
-
 
     public void setCat(int cat) {
         this.cat = cat;
     }
+
     public int getCat() {
         return cat;
     }
@@ -42,8 +47,8 @@ public class ProductDetails {
     }
 
     public static class ProductdetailsBean {
-
         private int id;
+        private int subcat_id;
         private String name;
         private String name_en;
         private String img;
@@ -68,6 +73,14 @@ public class ProductDetails {
         public void setId(int id) {
             this.id = id;
         }
+
+        public int getSubcat_id() {
+            return subcat_id;
+        }
+        public void setSubcat_id(int subcat_id) {
+            this.subcat_id = subcat_id;
+        }
+
 
         public String getName() {
             return name;

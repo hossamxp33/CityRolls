@@ -64,7 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                     holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
                             dataBeans.get(position).getStart_price() )  + " " + context.getText(R.string.realcoin));
 
-              //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
+                //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
                 products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
                         getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
                                 dataBeans.get(position).getStart_price())));
@@ -89,12 +89,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                             dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount());
                     holder.rateCount.setText("(" + dataBeans.get(position).getProduct().getTotal_rating().get(0).getCount() + ")");
                 }
-                if (dataBeans.get(position).getProduct().getProductphotos()!=null) {
-                    if (dataBeans.get(position).getProduct().getProductphotos().size() > 0)
-                        Glide.with(context.getApplicationContext())
-                                .load(dataBeans.get(position).getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
-                                .into(holder.Image);
-                }
+            if (dataBeans.get(position).getProduct().getProductphotos()!=null) {
+                if (dataBeans.get(position).getProduct().getProductphotos().size() > 0)
+                    Glide.with(context.getApplicationContext())
+                            .load(dataBeans.get(position).getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
+                            .into(holder.Image);
+            }
         }
 
         catch (Exception e)
@@ -106,29 +106,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
             PreferenceHelper.removeItemFromCart(dataBeans.get(position).getId());
             //dataBeans.remove(position);
             cartFragment.onRemoveProduct(position, Integer.parseInt(holder.products_count.getText().toString()),1f);
-          //  notifyItemRemoved(position);
+            //  notifyItemRemoved(position);
         });
 
         holder.quintityPlus.setOnClickListener(v ->
+        {
+            if (Integer.valueOf(holder.products_count.getText().toString())+1 <= dataBeans.get(position).getAmount()) {
+                holder.products_count.setText(String.valueOf(Integer.valueOf(holder.products_count.getText().toString()) + 1));
+                products.get(position).setAmount( Integer.valueOf(holder.products_count.getText().toString()));
+                if (dataBeans.get(position).getProduct().getOffers().size()>0)
                 {
-                    if (Integer.valueOf(holder.products_count.getText().toString())+1 <= dataBeans.get(position).getAmount()) {
-                        holder.products_count.setText(String.valueOf(Integer.valueOf(holder.products_count.getText().toString()) + 1));
-                        products.get(position).setAmount( Integer.valueOf(holder.products_count.getText().toString()));
-                        if (dataBeans.get(position).getProduct().getOffers().size()>0)
-                        {
-                            products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                                    getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getStart_price())));
-                            products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
-                        }
-                        else
-                            products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                                    Float.valueOf(dataBeans.get(position).getStart_price())));
-                        cartFragment.onPlusProduct(position);
+                    products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getStart_price())));
+                    products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
+                }
+                else
+                    products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+                            Float.valueOf(dataBeans.get(position).getStart_price())));
+                cartFragment.onPlusProduct(position);
 
-                    }
-                    else
-                        Toast.makeText(context,context.getText(R.string.requestnotallow),Toast.LENGTH_SHORT).show();
-                });
+            }
+            else
+                Toast.makeText(context,context.getText(R.string.requestnotallow),Toast.LENGTH_SHORT).show();
+        });
 
         holder.quintityMinus.setOnClickListener(v -> {
             int newValue = Integer.valueOf(holder.products_count.getText().toString())-1;
@@ -142,8 +142,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                     products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
                 }
                 else
-                products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                        Float.valueOf(dataBeans.get(position).getStart_price())));
+                    products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
+                            Float.valueOf(dataBeans.get(position).getStart_price())));
                 cartFragment.onMinusProduct(position);
             }
         });

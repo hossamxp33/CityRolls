@@ -32,9 +32,9 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
 
     private Context context;
-    List<MainView.RandproductsBean> recommendesProducts;
+    List<MainView.Productsbysales> recommendesProducts;
 
-    public RecommendedProductsAdapter(Context context, List<MainView.RandproductsBean> productsbyrate) {
+    public RecommendedProductsAdapter(Context context, List<MainView.Productsbysales> productsbyrate) {
         this.context = context;
         this.recommendesProducts = productsbyrate;
     }
@@ -61,24 +61,14 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
             }
 
 
-//            if (PreferenceHelper.getCurrencyValue() > 0)
-//                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getProductsizes().get(0).getStart_price()) *
-//                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-//            else
-//                holder.price.setText(recommendesProducts.get(position).getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.coin));
-//
+            if (PreferenceHelper.getCurrencyValue() > 0)
+                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getStart_price()) *
+                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+            else
+                holder.price.setText(recommendesProducts.get(position).getStart_price() + " " + context.getText(R.string.coin));
 
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (recommendesProducts.get(position) != null)
-                    bundle.putInt(PRODUCT_ID, recommendesProducts.get(position).getId());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
+
+
             holder.mView.setOnClickListener(v ->
             {
                 Fragment fragment = new ProductDetailsFragment();
