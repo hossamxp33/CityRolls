@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-class OffersViewModel extends ViewModel {
+public class OffersViewModel extends ViewModel {
 
 
     public MutableLiveData<offers> offersMutableLiveData = new MutableLiveData<>();

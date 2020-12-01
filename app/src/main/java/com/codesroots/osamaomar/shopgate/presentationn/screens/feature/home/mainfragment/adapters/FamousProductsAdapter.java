@@ -59,7 +59,7 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
         if (PreferenceHelper.getCurrencyValue() > 0)
             holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(position).getStart_price()) *
                     PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-        else
+         else
             holder.price.setText(famousProduct.get(position).getProductsizes().get(position).getStart_price() + " " + context.getText(R.string.coin));
 
 
