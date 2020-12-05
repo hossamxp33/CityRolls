@@ -1,7 +1,7 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.myorders.productsinsideorder;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.codesroots.osamaomar.shopgate.domain.ServerGateway;
 import com.codesroots.osamaomar.shopgate.entities.Products;

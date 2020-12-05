@@ -153,7 +153,7 @@ public class MainView {
         }
 
         public void setNumber(int number) {
-            this.id = number;
+            this.number = number;
         }
 
         public int getId() {

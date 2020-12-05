@@ -1,8 +1,8 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
 
 import java.util.List;

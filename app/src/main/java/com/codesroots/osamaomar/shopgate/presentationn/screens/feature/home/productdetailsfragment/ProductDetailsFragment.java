@@ -1,20 +1,17 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -33,7 +30,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
 import com.codesroots.osamaomar.shopgate.entities.StoreSetting;
 import com.codesroots.osamaomar.shopgate.helper.AddorRemoveCallbacks;
@@ -41,28 +37,19 @@ import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.helper.kotlinusercase;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.FamousProductsAdapter;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.MoreSalesProductsAdapter;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.RecommendedProductsAdapter;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductImagesAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.ProductSizesAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.RelatedProductsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.adapters.SliderProductDetailsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.showimage.ImageActivity;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.stream.Collectors;
 
 import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 

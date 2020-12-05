@@ -45,7 +45,6 @@ public interface ServerGateway {
     @GET("Productsizes/productdetails/{product_id}/{user_id}.json")
     Observable<ProductDetails> getProductDetails(
 
-
             @Path("product_id") int product_id,
             @Path("user_id") int user_id
     );
@@ -140,6 +139,20 @@ public interface ServerGateway {
             @Path("type") String type,
             @Path("userid") int userid
     );
+
+
+///// Get Small store
+    @FormUrlEncoded
+    @POST("smallstores/getsmallstoredata/{id}/{type}")
+    Observable<MainView> GetSmallStore(
+            @Path("id") int id,
+            @Path("type") int type
+
+    );
+
+
+
+
 
     ////////////// get currency
     @GET("Currencies/currency.json")

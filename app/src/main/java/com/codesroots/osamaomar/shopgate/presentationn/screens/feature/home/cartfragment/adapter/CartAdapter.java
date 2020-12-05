@@ -2,8 +2,8 @@ package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.car
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +18,6 @@ import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.CartItems;
 import com.codesroots.osamaomar.shopgate.entities.OrderModel;
-import com.codesroots.osamaomar.shopgate.helper.AddorRemoveCallbacks;
-import com.codesroots.osamaomar.shopgate.helper.EditCallbacks;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.cartfragment.CartFragment;
 

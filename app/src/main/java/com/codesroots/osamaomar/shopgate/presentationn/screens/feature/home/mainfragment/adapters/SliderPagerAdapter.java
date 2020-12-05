@@ -1,8 +1,8 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

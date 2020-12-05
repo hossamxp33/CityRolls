@@ -1,6 +1,6 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.showimage
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.codesroots.osamaomar.shopgate.R

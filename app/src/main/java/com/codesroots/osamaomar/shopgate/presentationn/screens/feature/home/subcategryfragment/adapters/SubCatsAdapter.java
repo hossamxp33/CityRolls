@@ -2,10 +2,10 @@ package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.sub
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,6 @@ import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
 
 import java.util.List;
 
@@ -26,8 +25,8 @@ import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<SubCategriesWithProducts.ProductsbyrateBean> subcates;
-    public SubCatsAdapter(Context mcontext, List<SubCategriesWithProducts.ProductsbyrateBean> data) {
+    private List<SubCategriesWithProducts.DataBean> subcates;
+    public SubCatsAdapter(Context mcontext, List<SubCategriesWithProducts.DataBean> data) {
         context = mcontext;
         subcates = data;
     }
@@ -43,15 +42,15 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
-        holder.name.setText(subcates.get(position).getProduct().getName());
+        holder.name.setText(subcates.get(position).getName());
         if (ResourceUtil.getCurrentLanguage(context).matches("en"))
             holder.name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
 
         holder.itemView.setOnClickListener(v -> {
-            Fragment fragment = new smallStoreFramgent();
+            Fragment fragment = new ProductsFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(SUB_CAT_ID,subcates.get(position).getId());
-            bundle.putString(SUBCATES_NAME,subcates.get(position).getProduct().getName());
+            bundle.putString(SUBCATES_NAME,subcates.get(position).getName());
             bundle.putInt(CAT_TYPE,1);
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();

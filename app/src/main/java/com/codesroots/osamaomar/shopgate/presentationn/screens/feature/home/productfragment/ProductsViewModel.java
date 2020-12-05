@@ -1,15 +1,14 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import android.util.Log;
 
 import com.codesroots.osamaomar.shopgate.domain.ServerGateway;
-import com.codesroots.osamaomar.shopgate.entities.DefaultAdd;
 import com.codesroots.osamaomar.shopgate.entities.AddToFavModel;
 import com.codesroots.osamaomar.shopgate.entities.Products;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;

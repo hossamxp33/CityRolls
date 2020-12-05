@@ -1,9 +1,8 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.conditions;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.webkit.WebView;
 import android.widget.TextView;
 

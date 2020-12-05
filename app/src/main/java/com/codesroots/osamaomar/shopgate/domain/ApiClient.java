@@ -1,6 +1,6 @@
 package com.codesroots.osamaomar.shopgate.domain;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.codesroots.osamaomar.shopgate.helper.MyApplication;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;

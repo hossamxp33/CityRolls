@@ -1,9 +1,9 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment;
 
 import android.app.Application;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
 
 import com.codesroots.osamaomar.shopgate.domain.ApiClient;
 import com.codesroots.osamaomar.shopgate.domain.ServerGateway;

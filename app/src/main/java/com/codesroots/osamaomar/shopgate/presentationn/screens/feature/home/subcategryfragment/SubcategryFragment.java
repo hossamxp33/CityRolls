@@ -1,12 +1,12 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment;
 
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,29 +48,29 @@ public class SubcategryFragment extends Fragment {
         text = view.findViewById(R.id.text);
         catid = getArguments().getInt(CAT_ID,0);
         categry_name = getArguments().getString(CAT_NAME);
-   //     ((MainActivity)getActivity()).head_title.setText(categry_name);
+        ((MainActivity)getActivity()).head_title.setText(categry_name);
         ((MainActivity)getActivity()).logo.setVisibility(View.VISIBLE);
         mViewModel = ViewModelProviders.of(this,getViewModelFactory()).get(SubCatesViewModel.class);
 
         mViewModel.subCategriesWithProductsMutableLiveData.observe(this,subCategriesWithProducts ->
-                {
-                    text.setVisibility(View.VISIBLE);
-                    progress.setVisibility(View.GONE);
-                    subCates.setAdapter(new SubCatsAdapter(getActivity(),subCategriesWithProducts.getProductsbyrate()));
-                    if(subCategriesWithProducts.getProductsbyrate().size()>0) {
-                        moreSalesProductsAdapter = new MoreSalesProductsAdapter(getActivity(), subCategriesWithProducts.getProductsbyrate(), mViewModel);
-                        productsData = subCategriesWithProducts.getProductsbyrate();
-                        MoreSaleProducts.setAdapter(moreSalesProductsAdapter);
-                    }
-                    else
-                        product_notfound.setVisibility(View.VISIBLE);
-                });
+        {
+            text.setVisibility(View.VISIBLE);
+            progress.setVisibility(View.GONE);
+            subCates.setAdapter(new SubCatsAdapter(getActivity(),subCategriesWithProducts.getData()));
+            if(subCategriesWithProducts.getProductsbyrate().size()>0) {
+                moreSalesProductsAdapter = new MoreSalesProductsAdapter(getActivity(), subCategriesWithProducts.getProductsbyrate(), mViewModel);
+                productsData = subCategriesWithProducts.getProductsbyrate();
+                MoreSaleProducts.setAdapter(moreSalesProductsAdapter);
+            }
+            else
+                product_notfound.setVisibility(View.VISIBLE);
+        });
 
         mViewModel.throwableMutableLiveData.observe(this,throwable ->
-                {
-                    progress.setVisibility(View.GONE);
-                    Snackbar.make(view,throwable.toString(),Snackbar.LENGTH_SHORT).show();
-                });
+        {
+            progress.setVisibility(View.GONE);
+            Snackbar.make(view,throwable.toString(),Snackbar.LENGTH_SHORT).show();
+        });
 
         mViewModel.addToFavMutableLiveData.observe(this, addToFavModel -> {
             productsData.get(mViewModel.current_item).getProduct()

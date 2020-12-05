@@ -1,8 +1,8 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.country;
 
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +12,6 @@ import com.codesroots.osamaomar.shopgate.entities.Countries;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.splash.SplashActivity;
 
 import java.util.ArrayList;
 import java.util.List;

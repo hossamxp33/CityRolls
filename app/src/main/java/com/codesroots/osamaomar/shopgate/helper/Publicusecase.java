@@ -2,9 +2,9 @@ package com.codesroots.osamaomar.shopgate.helper;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.CircularProgressDrawable;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.viewpager.widget.ViewPager;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
