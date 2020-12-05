@@ -15,6 +15,7 @@ import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
             holder.name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
 
         holder.itemView.setOnClickListener(v -> {
-            Fragment fragment = new ProductsFragment();
+            Fragment fragment = new smallStoreFramgent();
             Bundle bundle = new Bundle();
             bundle.putInt(SUB_CAT_ID,subcates.get(position).getId());
             bundle.putString(SUBCATES_NAME,subcates.get(position).getProduct().getName());

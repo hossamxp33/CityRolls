@@ -19,6 +19,7 @@ import com.codesroots.osamaomar.shopgate.entities.MainView;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.SubcategryFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.showimage.ImageActivity;
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
         bundle.putInt(CAT_ID,categories.get(position).getId());
         bundle.putString(CAT_NAME,categories.get(position).getName());
         Fragment sucCates_fragment = new SubcategryFragment();
-        Fragment product_fragment = new ProductsFragment();
+        Fragment product_fragment = new smallStoreFramgent();
         sucCates_fragment.setArguments(bundle);
         product_fragment.setArguments(bundle);
 
