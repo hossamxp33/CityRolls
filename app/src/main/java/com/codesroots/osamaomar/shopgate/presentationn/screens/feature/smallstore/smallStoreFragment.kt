@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.codesroots.osamaomar.shopgate.R
 import com.codesroots.osamaomar.shopgate.entities.names.CAT_ID
 import com.codesroots.osamaomar.shopgate.entities.names.CAT_TYPE
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.adapter.smallStoreAdapter
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallstoreViewmodel.smallstoreViewmodel
+import kotlinx.android.synthetic.main.small_store_fragment.view.*
 
 class smallStoreFramgent : Fragment() {
 
@@ -33,12 +35,12 @@ class smallStoreFramgent : Fragment() {
        viewModel.GetAllData(catid,type);
 
      viewModel.SmallStoreResponseLD?.observe(this, androidx.lifecycle.Observer {
-          //  MainAdapter = activity?.let { it1 -> smallStoreAdapter(it1, it) }!!
-//            recylere.layoutManager = LinearLayoutManager(context);
-//            recylere.adapter = MainAdapter;
-//
-//
-//            MainAdapter.notifyDataSetChanged()
+           MainAdapter = activity?.let { it1 -> smallStoreAdapter(it1, it.data) }!!
+            view.smallStore.layoutManager = LinearLayoutManager(context);
+            view.smallStore.adapter = MainAdapter;
+
+
+            MainAdapter.notifyDataSetChanged()
 
      })
 

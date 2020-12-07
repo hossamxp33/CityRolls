@@ -31,14 +31,14 @@ public class ProductsViewModel extends ViewModel {
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
-    private int subcattegry_id, userid,type;
+    private int store_id, userid,type;
     private  Products resultData;
     public int current_item = 0;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     ProductsViewModel(ServerGateway serverGateway1, int id, int user_id,int type1) {
         serverGateway = serverGateway1;
-        subcattegry_id = id;
+        store_id = id;
         userid = user_id;
         type = type1;
         //getData();
@@ -84,7 +84,7 @@ public class ProductsViewModel extends ViewModel {
     //////////// get productsData
     @SuppressLint("CheckResult")
     private Observable<Products> getObservable() {
-        Observable<Products> productsObservable = serverGateway.getProducts(type,subcattegry_id,userid);
+        Observable<Products> productsObservable = serverGateway.getProducts(store_id,type,userid);
         productsObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return productsObservable;

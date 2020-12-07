@@ -3,7 +3,7 @@ package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallsto
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.codesroots.osamaomar.shopgate.dataLayer.Repo.DataRepo
-import com.codesroots.osamaomar.shopgate.entities.MainView
+import com.codesroots.osamaomar.shopgate.entities.StoreData
 import io.reactivex.disposables.CompositeDisposable
 
 class smallstoreViewmodel : ViewModel() {
@@ -11,7 +11,7 @@ class smallstoreViewmodel : ViewModel() {
     var DateRepoCompnay: DataRepo = DataRepo()
 
     var mCompositeDisposable = CompositeDisposable()
-    var SmallStoreResponseLD : MutableLiveData<MainView>? = null
+    var SmallStoreResponseLD : MutableLiveData<StoreData>? = null
     var errorLivedat: MutableLiveData<Throwable> = MutableLiveData()
     var loadingLivedat: MutableLiveData<Boolean> = MutableLiveData()
 

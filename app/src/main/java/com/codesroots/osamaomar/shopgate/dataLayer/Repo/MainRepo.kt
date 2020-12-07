@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.codesroots.osamaomar.shopgate.domain.ApiClient
 import com.codesroots.osamaomar.shopgate.domain.ServerGateway
 import com.codesroots.osamaomar.shopgate.entities.MainView
+import com.codesroots.osamaomar.shopgate.entities.StoreData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class  DataRepo {
     @SuppressLint("CheckResult")
 
-    fun GetSearchData(id:Int,type:Int,livedata: MutableLiveData<MainView>?) {
+    fun GetSearchData(id:Int,type:Int,livedata: MutableLiveData<StoreData>?) {
 
         getServergetway().GetSmallStore(id,type)
                 .subscribeOn(Schedulers.io())

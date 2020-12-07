@@ -87,7 +87,6 @@ public class offers {
             private int id;
             private String name;
             private String img;
-
             private String name_en;
             private String description;
             private String description_en;

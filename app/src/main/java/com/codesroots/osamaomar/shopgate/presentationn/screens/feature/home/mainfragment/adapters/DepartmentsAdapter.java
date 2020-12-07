@@ -65,7 +65,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
         else
         {
             bundle.putInt(CAT_TYPE,0);
-            bundle.putInt(SUB_CAT_ID,categories.get(position).getId());
+            bundle.putInt(CAT_ID,categories.get(position).getId());
             holder.mView.setOnClickListener(v -> ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                     replace(R.id.mainfram, product_fragment).addToBackStack(null).commit());
         }

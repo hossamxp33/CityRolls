@@ -8,14 +8,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.codesroots.osamaomar.shopgate.R
-import com.codesroots.osamaomar.shopgate.entities.MainView
+
+import com.codesroots.osamaomar.shopgate.datalayer.Repo.loudImage
+import com.codesroots.osamaomar.shopgate.entities.Data
+import com.codesroots.osamaomar.shopgate.entities.names.*
+import com.codesroots.osamaomar.shopgate.entities.offers
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment
 import kotlinx.android.synthetic.main.product_details_fragment.view.*
+import kotlinx.android.synthetic.main.small_store_adapter.view.*
 
 
-class smallStoreAdapter(activity: FragmentActivity, offers: List<MainView>) : RecyclerView.Adapter<smallStoreAdapter.CustomView>() {
+class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : RecyclerView.Adapter<smallStoreAdapter.CustomView>() {
 
     private val context: Context
-    private val offersData: List<MainView> = offers
+    private val StoresData: List<Data> = offers
 
     init {
         this.context = activity
@@ -27,30 +33,46 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<MainView>) : Re
 
     override fun onBindViewHolder(holder: CustomView, position: Int) {
 
-//        loudImage(context,holder.img,offersData[position].photo)
-//        holder.name.text=offersData[position].name
+        holder.name.text=StoresData[position].name
+
+        loudImage(context,holder.cover,StoresData[position].cover)
+
+        loudImage(context,holder.img,StoresData[position].logo)
+
+
+
+
 //        holder.price.text=offersData[position].price+" "+offersData[position].currency
 //        holder.viewsnum.text=offersData[position].totalviews.toString()
 //
-//        holder.mView.setOnClickListener {
-//            val f = OfferDetailsFragment()
-//            val args = Bundle()
-//            args.putSerializable("offerDetails",offersData[position])
-//            f.setArguments(args)
-//            (holder.itemView.context as FragmentActivity).supportFragmentManager?.beginTransaction()
-//                    ?.replace(R.id.fragment,f)?.addToBackStack(null)?.commit()
-//        }
+        holder.mView.setOnClickListener {
+            val f = ProductsFragment()
+            val args = Bundle()
+          //  f.arguments = args
+            args.putInt(STORE_ID, StoresData[position].id)
+            args.putInt(CAT_TYPE, 0)
+            args.putString("name" , StoresData[position].name)
+         //   args.putSerializable("offerDetails", offers.DataBean.ProductBean[position])
+          //  val      bundle.putInt(CAT_ID, categories.get(position).getId())
+
+            f.setArguments(args)
+            (holder.itemView.context as FragmentActivity).supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.mainfram,f)?.addToBackStack(null)?.commit()
+        }
     }
 
     override fun getItemCount(): Int {
-        return offersData.size
+        return StoresData.size
     }
 
     class CustomView (val mView: View) : RecyclerView.ViewHolder(mView) {
-//        val img = mView.exp_img
-//        val name = mView.description
+       val img = mView.item_img
+       val cover = mView.backgroundcover
+       val name = mView.store_name
 //        val price = mView.price
 //        val viewsnum = mView.viewsnum
 //        val discount = mView.discount
     }
 }
+
+

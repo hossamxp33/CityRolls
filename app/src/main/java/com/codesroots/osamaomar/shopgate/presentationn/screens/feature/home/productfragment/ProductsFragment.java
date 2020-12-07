@@ -26,6 +26,7 @@ import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.adapters.AllProductsAdapter;
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_TYPE;
+import static com.codesroots.osamaomar.shopgate.entities.names.STORE_ID;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUBCATES_NAME;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 
@@ -36,7 +37,7 @@ public class ProductsFragment extends Fragment {
     ListView filter_option;
     ImageView changeSpane, filter;
     boolean RecycleIsHorizental = true;
-    int subCategry, userID, type;
+    int store_id, userID, type;
     private Products productsData;
     private FrameLayout progress;
     private TextView notfound, subcates_name;
@@ -53,6 +54,7 @@ public class ProductsFragment extends Fragment {
 
         mViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(ProductsViewModel.class);
         name = getArguments().getString("name");
+
         if (name!=null)
             mViewModel.getSearchData(name);
         else
@@ -110,7 +112,7 @@ public class ProductsFragment extends Fragment {
         progress = view.findViewById(R.id.progress);
         notfound = view.findViewById(R.id.product_notfound);
         subcates_name = view.findViewById(R.id.subcates_name);
-        subCategry = getArguments().getInt(SUB_CAT_ID, 0);
+        store_id = getArguments().getInt(STORE_ID, 0);
         type = getArguments().getInt(CAT_TYPE, 0);
         title = getArguments().getString(SUBCATES_NAME);
         if (title != null) {
@@ -144,7 +146,7 @@ public class ProductsFragment extends Fragment {
     };
 
     private ProductsViewModelFactory getViewModelFactory() {
-        return new ProductsViewModelFactory(this.getActivity().getApplication(), subCategry, userID, type);
+        return new ProductsViewModelFactory(this.getActivity().getApplication(), store_id, userID, type);
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {

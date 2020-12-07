@@ -17,6 +17,7 @@ import com.codesroots.osamaomar.shopgate.entities.ProductRate;
 import com.codesroots.osamaomar.shopgate.entities.Products;
 import com.codesroots.osamaomar.shopgate.entities.Register;
 import com.codesroots.osamaomar.shopgate.entities.Sidemenu;
+import com.codesroots.osamaomar.shopgate.entities.StoreData;
 import com.codesroots.osamaomar.shopgate.entities.StoreSetting;
 import com.codesroots.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.codesroots.osamaomar.shopgate.entities.offers;
@@ -58,9 +59,9 @@ public interface ServerGateway {
 
 
 
-    @GET("products/getproductsbycatid/{subcat_id}/{type}/{user_id}.json")
+    @GET("products/getproductsbycatid/{store_id}/{type}/{user_id}.json")
     Observable<Products> getProducts(
-            @Path("subcat_id") int cat_id,
+            @Path("store_id") int id,
             @Path("type") int type,
             @Path("user_id") int user_id
     );
@@ -142,9 +143,9 @@ public interface ServerGateway {
 
 
 ///// Get Small store
-    @FormUrlEncoded
+
     @POST("smallstores/getsmallstoredata/{id}/{type}")
-    Observable<MainView> GetSmallStore(
+    Observable<StoreData> GetSmallStore(
             @Path("id") int id,
             @Path("type") int type
 

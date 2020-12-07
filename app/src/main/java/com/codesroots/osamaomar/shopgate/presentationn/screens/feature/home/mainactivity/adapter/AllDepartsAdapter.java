@@ -15,9 +15,11 @@ import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.Sidemenu;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
 
 import java.util.List;
 
+import static com.codesroots.osamaomar.shopgate.entities.names.CAT_ID;
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_TYPE;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUBCATES_NAME;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
@@ -58,11 +60,11 @@ public class AllDepartsAdapter extends RecyclerView.Adapter<AllDepartsAdapter.Vi
                 }
             }else {
                 Bundle bundle = new Bundle();
-                bundle.putInt(SUB_CAT_ID,categories.get(position).getId());
+                bundle.putInt(CAT_ID,categories.get(position).getId());
                 bundle.putString(SUBCATES_NAME,categories.get(position).getName());
                 bundle.putInt(CAT_TYPE,0);
 
-                Fragment fragment  = new ProductsFragment();
+                Fragment fragment  = new smallStoreFramgent();
                 fragment.setArguments(bundle);
                 ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
                 ((MainActivity)context).drawer.closeDrawer(GravityCompat.START);;
