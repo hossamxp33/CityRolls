@@ -6,6 +6,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="google_maps_key">AIzaSyD8z2lWzm896P2g8VhaBfrVam0JL1BaiW0</string>
     <string name="more_sale">الأكثر مبيعا في العناية بالشعر</string>
+    <string name="deliveryaddress">choice delivery place</string>
+    <string name="noaddressfound">No address found</string>
 
 
     <string name="app_name">Ajwad</string>

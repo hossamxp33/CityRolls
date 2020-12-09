@@ -9,7 +9,8 @@ public class OrderModel implements Serializable {
 
     @SerializedName("user_id")
     int user_id;
-
+    @SerializedName("billing_id")
+    String billing_id;
     @SerializedName("address")
     String address;
 
@@ -36,6 +37,13 @@ public class OrderModel implements Serializable {
         this.user_id = user_id;
     }
 
+    public String getBilling_id() {
+        return billing_id;
+    }
+
+    public void setBilling_id(String billing_id) {
+        this.billing_id = billing_id;
+    }
     public String getAddress() {
         return address;
     }
@@ -88,7 +96,7 @@ public class OrderModel implements Serializable {
         return orderdetails;
     }
 
-    public void setOrderdetails(List<productSize> orderdetails) {
+    public void  setOrderdetails(List<productSize> orderdetails) {
         this.orderdetails = orderdetails;
     }
 

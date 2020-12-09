@@ -3,11 +3,15 @@ package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.pro
 import android.annotation.SuppressLint;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import android.app.Activity;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.domain.ServerGateway;
 import com.codesroots.osamaomar.shopgate.entities.AddToFavModel;
 import com.codesroots.osamaomar.shopgate.entities.Products;
@@ -31,14 +35,14 @@ public class ProductsViewModel extends ViewModel {
     public MutableLiveData<Throwable> throwableMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<Throwable> throwablefav = new MutableLiveData<>();
     private ServerGateway serverGateway;
-    private int store_id, userid,type;
+    private int subcattegry_id, userid,type;
     private  Products resultData;
     public int current_item = 0;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     ProductsViewModel(ServerGateway serverGateway1, int id, int user_id,int type1) {
         serverGateway = serverGateway1;
-        store_id = id;
+        subcattegry_id = id;
         userid = user_id;
         type = type1;
         //getData();
@@ -84,7 +88,7 @@ public class ProductsViewModel extends ViewModel {
     //////////// get productsData
     @SuppressLint("CheckResult")
     private Observable<Products> getObservable() {
-        Observable<Products> productsObservable = serverGateway.getProducts(store_id,type,userid);
+        Observable<Products> productsObservable = serverGateway.getProducts(type,subcattegry_id,userid);
         productsObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return productsObservable;
@@ -113,10 +117,12 @@ public class ProductsViewModel extends ViewModel {
 
     public  void  compareLessprice ()
     {
-        Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
-            return Float.valueOf(o1.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o2.getProductsizes().get(0).getStart_price()));
-        });
-        productsMutableLiveData.postValue(resultData);
+
+            Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
+                return Float.valueOf(o1.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o2.getProductsizes().get(0).getStart_price()));
+            });
+            productsMutableLiveData.postValue(resultData);
+
     }
 
     public  void  compareMoreprice()

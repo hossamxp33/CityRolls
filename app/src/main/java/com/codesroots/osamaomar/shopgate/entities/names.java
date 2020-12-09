@@ -16,4 +16,5 @@ public class names {
     public static final String FULL_ADDRESS = "full_address";
     public static final String USER_LAT = "user_lat";
     public static final String USER_LANG = "user_lang";
+    public static final String BILLING_ID = "Billing_id";
 }

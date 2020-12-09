@@ -1,5 +1,6 @@
 package com.codesroots.osamaomar.shopgate.domain;
 
+import com.codesroots.osamaomar.shopgate.entities.AddLocation;
 import com.codesroots.osamaomar.shopgate.entities.Addmessage;
 import com.codesroots.osamaomar.shopgate.entities.ChatList;
 import com.codesroots.osamaomar.shopgate.entities.Countries;
@@ -20,6 +21,8 @@ import com.codesroots.osamaomar.shopgate.entities.Sidemenu;
 import com.codesroots.osamaomar.shopgate.entities.StoreData;
 import com.codesroots.osamaomar.shopgate.entities.StoreSetting;
 import com.codesroots.osamaomar.shopgate.entities.SubCategriesWithProducts;
+import com.codesroots.osamaomar.shopgate.entities.UserLocations;
+import com.codesroots.osamaomar.shopgate.entities.ViewLocation;
 import com.codesroots.osamaomar.shopgate.entities.offers;
 import java.util.ArrayList;
 import io.reactivex.Observable;
@@ -56,14 +59,49 @@ public interface ServerGateway {
             @Path("cat_id") int cat_id,
             @Path("user_id") int user_id
     );
+    ////////////////// Address Locations Page  ////////////////////
+    @GET("BillingAddress/index/{userid}.json")
+    Observable<UserLocations> retrieveUserLocations(
+            @Path("userid") int userid
+    );
+
+    @FormUrlEncoded
+    @POST("BillingAddress/add.json")
+    Observable<AddLocation> addBillingAddress(
+            @Field("customer_id") int user_id,
+            @Field("first_name") String first_name,
+            @Field("phone") String phone,
+            @Field("address") String address,
+            @Field("state_country") String state_country,
+            @Field("town_city") String town_city,
+            @Field("notes") String notes
+    );
 
 
+    @FormUrlEncoded
+    @POST("BillingAddress/edit/{locationid}.json")
+    Observable<AddLocation> editBillingAddress(
+            @Path("locationid") int locationid,
+            @Field("first_name") String first_name,
+            @Field("phone") String phone,
+            @Field("address") String address,
+            @Field("state_country") String state_country,
+            @Field("town_city") String town_city,
+            @Field("notes") String notes
+    );
 
-    @GET("products/getproductsbycatid/{store_id}/{type}/{user_id}.json")
+    @GET("BillingAddress/view/{billingid}.json")
+    Observable<ViewLocation> viewLocation(
+            @Path("billingid") int billingid
+    );
+    //////////////////////////////////////////////////////////////////////////////
+
+    /////////////// Get Product By Cat ID
+    @GET("products/getproductsbycatid/{subcat_id}/{user_id}/1.json")
     Observable<Products> getProducts(
-            @Path("store_id") int id,
-            @Path("type") int type,
-            @Path("user_id") int user_id
+            @Path("subcat_id") int id,
+            @Path("user_id") int user_id,
+            @Path("user_id") int pager
     );
 
 

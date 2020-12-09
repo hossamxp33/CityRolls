@@ -11,7 +11,8 @@ import com.codesroots.osamaomar.shopgate.R
 
 import com.codesroots.osamaomar.shopgate.datalayer.Repo.loudImage
 import com.codesroots.osamaomar.shopgate.entities.Data
-import com.codesroots.osamaomar.shopgate.entities.names.*
+import com.codesroots.osamaomar.shopgate.entities.names.CAT_ID
+import com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID
 import com.codesroots.osamaomar.shopgate.entities.offers
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment
 import kotlinx.android.synthetic.main.product_details_fragment.view.*
@@ -49,9 +50,8 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
             val f = ProductsFragment()
             val args = Bundle()
           //  f.arguments = args
-            args.putInt(STORE_ID, StoresData[position].id)
-            args.putInt(CAT_TYPE, 0)
-            args.putString("name" , StoresData[position].name)
+            args.putInt(SUB_CAT_ID, StoresData[position].id)
+
          //   args.putSerializable("offerDetails", offers.DataBean.ProductBean[position])
           //  val      bundle.putInt(CAT_ID, categories.get(position).getId())
 
@@ -67,8 +67,9 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
 
     class CustomView (val mView: View) : RecyclerView.ViewHolder(mView) {
        val img = mView.item_img
-       val cover = mView.backgroundcover
-       val name = mView.store_name
+        val cover = mView.backgroundcover
+
+         val name = mView.store_name
 //        val price = mView.price
 //        val viewsnum = mView.viewsnum
 //        val discount = mView.discount
