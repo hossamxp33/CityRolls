@@ -56,10 +56,10 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                         .into(holder.item_img);
         }
         if (PreferenceHelper.getCurrencyValue() > 0)
-            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(position).getStart_price()) *
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(position).getCurrent_price()) *
                     PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
          else
-            holder.price.setText(famousProduct.get(position).getProductsizes().get(position).getStart_price() + " " + context.getText(R.string.coin));
+            holder.price.setText(famousProduct.get(position).getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->

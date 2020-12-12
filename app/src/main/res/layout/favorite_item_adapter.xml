@@ -98,11 +98,11 @@
         android:id="@+id/rate_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="(0)"
-        android:layout_marginTop="10dp"
-        android:textSize="12sp"
         android:textColor="@color/black"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/rates"
         app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
@@ -111,6 +111,8 @@
         android:id="@+id/item_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="2"

@@ -1,5 +1,6 @@
 package com.codesroots.osamaomar.shopgate.helper
 
+import com.codesroots.osamaomar.shopgate.entities.ProductColor
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails
 
 public class kotlinusercase {
@@ -10,4 +11,10 @@ public class kotlinusercase {
 
 
     }
+    fun makestringarrayForColor(list: List<ProductColor>) : List<String> {
+        return  list.map { e -> e.color }
+
+
+    }
+
 }

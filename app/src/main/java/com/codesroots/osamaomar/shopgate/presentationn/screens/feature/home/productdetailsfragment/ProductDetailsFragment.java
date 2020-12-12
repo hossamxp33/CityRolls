@@ -58,7 +58,7 @@ public class ProductDetailsFragment extends Fragment {
     CirclePageIndicator indicator;
 ConstraintLayout product_view;
     ViewPager slider;
-    Spinner spinner;
+    Spinner spinner ,color_spinner;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private ProductDetailsViewModel mViewModel;
@@ -216,6 +216,7 @@ share.setOnClickListener(v -> {
         loading = view.findViewById(R.id.progress);
          product_name = view.findViewById(R.id.product_name);
          spinner = view.findViewById(R.id.planets_spinner);
+         color_spinner = view.findViewById(R.id.color_spinner);
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
         ratecount = view.findViewById(R.id.rate_count);
@@ -263,7 +264,6 @@ share.setOnClickListener(v -> {
         }
             ////////////////////////// Spinner /////////////////////////////////
         List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
-
       //  String values = productdetailsBean.getProductsizes().get(0).getSize();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -285,6 +285,28 @@ share.setOnClickListener(v -> {
             }
         });
 
+       ///////////////////////// COLOR SPINNER /////////////////
+        ////////////////////////// Spinner /////////////////////////////////
+        List colorvalues = new kotlinusercase().makestringarrayForColor(productdetailsBean.getProductcolor());
+        //  String values = productdetailsBean.getProductsizes().get(0).getSize();
+        ArrayAdapter<String> Coloradapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,colorvalues);
+        Coloradapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        color_spinner.setAdapter(Coloradapter);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        color_spinner.setAdapter(Coloradapter);
+        adapter.notifyDataSetChanged();
+        color_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                sizeid = productdetailsBean.getProductsizes().get(position).getId();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
 
 

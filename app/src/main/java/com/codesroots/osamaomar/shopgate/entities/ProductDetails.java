@@ -59,7 +59,8 @@ public class ProductDetails {
         private List<ProductphotosBean> productphotos;
         private List<OffersBean> offers;
         private List<FavouritesBean> favourites;
-
+        private List<ProductColor> product_colors;
+//val product_colors: List<ProductColor>,
         public int getId() {
             return id;
         }
@@ -121,7 +122,13 @@ public class ProductDetails {
         public void setProductsizes(List<ProductsizesBean> productsizes) {
             this.productsizes = productsizes;
         }
+        public List<ProductColor> getProductcolor() {
+            return product_colors;
+        }
 
+        public void setProduct_colors(List<ProductColor> product_colors) {
+            this.product_colors = product_colors;
+        }
         public List<TotalRatingBean> getTotal_rating() {
             return total_rating;
         }

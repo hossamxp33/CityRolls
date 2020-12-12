@@ -62,16 +62,16 @@
         android:id="@+id/discount"
         android:layout_width="73dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@color/red"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
         android:text="25 % خصم "
-        app:layout_constraintBottom_toBottomOf="@+id/item_img"
         android:textColor="@color/white"
         android:textSize="14dp"
-        android:layout_marginStart="5dp"
-        android:background="@color/red"
         app:layout_constraintStart_toStartOf="@id/item_img"
+        app:layout_constraintTop_toTopOf="@+id/item_img"
         app:layout_constraintWidth_percent="0.3" />
 
     <TextView
