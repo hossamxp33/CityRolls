@@ -24,6 +24,7 @@ public class MyOrders {
          * order_status : 1
          * user_id : 5
          * type : paypal
+         *     val orderdetails: List<Orderdetail>,
          * orderdetails : [{"id":1,"productsize_id":2,"order_id":1,"productsize":{"id":2,"product_id":30,"product":{"id":30,"name":"zzzz","name_en":"salt","productphotos":[{"id":1,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd1.jpg"},{"id":2,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd2.jpg"}]}},"totalproducts":[]},{"id":3,"productsize_id":3,"order_id":1,"productsize":{"id":3,"product_id":31,"product":{"id":31,"name":"zzzz","name_en":"salt","productphotos":[{"id":3,"product_id":31,"photo":"http://shopgate.codesroots.com/library/attachment/pd3.jpg"},{"id":20,"product_id":31,"photo":"http://shopgate.codesroots.com/library/attachment/pd20.jpg"}]}},"totalproducts":[]}]
          */
 
@@ -35,6 +36,7 @@ public class MyOrders {
         private int statues;
         private String type;
         private String type_en;
+        private List<OrderdetailsBean> orderdetails;
 
         public int getStatues() {
             return statues;
@@ -52,7 +54,7 @@ public class MyOrders {
             this.type_en = type_en;
         }
 
-        private List<OrderdetailsBean> orderdetails;
+
 
         public int getId() {
             return id;
@@ -117,14 +119,18 @@ public class MyOrders {
              * order_id : 1
              * productsize : {"id":2,"product_id":30,"product":{"id":30,"name":"zzzz","name_en":"salt","productphotos":[{"id":1,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd1.jpg"},{"id":2,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd2.jpg"}]}}
              * totalproducts : []
+             *   "total": "20.0",
+             *    "productcolor_id": 0,
              */
 
             private int id;
             private int productsize_id;
+            private int  productcolor_id;
             private int order_id;
+            private int amount;
             private ProductsizeBean productsize;
-            private List<?> totalproducts;
-
+            private String total;
+//
             public int getId() {
                 return id;
             }
@@ -133,6 +139,13 @@ public class MyOrders {
                 this.id = id;
             }
 
+            public int getAmount() {
+                return amount;
+            }
+
+            public void setAmount(int amount) {
+                this.amount = amount;
+            }
             public int getProductsize_id() {
                 return productsize_id;
             }
@@ -140,7 +153,13 @@ public class MyOrders {
             public void setProductsize_id(int productsize_id) {
                 this.productsize_id = productsize_id;
             }
+            public int getProductcolor_id() {
+                return productcolor_id;
+            }
 
+            public void setProductcolor_id(int productcolor_id) {
+                this.productcolor_id = productcolor_id;
+            }
             public int getOrder_id() {
                 return order_id;
             }
@@ -157,12 +176,12 @@ public class MyOrders {
                 this.productsize = productsize;
             }
 
-            public List<?> getTotalproducts() {
-                return totalproducts;
+            public String getTotal() {
+                return total;
             }
 
-            public void setTotalproducts(List<?> totalproducts) {
-                this.totalproducts = totalproducts;
+            public void setTotal(String total) {
+                this.total = total;
             }
 
             public static class ProductsizeBean {
@@ -175,6 +194,10 @@ public class MyOrders {
                 private int id;
                 private int product_id;
                 private int amount;
+                private float start_price;
+                private float current_price;
+                private ProductBean product;
+
 
                 public int getAmount() {
                     return amount;
@@ -192,9 +215,14 @@ public class MyOrders {
                     this.start_price = start_price;
                 }
 
-                private float start_price;
-                private ProductBean product;
 
+                public float getCurrent_price() {
+                    return current_price;
+                }
+
+                public void setCurrent_price(float current_price) {
+                    this.current_price = current_price;
+                }
                 public int getId() {
                     return id;
                 }

@@ -70,7 +70,7 @@
     <string name="offers">Offers</string>
     <string name="order_date">Order Date</string>
     <string name="order_details">Order Details</string>
-    <string name="order_num">Order Date :</string>
+    <string name="order_num">Order Id :</string>
     <string name="password">Password</string>
     <string name="payment_way">"Payment : "</string>
     <string name="payoptions">Payment Options</string>
@@ -121,7 +121,14 @@
     <string name="youlogout">You Are Logout</string>
     <string name="product_name">Product name</string>
     <string name="related">Related Products</string>
-
+    <string name="newaddress">Add new address</string>
+    <string name="editaddress"> edit address </string>
+    <string name="save">save</string>
+    <string name="choicecountry">  choice your country </string>
+    <string name="choicecity">choice your city/state/region</string>
+    <string name="choicename">choice your name</string>
+    <string name="choicephone">choice your phone</string>
+    <string name="addlocation">choice Street address, post office, apartment, suite, unit</string>
 
     <string name="popular_products">Popular products</string>
     <string name="error">Error</string>

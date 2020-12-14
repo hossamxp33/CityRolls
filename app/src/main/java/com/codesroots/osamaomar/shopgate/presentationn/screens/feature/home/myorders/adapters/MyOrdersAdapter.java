@@ -51,16 +51,25 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         try {
-            if (PreferenceHelper.getCurrencyValue()>0)
-                holder.orderdate.setText(String.valueOf(Float.valueOf(orderdata.get(position).getPrice())
-                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
-            else
-                holder.orderPrice.setText(orderdata.get(position).getPrice());
+            Glide.with(context).load(orderdata.get(position).getOrderdetails().
+                    get(0).getProductsize().getProduct().getImg()).
+                    dontAnimate().placeholder(R.drawable.product).into(holder.Image);
+        } catch (Exception e) {
+        }
 
+
+        try {
+            if (PreferenceHelper.getCurrencyValue()>0)
+                holder.orderPrice.setText(String.valueOf(Float.valueOf(orderdata.get(position).getPrice())
+                        *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
+
+            else
+
+            holder.orderPrice.setText(orderdata.get(position).getPrice());
             holder.orderdate.setText(getdate(orderdata.get(position).getCreated()));
             holder.ordernum.setText(String.valueOf(orderdata.get(position).getId()));
             holder.payment.setText(orderdata.get(position).getType());
-            holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().size()) +" "+ context.getText(R.string.num));
+            holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(0).getAmount()) +" "+ context.getText(R.string.num));
             holder.productname.setText(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getName());
 
@@ -89,9 +98,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
                 holder.statues3.setBackgroundResource(R.drawable.selected_progress);
                 holder.statues4.setBackgroundResource(R.drawable.selected_progress);
             }
-            Glide.with(context).load(orderdata.get(position).getOrderdetails().
-                    get(0).getProductsize().getProduct().getImg()).
-                    dontAnimate().placeholder(R.drawable.product).into(holder.Image);
+
 
         } catch (Exception e) {
         }

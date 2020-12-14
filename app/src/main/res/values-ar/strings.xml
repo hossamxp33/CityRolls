@@ -11,7 +11,13 @@
     <string name="related">منتجات ذات صلة</string>
     <string name="deliveryaddress">أختر مكان التوصيل</string>
     <string name="noaddressfound">لا يوجد عناوين لديك</string>
-
+    <string name="newaddress">اضافة عنوان جديد</string>
+    <string name="editaddress">تعديل عنوانك </string>
+    <string name="save">حفظ</string>
+    <string name="choicename">اختر الاسم</string>
+    <string name="choicephone">اختر الهاتف</string>
+    <string name="choicecity">اختر المدينة/الولاية/المنطقة</string>
+    <string name="choicecountry"> اختر الدولة </string>
     <string name="action_settings">Settings</string>
     <string name="searchabout">ابحث بالمنتجات</string>
     <string name="choice_depart">أختر حسب القسم</string>
@@ -22,6 +28,8 @@
     <string name="more_sale">الأكثر مبيعا في العناية بالشعر</string>
     <string name="cart">سلة التسوق</string>
     <string name="product_des">وصف المنتج</string>
+    <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
+
     <string name="choice_size">اختر الحجم</string>
     <string name="coin"> ر.ع </string>
     <string name="remendier">  متوفر  </string>

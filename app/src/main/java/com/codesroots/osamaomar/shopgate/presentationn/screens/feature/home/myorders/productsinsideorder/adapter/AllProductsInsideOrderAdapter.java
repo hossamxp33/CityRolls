@@ -64,6 +64,8 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
                     .load(orderdetailsBeans.get(position).getProductsize().getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
                     .into(holder.Image);
             holder.name.setText(orderdetailsBeans.get(position).getProductsize().getProduct().getName());
+             holder.price.setText(orderdetailsBeans.get(position).getTotal()+" "+context.getText(R.string.realcoin));
+
 
 
         if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating()!=null)
@@ -76,8 +78,6 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
 
         holder.amount.setText(context.getText(R.string.remendier)+" "+
                 String.valueOf(orderdetailsBeans.get(position).getProductsize().getAmount())+" "+context.getText(R.string.num));
-
-       holder.price.setText(orderdetailsBeans.get(position).getProductsize().getStart_price()+" "+context.getText(R.string.realcoin));
 
 
     }

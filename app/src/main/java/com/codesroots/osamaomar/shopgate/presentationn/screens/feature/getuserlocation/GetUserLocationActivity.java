@@ -72,7 +72,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_user_location);
-       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Make to run your application only in portrait mode
+        // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Make to run your application only in portrait mode
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getLocationPermission();
         search = findViewById(R.id.search);
@@ -231,7 +231,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
                 Snackbar.make(findViewById(R.id.usermap), getText(R.string.adddetailsaddress), Snackbar.LENGTH_LONG).show();
         }
         else
-        Snackbar.make(findViewById(R.id.usermap), getText(R.string.noaddress), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.usermap), getText(R.string.noaddress), Snackbar.LENGTH_LONG).show();
 
     }
 }
