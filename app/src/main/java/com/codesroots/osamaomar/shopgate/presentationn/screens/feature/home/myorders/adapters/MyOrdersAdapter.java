@@ -54,7 +54,11 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             Glide.with(context).load(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getImg()).
                     dontAnimate().placeholder(R.drawable.product).into(holder.Image);
-        } catch (Exception e) {
+            holder.color.setText(orderdata.get(position).getOrderdetails().get(position).getProduct_color().getColor());
+
+        }
+
+        catch (Exception e) {
         }
 
 
@@ -69,7 +73,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             holder.orderdate.setText(getdate(orderdata.get(position).getCreated()));
             holder.ordernum.setText(String.valueOf(orderdata.get(position).getId()));
             holder.payment.setText(orderdata.get(position).getType());
-            holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(0).getAmount()) +" "+ context.getText(R.string.num));
+            holder.productCount.setText(String.valueOf(orderdata.get(position).getOrderdetails().get(position).getAmount()) +" "+ context.getText(R.string.num));
             holder.productname.setText(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getName());
 
@@ -124,13 +128,12 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
 
         final View mView;
         private ImageView Image;
-        private TextView statues1, statues2, statues3,statues4, orderPrice, productCount, orderdate, ordernum, productname, ratecount, gotodetails, payment;
+        private TextView color, statues2, statues3,statues4, orderPrice, productCount, orderdate, ordernum, productname, ratecount, gotodetails, payment;
         private RatingBar ratingBar;
         ViewHolder(View view) {
             super(view);
             mView = view;
             Image = mView.findViewById(R.id.item_img);
-            statues1 = mView.findViewById(R.id.progress1);
             statues2 = mView.findViewById(R.id.progress2);
             statues3 = mView.findViewById(R.id.progress3);
             statues4 = mView.findViewById(R.id.progress4);
@@ -142,6 +145,8 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             productname = mView.findViewById(R.id.item_name);
             ratecount = mView.findViewById(R.id.rate_count);
             ratingBar = mView.findViewById(R.id.rates);
+            color = mView.findViewById(R.id.product_color_text);
+
             gotodetails = mView.findViewById(R.id.gotodetails);
         }
     }

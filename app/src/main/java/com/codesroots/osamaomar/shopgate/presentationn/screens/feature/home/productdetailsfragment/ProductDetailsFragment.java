@@ -312,6 +312,7 @@ share.setOnClickListener(v -> {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         description.setMovementMethod(new ScrollingMovementMethod());
+
         description.setText(Html.fromHtml(productdetailsBean.getDescription(),Html.FROM_HTML_MODE_COMPACT));
         }
 

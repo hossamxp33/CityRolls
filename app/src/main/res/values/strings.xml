@@ -70,6 +70,7 @@
     <string name="offers">Offers</string>
     <string name="order_date">Order Date</string>
     <string name="order_details">Order Details</string>
+
     <string name="order_num">Order Id :</string>
     <string name="password">Password</string>
     <string name="payment_way">"Payment : "</string>
@@ -155,6 +156,7 @@
     <string name="available">available</string>
     <string name="piece">piece</string>
     <string name="color">Chose color</string>
+    <string name="product_color">Product color</string>
 
     <string name="condition" translatable="false">
 نتمنى من جميع زبائننا الكرام الاطلاع على هذه الاتفاقية لتوضيح طرق الدفع والشحن ونحوها وهي كالآتي:

@@ -1,7 +1,7 @@
 package com.codesroots.osamaomar.shopgate.entities
 
 data class Data(
-    val address: Any,
+    val address: String,
     val alternative_phone: String,
     val bank_accounts: String,
     val birthdate: String,

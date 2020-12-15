@@ -56,6 +56,8 @@
     <string name="deliveried">تم استلامها</string>
     <string name="order_date">   تاريخ الطلب : </string>
     <string name="order_num">  رقم الطلب : </string>
+    <string name="product_color"> لون المنتج</string>
+
     <string name="total">  المجموع :  </string>
     <string name="order_details">تفاصيل الطلب</string>
     <string name="product_num">  عدد المنتجات : </string>

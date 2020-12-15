@@ -129,6 +129,9 @@ public class MyOrders {
             private int order_id;
             private int amount;
             private ProductsizeBean productsize;
+            private ProductColor product_color;
+
+
             private String total;
 //
             public int getId() {
@@ -174,6 +177,9 @@ public class MyOrders {
 
             public void setProductsize(ProductsizeBean productsize) {
                 this.productsize = productsize;
+            }
+            public ProductColor getProduct_color() {
+                return product_color;
             }
 
             public String getTotal() {
@@ -388,6 +394,47 @@ public class MyOrders {
                             this.photo = photo;
                         }
                     }
+                }
+            }
+
+            public static class ProductColor{
+/*
+ *          "id": 12,
+ *                         "product_id": 308,
+ *                         "color": "احمر",
+ *                         "created": "2020-12-13T18:23:30+0200"
+ */
+                private int id;
+                private int product_id;
+                private String color;
+                private String created;
+
+                public int getId() { return id; }
+                public void setId(int id) { this.id = id; }
+
+
+                public int getProduct_id() {
+                    return product_id;
+                }
+
+                public void setProduct_id(int product_id) {
+                    this.product_id = product_id;
+                }
+
+                public String getColor() {
+                    return color;
+                }
+
+                public void setColor(String color) {
+                    this.color = color;
+                }
+
+                public String getCreated() {
+                    return created;
+                }
+
+                public void setCreated(String created) {
+                    this.created = created;
                 }
             }
         }

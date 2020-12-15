@@ -35,6 +35,7 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
     override fun onBindViewHolder(holder: CustomView, position: Int) {
 
         holder.name.text=StoresData[position].name
+        holder.address.text=StoresData[position].address
 
         loudImage(context,holder.cover,StoresData[position].cover)
 
@@ -42,6 +43,7 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
 
 
 
+      //  holder.address.text=StoresData[position].address.toString()
 
 //        holder.price.text=offersData[position].price+" "+offersData[position].currency
 //        holder.viewsnum.text=offersData[position].totalviews.toString()
@@ -72,7 +74,7 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
          val name = mView.store_name
 //        val price = mView.price
 //        val viewsnum = mView.viewsnum
-//        val discount = mView.discount
+        val address = mView.store_adress
     }
 }
 
