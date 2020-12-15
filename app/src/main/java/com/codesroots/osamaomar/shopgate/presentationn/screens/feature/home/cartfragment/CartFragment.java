@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static com.codesroots.osamaomar.shopgate.entities.names.AddressDetails;
 import static com.codesroots.osamaomar.shopgate.entities.names.FULL_ADDRESS;
 import static com.codesroots.osamaomar.shopgate.entities.names.ORDER;
 import static com.codesroots.osamaomar.shopgate.entities.names.USER_LANG;
@@ -74,8 +75,9 @@ public class CartFragment extends Fragment implements EditCallbacks {
                 cartAdapter = new CartAdapter(getActivity(), products,this);
                 cartsRecycle.setAdapter(cartAdapter);
                 tot_price = 0;
+
                 for (int i = 0; i < products.size(); i++)
-                    tot_price += products.get(i).getStart_price();
+                    tot_price += products.get(i).getCurrent_price();
                 totalvalue.setText(new DecimalFormat("##.##").format(tot_price)+" "+getString(R.string.coin));
                 alltotalvalue.setText(new DecimalFormat("##.##").format(tot_price+chargrvalue)+" "+getString(R.string.coin));
             }
@@ -112,6 +114,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
                    orderModel.setAddress( data.getExtras().getString(FULL_ADDRESS));
                    orderModel.setUser_lat( data.getExtras().getString(USER_LAT));
                    orderModel.setUser_long( data.getExtras().getString(USER_LANG));
+                   orderModel.setNotes(data.getExtras().getString(AddressDetails));
                    bundle.putSerializable(ORDER,orderModel);
                   fragment.setArguments(bundle);
                   getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
@@ -142,7 +145,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         for (int i = 0; i < products.size(); i++)
         {
             if (i==index)
-                tot_price += products.get(i).getStart_price();
+                tot_price += products.get(i).getCurrent_price();
         }
         totalvalue.setText(new DecimalFormat("##.##").format(tot_price)+" "+getString(R.string.coin));
 
@@ -155,7 +158,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         for (int i = 0; i < products.size(); i++)
         {
             if (i==index)
-                tot_price -= products.get(i).getStart_price()*count;
+                tot_price -= products.get(i).getCurrent_price()*count;
         }
         products.remove(index);
         cartAdapter.notifyDataSetChanged();
@@ -169,7 +172,7 @@ public class CartFragment extends Fragment implements EditCallbacks {
         for (int i = 0; i < products.size(); i++)
         {
             if (i==index)
-                tot_price -= products.get(i).getStart_price();
+                tot_price -= products.get(i).getCurrent_price();
         }
         totalvalue.setText(new DecimalFormat("##.##").format(tot_price)+" "+getString(R.string.coin));
         checkDeliveryPrice(tot_price);

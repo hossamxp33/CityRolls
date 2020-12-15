@@ -25,12 +25,16 @@ public class PreferenceHelper {
     private static final String COUNTRY_ID = "COUNTRY_ID";
     private final static String USER_NAME = "USERNAME";
     private final static String CART_ARRAY = "CART_ARRAY";
+    private final static String Color_ARRAY = "Color_ARRAY";
+
     private final static String Doller_value = "Doller_value";
     private final static String IN_OMAN = "IN_OMAN";
     private final static String OUT_OMAN = "OUT_OMAN";
     private final static String MIN_CHIPPING = "MIN_CHIPPING";
 
     private final static  ArrayList arrPackage = new ArrayList<>();
+    private final static  ArrayList ColorPackage = new ArrayList<>();
+
     private Context context;
 
     public PreferenceHelper(Context context) {
@@ -143,7 +147,26 @@ public class PreferenceHelper {
         return app_prefs.getString(CURRENCY, null);
     }
 
-
+    public static void addColorstoCart(int product_id)
+    {
+        Set<String> set ;
+        set = app_prefs.getStringSet(Color_ARRAY, null);
+        if (set==null)
+            set = new HashSet<String>();
+        set.add(String.valueOf(product_id));
+        Editor editor = app_prefs.edit();
+        editor.putStringSet(Color_ARRAY, set);
+        editor.apply();
+    }
+    public static ArrayList GETColorstoCart()
+    {
+        Set<String> set = app_prefs.getStringSet(Color_ARRAY, null);
+        if (set == null)
+            return null;
+        else
+            ColorPackage.addAll(set);
+        return ColorPackage;
+    }
 
 
     public static void addItemtoCart(int product_id)
@@ -186,12 +209,13 @@ public class PreferenceHelper {
 
     public static  void clearCart()
     {
-        Set<String> set = app_prefs.getStringSet(CART_ARRAY, null);
-        set.clear();
-        arrPackage.clear();
-        Editor editor = app_prefs.edit();
-        editor.putStringSet(CART_ARRAY, set);
+        SharedPreferences.Editor editor = app_prefs.edit();
+        editor.remove(CART_ARRAY);
+        editor.remove(Color_ARRAY);
+
+        editor.commit();
         editor.apply();
+
     }
 
     public static int getUSER_GROUP_ID() {

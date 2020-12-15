@@ -27,7 +27,8 @@ public class CartItems {
         private int id;
         private int amount;
         private int product_id;
-        private int start_price;
+        private int current_price;
+
         private ProductBean product;
 
         public int getId() {
@@ -54,12 +55,12 @@ public class CartItems {
             this.product_id = product_id;
         }
 
-        public float getStart_price() {
-            return start_price;
+        public float getCurrent_price() {
+            return current_price;
         }
 
-        public void setStart_price(int start_price) {
-            this.start_price = start_price;
+        public void setCurrent_price(int start_price) {
+            this.current_price = start_price;
         }
 
         public ProductBean getProduct() {

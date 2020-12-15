@@ -64,7 +64,7 @@ ConstraintLayout product_view;
     private ProductDetailsViewModel mViewModel;
     RecyclerView images_rec, sizes_rec,recommended_products;
     private int productid;
-    private int sizeid;
+    private int sizeid,colorid;
 
     FrameLayout loading;
     public TextView product_name, description, price, ratecount, amount, addtocart, charege, oldprice;
@@ -77,6 +77,8 @@ ConstraintLayout product_view;
     ImageView addToFav;
     Button share;
     boolean productfav;
+    public float priceafteroffer = 0;
+
     ProductDetails.ProductdetailsBean productdetails;
     public StoreSetting setting;
     public boolean freecharg = false;
@@ -145,14 +147,18 @@ share.setOnClickListener(v -> {
         addtocart.setOnClickListener(v -> {
             if (userid > 0) {
                 if (PreferenceHelper.retriveCartItemsValue() != null) {
-                    if (!PreferenceHelper.retriveCartItemsValue().contains(String.valueOf(productdetails.getProductsizes().get(0).getId()))) {
-                        PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(0).getId());
+                    if (!PreferenceHelper.retriveCartItemsValue().contains(sizeid)) {
+                        PreferenceHelper.addItemtoCart(sizeid);
+                        PreferenceHelper.addColorstoCart(colorid);
+
                         ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                         Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
                     } else
                         Toast.makeText(getActivity(), getActivity().getText(R.string.aleady_exists), Toast.LENGTH_SHORT).show();
                 } else {
-                    PreferenceHelper.addItemtoCart(productdetails.getProductsizes().get(0).getId());
+                    PreferenceHelper.addItemtoCart(sizeid);
+                    PreferenceHelper.addColorstoCart(colorid);
+
                     ((AddorRemoveCallbacks) getActivity()).onAddProduct();
                     Toast.makeText(getActivity(), getActivity().getText(R.string.addtocartsuccess), Toast.LENGTH_SHORT).show();
                 }
@@ -215,8 +221,7 @@ share.setOnClickListener(v -> {
       //  sizes_rec = view.findViewById(R.id.sizes);
         loading = view.findViewById(R.id.progress);
          product_name = view.findViewById(R.id.product_name);
-         spinner = view.findViewById(R.id.planets_spinner);
-         color_spinner = view.findViewById(R.id.color_spinner);
+
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
         ratecount = view.findViewById(R.id.rate_count);
@@ -225,7 +230,7 @@ share.setOnClickListener(v -> {
         addToFav = view.findViewById(R.id.fav);
         amount = view.findViewById(R.id.amount);
         addtocart = view.findViewById(R.id.addtocart);
-        charege = view.findViewById(R.id.charge);
+     //   charege = view.findViewById(R.id.charge);
         share = view.findViewById(R.id.share_button);
         product_view = view.findViewById(R.id.product_view);
      //   oldprice = view.findViewById(R.id.oldprice);
@@ -233,6 +238,8 @@ share.setOnClickListener(v -> {
         slider = view.findViewById(R.id.sliderr);
         indicator = view.findViewById(R.id.indicatorProductDetails);
         recommended_products = view.findViewById(R.id.recommended_products);
+        spinner = view.findViewById(R.id.planets_spinner);
+        color_spinner = view.findViewById(R.id.color_spinner);
     }
     private void setDatainViews(ProductDetails productDetails) {
         recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.getRelated()));
@@ -278,7 +285,28 @@ share.setOnClickListener(v -> {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 sizeid = productdetailsBean.getProductsizes().get(position).getId();
+             //   if (position > 0 )
+                if (productdetailsBean.getOffers().size() > 0) {
+                    //hasOffer = true;
+                    float offerPercentage = Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) * productdetailsBean.getOffers().get(0).getPercentage() / 100;
+                    priceafteroffer = Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) - offerPercentage;
+                    if (PreferenceHelper.getCurrency()!=null)
+                        price.setText(String.valueOf(priceafteroffer*PreferenceHelper.getCurrencyValue()) + PreferenceHelper.getCurrency());
+                    else
+                        price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
 
+
+                } else {
+                    price.setText(Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) *
+                            PreferenceHelper.getCurrencyValue() + PreferenceHelper.getCurrency());
+                    if (Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) < setting.getData().get(0).getShippingPrice()) {
+
+                    }
+
+                }
+
+                amount.setText( String.valueOf(productdetailsBean.getProductsizes().get(position).getAmount())
+                       );
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -300,7 +328,7 @@ share.setOnClickListener(v -> {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                sizeid = productdetailsBean.getProductsizes().get(position).getId();
+                colorid = productdetailsBean.getProductcolor().get(position).getId();
 
             }
             @Override
@@ -349,7 +377,7 @@ share.setOnClickListener(v -> {
                         get(productSizesAdapter.mSelectedItem).getCurrent_price() + getText(R.string.realcoin));
             }
         } else
-            price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() + getText(R.string.realcoin));
+            price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() +  PreferenceHelper.getCurrency());
 
         if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price()) <
                 setting.getData().get(0).getShippingPrice()) {

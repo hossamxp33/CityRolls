@@ -479,7 +479,7 @@ public class ProductDetails {
 
             private int id;
             private int product_id;
-            private String start_price;
+            private String current_price;
             private String amount;
             private String size;
 
@@ -499,12 +499,12 @@ public class ProductDetails {
                 this.product_id = product_id;
             }
 
-            public String getStart_price() {
-                return start_price;
+            public String getCurrent_price() {
+                return current_price;
             }
 
-            public void setStart_price(String start_price) {
-                this.start_price = start_price;
+            public void setCurrent_price(String start_price) {
+                this.current_price = start_price;
             }
 
             public String getAmount() {

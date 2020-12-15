@@ -31,7 +31,7 @@
     <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
 
     <string name="choice_size">اختر الحجم</string>
-    <string name="coin"> ر.ع </string>
+    <string name="coin"> دينار عراقي </string>
     <string name="remendier">  متوفر  </string>
     <string name="num"> قطع </string>
     <string name="realcoin">ريال</string>

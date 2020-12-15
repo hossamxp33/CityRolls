@@ -30,6 +30,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
     private    List<CartItems.DataBean> dataBeans;
     private CartFragment cartFragment;
     public List<OrderModel.productSize> products =new ArrayList<>();
+    ArrayList<String> colordata =    PreferenceHelper.GETColorstoCart();
 
     public CartAdapter(Context mcontext, List<CartItems.DataBean> dataBeans1,CartFragment cartFragment1) {
         context = mcontext;
@@ -50,35 +51,37 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
         try {
 
+            Log.i("COLORS", "onBindViewHolder: "+ colordata.get(position));
             holder.name.setText(dataBeans.get(position).getProduct().getName());
             holder.amount.setText(context.getText(R.string.remendier) + " " +String.valueOf(dataBeans.get(position).getAmount()) + " " + context.getText(R.string.num));
             products.add(new OrderModel.productSize(dataBeans.get(position).getId()));
+            products.get(position).setproductcolor_id(Integer.valueOf(colordata.get(position)));
             if (dataBeans.get(position).getProduct().getOffers().size()>0)
             {
                 if (PreferenceHelper.getCurrencyValue()>0)
                     holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                            dataBeans.get(position).getStart_price() )*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
+                            dataBeans.get(position).getCurrent_price() )*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
                 else
                     holder.price.setText(getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                            dataBeans.get(position).getStart_price() )  + " " + context.getText(R.string.realcoin));
+                            dataBeans.get(position).getCurrent_price() )  + " " + context.getText(R.string.realcoin));
 
                 //  holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
                 products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
                         getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),
-                                dataBeans.get(position).getStart_price())));
+                                dataBeans.get(position).getCurrent_price())));
 
 
-                products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
+                products.get(position).setNotice("خصم بسبب العرض رقم"+dataBeans.get(position).getProduct().getOffers().get(0).getId());
             }
             else {
                 products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString()) *
-                        Float.valueOf(dataBeans.get(position).getStart_price())));
+                        Float.valueOf(dataBeans.get(position).getCurrent_price())));
 
                 if (PreferenceHelper.getCurrencyValue()>0)
-                    holder.price.setText(Float.valueOf(dataBeans.get(position).getStart_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
+                    holder.price.setText(Float.valueOf(dataBeans.get(position).getCurrent_price())*PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency());
 
                 else
-                    holder.price.setText(dataBeans.get(position).getStart_price() + " " + context.getText(R.string.realcoin));
+                    holder.price.setText(dataBeans.get(position).getCurrent_price() + " " + context.getText(R.string.realcoin));
             }
 
             if (dataBeans.get(position).getProduct().getTotal_rating() != null)
@@ -115,12 +118,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                 if (dataBeans.get(position).getProduct().getOffers().size()>0)
                 {
                     products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getStart_price())));
+                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getCurrent_price())));
                     products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
                 }
                 else
                     products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            Float.valueOf(dataBeans.get(position).getStart_price())));
+                            Float.valueOf(dataBeans.get(position).getCurrent_price())));
                 cartFragment.onPlusProduct(position);
 
             }
@@ -136,12 +139,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>  {
                 if (dataBeans.get(position).getProduct().getOffers().size()>0)
                 {
                     products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getStart_price())));
+                            getPriceAfterDiscount(dataBeans.get(position).getProduct().getOffers().get(0).getPercentage(),dataBeans.get(position).getCurrent_price())));
                     products.get(position).setNotice("خصم بسبب العرض رقم "+dataBeans.get(position).getProduct().getOffers().get(0).getId());
                 }
                 else
                     products.get(position).setTotal(String.valueOf(Integer.valueOf(holder.products_count.getText().toString())*
-                            Float.valueOf(dataBeans.get(position).getStart_price())));
+                            Float.valueOf(dataBeans.get(position).getCurrent_price())));
                 cartFragment.onMinusProduct(position);
             }
         });

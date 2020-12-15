@@ -54,7 +54,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter<MyOrdersAdapter.ViewHo
             Glide.with(context).load(orderdata.get(position).getOrderdetails().
                     get(0).getProductsize().getProduct().getImg()).
                     dontAnimate().placeholder(R.drawable.product).into(holder.Image);
-            holder.color.setText(orderdata.get(position).getOrderdetails().get(position).getProduct_color().getColor());
+          //  holder.color.setText(orderdata.get(position).getOrderdetails().get(position).getproductcolor_id().getColor());
 
         }
 

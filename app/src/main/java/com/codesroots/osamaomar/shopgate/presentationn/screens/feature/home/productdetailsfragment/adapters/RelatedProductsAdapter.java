@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
+import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 
@@ -54,11 +55,11 @@ public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProducts
                         .load(famousProduct.get(position).getImg())
                         .into(holder.item_img);
         }
-//        if (PreferenceHelper.getCurrencyValue() > 0)
-//            holder.price.setText(Float.valueOf(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price()) *
-//                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-//        else
-//            holder.price.setText(famousProduct.get(position).get_matchingData().getProductsizes().getStart_price() + " " + context.getText(R.string.coin));
+        if (PreferenceHelper.getCurrencyValue() > 0)
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
+                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+        else
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->

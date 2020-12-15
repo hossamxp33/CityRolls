@@ -77,6 +77,7 @@ public class PaymentFragment extends Fragment {
         paymentViewModel = ViewModelProviders.of(this, getViewModelFactory()).get(PaymentViewModel.class);
         paymentViewModel.myOrdersMutableLiveData.observe(this, aBoolean -> {
             if (aBoolean) {
+                PreferenceHelper.clearCart();
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 for (int i1 = 0; i1 < fm.getBackStackEntryCount(); ++i1) {
                     Fragment fragment = fm.findFragmentById(R.id.mainfram);

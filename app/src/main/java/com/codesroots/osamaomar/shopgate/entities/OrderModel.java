@@ -23,6 +23,10 @@ public class OrderModel implements Serializable {
     @SerializedName("type")
     String type;
 
+
+    @SerializedName("notes")
+    String notes;
+
     @SerializedName("currency_id")
     int currency_id;
 
@@ -36,6 +40,15 @@ public class OrderModel implements Serializable {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
 
     public String getBilling_id() {
         return billing_id;
@@ -117,6 +130,18 @@ public class OrderModel implements Serializable {
 
         @SerializedName("notice")
         String notice;
+
+
+        @SerializedName("productcolor_id")
+        int productcolor_id;
+
+        public int getproductcolor_id() {
+            return productcolor_id;
+        }
+
+        public void setproductcolor_id(int productcolor_id) {
+            this.productcolor_id = productcolor_id;
+        }
 
         public int getProductsize_id() {
             return productsize_id;

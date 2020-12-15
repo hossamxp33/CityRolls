@@ -84,7 +84,12 @@ public class MainFragment extends Fragment {
         shimmer_view_container5.setVisibility(View.GONE);
         progress.setVisibility(View.GONE);
         PreferenceHelper.setDoller_value(mainView.getCurrency().getValue());
+        if (PreferenceHelper.getCurrency() == null) {
+            PreferenceHelper.setCURRENCY_VALUE(1);
+            PreferenceHelper.setCURRENCY("IQ");
+            PreferenceHelper.setCURRENCYArabic("عراقي");
 
+        }
         init(mainView.getSliders().size());
         slider.setAdapter(new SliderPagerAdapter(getActivity(),mainView.getSliders()));
         slider.setPadding(80, 0, 50, 0);

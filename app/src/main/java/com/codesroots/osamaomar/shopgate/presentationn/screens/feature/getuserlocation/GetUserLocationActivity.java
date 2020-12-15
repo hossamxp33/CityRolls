@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import static com.codesroots.osamaomar.shopgate.entities.names.AddressDetails;
 import static com.codesroots.osamaomar.shopgate.entities.names.FULL_ADDRESS;
 import static com.codesroots.osamaomar.shopgate.entities.names.USER_LANG;
 import static com.codesroots.osamaomar.shopgate.entities.names.USER_LAT;
@@ -224,6 +225,8 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
                 data.putExtra(FULL_ADDRESS, address + detatils_address.getText().toString());
                 data.putExtra(USER_LAT, String.valueOf(latitude));
                 data.putExtra(USER_LANG, String.valueOf(longitude));
+                data.putExtra(AddressDetails,  detatils_address.getText().toString());
+
                 setResult(RESULT_OK, data);
                 finish();
             }
