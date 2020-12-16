@@ -43,8 +43,7 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view= LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.offer_item_adapter, parent, false);
-
+                    .inflate(R.layout.horizental_product_item_adapter, parent, false);
         return new ViewHolder(view);
     }
 
@@ -81,19 +80,22 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
                         PreferenceHelper.getCurrency())));
 
             else
-                holder.price.setText(String.valueOf(priceafteroffer)+context.getText(R.string.realcoin));
+                holder.price.setText(String.valueOf(priceafteroffer)+" "+
+                        PreferenceHelper.getCurrency());
 
       }
         else
         {
             if (PreferenceHelper.getCurrencyValue()>0)
-                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price())
+                holder.price.setText(String.valueOf(Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())
                         *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
             else
-                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+                holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
+                        PreferenceHelper.getCurrency());
         }
 
-        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getStart_price()+" "+context.getText(R.string.realcoin));
+        holder.oldprice.setText(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price()+" "+
+                PreferenceHelper.getCurrency());
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle() ;
         bundle.putInt(PRODUCT_ID,offersData.get(position).getProduct_id());
@@ -123,7 +125,7 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
 
         final View mView;
         private ImageView Image;
-        private TextView name,rateCount,amount,price,oldprice,discount;
+        private TextView name,rateCount,amount,price,oldprice,discount,del_favorite;
         private RatingBar ratingBar;
         ViewHolder(View view) {
             super(view);

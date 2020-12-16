@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +28,8 @@ import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.main
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.viewpagerindicator.CirclePageIndicator;
+
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -46,7 +52,6 @@ public class MainFragment extends Fragment {
         findViewsFromXml(view);
         mViewModel = ViewModelProviders.of(this,getViewModelFactory()).get(MainFragmentViewModel.class);
         mViewModel.mainViewMutableLiveData.observe(this,this::setDatainViews);
-
 
         mViewModel.throwableMutableLiveData.observe(this,throwable ->
                 {

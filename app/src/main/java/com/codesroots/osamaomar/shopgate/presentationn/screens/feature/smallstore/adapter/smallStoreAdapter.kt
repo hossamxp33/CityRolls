@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.codesroots.osamaomar.shopgate.R
-
 import com.codesroots.osamaomar.shopgate.datalayer.Repo.loudImage
+
 import com.codesroots.osamaomar.shopgate.entities.Data
 import com.codesroots.osamaomar.shopgate.entities.names.CAT_ID
 import com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID

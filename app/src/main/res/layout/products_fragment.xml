@@ -47,16 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
 
-        <ImageView
-            android:id="@+id/filter"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/filter"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="7dp"
-            app:layout_constraintEnd_toStartOf="@id/change_span"
-            />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

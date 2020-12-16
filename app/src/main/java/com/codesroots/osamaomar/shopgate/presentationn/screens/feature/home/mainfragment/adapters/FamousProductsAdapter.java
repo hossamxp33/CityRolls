@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -55,11 +57,12 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                         .load(famousProduct.get(position).getImg())
                         .into(holder.item_img);
         }
-        if (PreferenceHelper.getCurrencyValue() > 0)
-            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(position).getCurrent_price()) *
+
+        if (PreferenceHelper.getCurrency() !=  null)
+            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
                     PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
          else
-            holder.price.setText(famousProduct.get(position).getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));
+            holder.price.setText(famousProduct.get(position).getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));
 
 
         holder.mView.setOnClickListener(v ->
@@ -73,36 +76,12 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                     replace(R.id.mainfram, fragment)
                     .addToBackStack(null).commit();
         });
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (famousProduct.get(position).getProductsizes() != null)
-                    bundle.putInt(PRODUCT_ID, famousProduct.get(position).getProductsizes().get(position).getProduct_id());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
 
-//
-//            holder.item_img.setOnClickListener(v ->
-//                    {
-//                        Intent intent = new Intent(context, ImageActivity.class);
-//                        intent.putExtra("url",famousProduct.get(position).img);
-//                        context.startActivity(intent);
-//                    }
-//            );
-        holder.ratingBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID, famousProduct.get(position).getId());
-                context.startActivity(intent);
-            }
-            return true;
-        });
         }catch (Exception e)
-        {}
+        {
+
+            Log.i("error", "onBindViewHolder: "+e);
+        }
 
     }
 
@@ -129,7 +108,6 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
             item_img = view.findViewById(R.id.item_img);
             name = view.findViewById(R.id.item_name);
             price = view.findViewById(R.id.price);
-            ratingBar = view.findViewById(R.id.rates);
         }
     }
 

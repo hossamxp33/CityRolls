@@ -69,12 +69,12 @@ public class ProductsFragment extends Fragment {
                 } else {
                     notfound.setVisibility(View.VISIBLE);
                     changeSpane.setEnabled(false);
-                    filter.setEnabled(false);
+//                    filter.setEnabled(false);
                 }
             } else {
                 notfound.setVisibility(View.GONE);
                 changeSpane.setEnabled(false);
-                filter.setEnabled(false);
+              //  filter.setEnabled(false);
             }
         });
 
@@ -105,7 +105,7 @@ public class ProductsFragment extends Fragment {
     private void initialize(View view) {
         productsRecycle = view.findViewById(R.id.allProducts);
         changeSpane = view.findViewById(R.id.change_span);
-        filter = view.findViewById(R.id.filter);
+       // filter = view.findViewById(R.id.filter);
         filter_option = view.findViewById(R.id.filter_option);
         progress = view.findViewById(R.id.progress);
         notfound = view.findViewById(R.id.product_notfound);
@@ -124,8 +124,8 @@ public class ProductsFragment extends Fragment {
         filter_option.setOnItemClickListener((parent, view1, position, id) -> {
         });
         changeSpane.setOnClickListener(onClickListener);
-        filter.setOnClickListener(onFilterClickListener);
-        filter_option.setOnItemClickListener(AdapterView);
+      //  filter.setOnClickListener(onFilterClickListener);
+       // filter_option.setOnItemClickListener(AdapterView);
     }
 
     private AdapterView.OnItemClickListener AdapterView = new AdapterView.OnItemClickListener() {

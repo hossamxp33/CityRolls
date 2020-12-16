@@ -37,12 +37,12 @@ public class ContactFragment extends Fragment {
         insta = view.findViewById(R.id.insta);
         whats = view.findViewById(R.id.whats);
 
-        whats.setOnClickListener(v -> ResourceUtil.openWhatsApp("+96894189519",getContext(),getActivity()));
-        phone1.setOnClickListener(v -> ResourceUtil.callNumber("+96898075581",getContext()));
-        phone2.setOnClickListener(v -> ResourceUtil.callNumber("+9689418519",getContext()));
+        whats.setOnClickListener(v -> ResourceUtil.openWhatsApp("+07735588559",getContext(),getActivity()));
+        phone1.setOnClickListener(v -> ResourceUtil.callNumber("+07735588559",getContext()));
+        phone2.setOnClickListener(v -> ResourceUtil.callNumber("+07735588559",getContext()));
         insta.setOnClickListener(v ->
                 {
-                    String url = "https://instagram.com/shopgate_om?igshid=wv1mwpl97rkx";
+                    String url = "https://instagram.com/alajwadshopp_iq";
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(url));
                     startActivity(i);

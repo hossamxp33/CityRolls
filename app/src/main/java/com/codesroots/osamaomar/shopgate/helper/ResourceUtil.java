@@ -203,7 +203,7 @@ public class ResourceUtil {
     public static String getCurrentLanguage(Context context) {
         String langPref = context.getPackageName() + "App_Language";
         SharedPreferences prefs = context.getSharedPreferences("CommonPrefs", Activity.MODE_PRIVATE);
-        String old = prefs.getString(langPref, "ar");
+        String old = prefs.getString(langPref, "en");
         return old;
     }
 

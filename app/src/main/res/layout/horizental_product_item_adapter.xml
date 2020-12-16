@@ -144,6 +144,21 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
+        android:id="@+id/old_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:text="500ريال"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/rate_count"
+        app:layout_constraintTop_toBottomOf="@+id/item_price"
+        app:layout_constraintWidth_percent="0.3" />
+    <TextView
         android:id="@+id/add_to_cart"
         android:layout_width="0dp"
         android:layout_height="25dp"
@@ -159,6 +174,29 @@
         app:layout_constraintEnd_toStartOf="@id/favorite"
         app:layout_constraintTop_toBottomOf="@+id/quentity"
         app:layout_constraintWidth_percent="0.25" />
+    <ImageView
+        android:id="@+id/del_favorite"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_margin="8dp"
+        android:visibility="gone"
+        android:src="@drawable/cancel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
+    <TextView
+        android:id="@+id/discount"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@color/red"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="25 % خصم "
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@id/item_img"
+        app:layout_constraintTop_toTopOf="@+id/item_img"
+        app:layout_constraintWidth_percent="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

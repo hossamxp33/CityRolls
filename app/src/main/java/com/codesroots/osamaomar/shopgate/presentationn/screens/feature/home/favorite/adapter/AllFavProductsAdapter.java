@@ -46,7 +46,7 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.favorite_item_adapter, parent, false);
+                .inflate(R.layout.horizental_product_item_adapter, parent, false);
         return new ViewHolder(view);
     }
 
@@ -55,6 +55,8 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         try {
+            holder.favorite.setVisibility( View.VISIBLE);
+holder.oldprice.setVisibility(View.INVISIBLE);
             if (productsbysubcats.get(position).getProduct().getProductphotos().size() > 0)
                 Glide.with(context.getApplicationContext())
                         .load(productsbysubcats.get(position).getProduct().getImg())
@@ -72,14 +74,14 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
             holder.amount.setText(context.getText(R.string.remendier) + " " +
                     String.valueOf(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getAmount()) + " " + context.getText(R.string.num));
             holder.price.setText(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getStart_price() + " " +
-                    context.getText(R.string.realcoin));
+                    PreferenceHelper.getCurrency());
         } catch (Exception e) {
         }
 
 
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(PRODUCT_ID, productsbysubcats.get(position).getId());
+        bundle.putInt(PRODUCT_ID, productsbysubcats.get(position).getProduct().getId());
         fragment.setArguments(bundle);
         holder.mView.setOnClickListener(v -> ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram, fragment)
@@ -122,7 +124,7 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
     class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         private ImageView Image, favorite;
-        private TextView name, rateCount, amount, price;
+        private TextView name, rateCount, amount, price,oldprice;
         private RatingBar ratingBar;
 
         ViewHolder(View view) {
@@ -135,6 +137,8 @@ public class AllFavProductsAdapter extends RecyclerView.Adapter<AllFavProductsAd
             rateCount = mView.findViewById(R.id.rate_count);
             ratingBar = mView.findViewById(R.id.rates);
             favorite = mView.findViewById(R.id.del_favorite);
+            oldprice = mView.findViewById(R.id.old_price);
+
         }
     }
 }

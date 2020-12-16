@@ -3,7 +3,7 @@
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
-            <corners android:radius="4dp" />
+            <corners android:radius="8dp" />
             <padding android:bottom="0dp" android:left="0dp"
                 android:right="0dp"  android:top="0dp" />
             <solid android:color="#00CCCCCC" />
@@ -11,7 +11,7 @@
     </item>
     <item>
         <shape>
-            <corners android:radius="4dp" />
+            <corners android:radius="8dp" />
             <padding android:bottom="1dp" android:left="1dp"
                 android:right="1dp"  android:top="0dp" />
             <solid android:color="#10B4B4B4" />
@@ -19,7 +19,7 @@
     </item>
     <item>
         <shape>
-            <corners android:radius="4dp" />
+            <corners android:radius="8dp" />
             <padding android:bottom="1dp" android:left="1dp"
                 android:right="1dp"  android:top="0dp" />
             <solid android:color="#20AAAAAA" />
@@ -27,7 +27,7 @@
     </item>
     <item>
         <shape>
-            <corners android:radius="6dp" />
+            <corners android:radius="8dp" />
             <padding android:bottom="1dp" android:left="1dp"
                 android:right="1dp"  android:top="0dp" />
             <solid android:color="#30cbcbcb" />
@@ -35,7 +35,7 @@
     </item>
     <item>
         <shape>
-            <corners android:radius="4dp" />
+            <corners android:radius="8dp" />
             <padding android:bottom="1dp" android:left="1dp"
                 android:right="1dp"  android:top="1dp" />
             <solid android:color="#50bababa" />
@@ -46,7 +46,7 @@
     <item>
         <shape>
             <solid android:color="@color/white" />
-            <corners android:radius="4dp" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
 </layer-list>

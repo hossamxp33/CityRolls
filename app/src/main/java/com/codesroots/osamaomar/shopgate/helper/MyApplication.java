@@ -26,6 +26,13 @@ public class MyApplication extends Application {
 //                .setFontAttrId(R.attr.fontPath)
 //                .build()
 //        );
+        if (ResourceUtil.getCurrentLanguage(this).matches("ar")) {
+            ResourceUtil.changeLang("ar", this);
+
+        } else {
+            ResourceUtil.changeLang("en", this);
+
+        }
     }
 
     public static synchronized MyApplication getInstance() {

@@ -182,7 +182,7 @@ public class Favoriets {
                 private String size;
                 private int product_id;
                 private int amount;
-                private String start_price;
+                private String current_price;
 
                 public int getId() {
                     return id;
@@ -217,11 +217,11 @@ public class Favoriets {
                 }
 
                 public String getStart_price() {
-                    return start_price;
+                    return current_price;
                 }
 
                 public void setStart_price(String start_price) {
-                    this.start_price = start_price;
+                    this.current_price = start_price;
                 }
             }
 

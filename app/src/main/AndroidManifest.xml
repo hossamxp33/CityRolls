@@ -36,11 +36,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+    </activity>
         <activity
             android:name=".presentationn.screens.feature.getuserlocation.GetUserLocationActivity"
             android:label="@string/choice_location">
@@ -69,7 +65,11 @@
             android:name=".presentationn.screens.feature.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity> <!-- <activity -->
         <!-- android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity" -->
         <!-- android:launchMode="singleTask"> -->
