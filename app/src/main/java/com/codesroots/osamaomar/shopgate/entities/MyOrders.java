@@ -133,7 +133,7 @@ public class MyOrders {
 
 
             private String total;
-//
+            //
             public int getId() {
                 return id;
             }
@@ -193,6 +193,7 @@ public class MyOrders {
             public static class ProductsizeBean {
                 /**
                  * id : 2
+                 * "size": "20 needles",
                  * product_id : 30
                  * product : {"id":30,"name":"zzzz","name_en":"salt","productphotos":[{"id":1,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd1.jpg"},{"id":2,"product_id":30,"photo":"http://shopgate.codesroots.com/library/attachment/pd2.jpg"}]}
                  */
@@ -200,10 +201,19 @@ public class MyOrders {
                 private int id;
                 private int product_id;
                 private int amount;
+                private String size;
                 private float start_price;
                 private float current_price;
                 private ProductBean product;
 
+
+                public String getSize() {
+                    return size;
+                }
+
+                public void setSize(String size) {
+                    this.size = size;
+                }
 
                 public int getAmount() {
                     return amount;
@@ -398,12 +408,12 @@ public class MyOrders {
             }
 
             public static class ProductColor{
-/*
- *          "id": 12,
- *                         "product_id": 308,
- *                         "color": "احمر",
- *                         "created": "2020-12-13T18:23:30+0200"
- */
+                /*
+                 *          "id": 12,
+                 *                         "product_id": 308,
+                 *                         "color": "احمر",
+                 *                         "created": "2020-12-13T18:23:30+0200"
+                 */
                 private int id;
                 private int product_id;
                 private String color;

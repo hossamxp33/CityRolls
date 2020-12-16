@@ -4,7 +4,10 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,7 +26,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,20 +77,29 @@ public class MainActivity extends AppCompatActivity
         initialize();
         setUpToggle();
         search.setOnClickListener(v -> {
+
             performSearch();
+            /// Hidden keyboard  after click
+            HiddenKeyboard(v);
         });
         searchName.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 performSearch();
+                /// Hidden keyboard  after click
+                HiddenKeyboard(v);
                 return true;
             }
+
             return false;
         });
          head_title.setVisibility(View.INVISIBLE);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainfram, new MainFragment()).commit();
 
     }
-
+private void HiddenKeyboard(View view ){
+    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+}
     private void initialize() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -56,7 +56,7 @@ public class MenuFragment extends Fragment {
         contact = view.findViewById(R.id.contact);
         about = view.findViewById(R.id.aboutus);
         terms = view.findViewById(R.id.conditions);
-        chat = view.findViewById(R.id.chat);
+//        chat = view.findViewById(R.id.chat);
         change_country = view.findViewById(R.id.change_country);
 
         currency.setOnClickListener(v -> mViewModel.getCurrencyData());
@@ -74,14 +74,14 @@ public class MenuFragment extends Fragment {
                 replace(R.id.mainfram, new ContactFragment()).addToBackStack(null).commit());
 
 
-        chat.setOnClickListener(v ->
-                {
-                    if (PreferenceHelper.getUserId() > 0)
-                        startActivity(new Intent(getActivity(), MessagesChatingActivity.class));
-                    else
-                        Toast.makeText(getContext(), getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
-                }
-        );
+//        chat.setOnClickListener(v ->
+//                {
+//                    if (PreferenceHelper.getUserId() > 0)
+//                        startActivity(new Intent(getActivity(), MessagesChatingActivity.class));
+//                    else
+//                        Toast.makeText(getContext(), getText(R.string.loginfirst), Toast.LENGTH_SHORT).show();
+//                }
+//        );
 
 
         if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en")) {
@@ -92,7 +92,7 @@ public class MenuFragment extends Fragment {
             contact.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
             terms.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
             about.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
-            chat.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
+//            chat.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
         }
         if (PreferenceHelper.getUserId() > 0)
             login.setVisibility(View.GONE);

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.MyOrders;
+import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.addrate.AddRateFragment;
 
 import java.util.List;
@@ -63,7 +64,11 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
             Glide.with(context.getApplicationContext())
                     .load(orderdetailsBeans.get(position).getProductsize().getProduct().getImg()).placeholder(R.drawable.product).dontAnimate()
                     .into(holder.Image);
-            holder.name.setText(orderdetailsBeans.get(position).getProductsize().getProduct().getName()  +  "," + orderdetailsBeans.get(position).getProductsize().getSize()  +  "," + orderdetailsBeans.get(position).getProduct_color().getColor() );
+        try {
+            holder.name.setText(orderdetailsBeans.get(position).getProductsize().getProduct().getName()  +  "/" + orderdetailsBeans.get(position).getProductsize().getSize()  +  "/" + orderdetailsBeans.get(position).getProduct_color().getColor() );
+
+        } catch (Exception e) {
+        }
 
 
         if (orderdetailsBeans.get(position).getProductsize().getProduct().getTotal_rating()!=null)
@@ -77,7 +82,8 @@ public class AllProductsInsideOrderAdapter extends RecyclerView.Adapter<AllProdu
         holder.amount.setText(context.getText(R.string.remendier)+" "+
                 String.valueOf(orderdetailsBeans.get(position).getProductsize().getAmount())+" "+context.getText(R.string.num));
 
-       holder.price.setText(orderdetailsBeans.get(position).getProductsize().getStart_price()+" "+context.getText(R.string.realcoin));
+       holder.price.setText(String.valueOf(Float.valueOf(orderdetailsBeans.get(position).getTotal())
+               *PreferenceHelper.getCurrencyValue()+" "+PreferenceHelper.getCurrency()));
 
 
     }
