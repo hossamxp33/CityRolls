@@ -82,7 +82,8 @@ public class RegisterFragment extends Fragment {
                         {
                             registerbtn.setEnabled(true);
                             registerbtn.setText(R.string.register);
-                            Toast.makeText(getActivity(),throwable.toString(),Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(getActivity(),"إسم المستخدم او الايميل موجود من قبل",Toast.LENGTH_SHORT).show();
                         });
         return view;
     }

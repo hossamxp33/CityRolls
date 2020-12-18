@@ -69,8 +69,8 @@ public class ProductsViewModel extends ViewModel {
         throwableMutableLiveData.postValue(throwable);
     }
 
-    public void getData() {
-        getObservable().subscribeWith(getObserver());
+    public void getData(Integer page) {
+        getObservable(page).subscribeWith(getObserver());
     }
 
     public  void AddToFav (int productid)
@@ -87,8 +87,8 @@ public class ProductsViewModel extends ViewModel {
 
     //////////// get productsData
     @SuppressLint("CheckResult")
-    private Observable<Products> getObservable() {
-        Observable<Products> productsObservable = serverGateway.getProducts(type,subcattegry_id,userid);
+    private Observable<Products> getObservable(Integer page) {
+        Observable<Products> productsObservable = serverGateway.getProducts(subcattegry_id,userid,page);
         productsObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
         return productsObservable;

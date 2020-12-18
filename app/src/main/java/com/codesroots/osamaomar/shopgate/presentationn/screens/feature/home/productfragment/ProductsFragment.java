@@ -7,7 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,10 @@ import com.codesroots.osamaomar.shopgate.entities.Products;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.adapters.AllProductsAdapter;
+
+import java.util.List;
+import java.util.Objects;
+
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_TYPE;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUBCATES_NAME;
 import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
@@ -37,12 +44,13 @@ public class ProductsFragment extends Fragment {
     ImageView changeSpane, filter;
     boolean RecycleIsHorizental = true;
     int subCategry, userID, type;
-    private Products productsData;
+    private List<Products.ProductsbycategoryBean> productsData;
     private FrameLayout progress;
     private TextView notfound, subcates_name;
     private AllProductsAdapter AllProductsAdapter;
     private String title,name;
-
+private  boolean getDataNow = false;
+private int page = 1;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -56,26 +64,29 @@ public class ProductsFragment extends Fragment {
         if (name!=null)
             mViewModel.getSearchData(name);
         else
-            mViewModel.getData();
+            mViewModel.getData(1);
         mViewModel.productsMutableLiveData.observe(this, products ->
         {
-            productsData = products;
+            productsData = products.getProductsbycategory();
             progress.setVisibility(View.GONE);
-            if (products.getProductsbycategory() != null) {
-                if (products.getProductsbycategory().size() > 0) {
+            if (products.getProductsbycategory().size() > 0) {
+                if (page == 1) {
                     productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                    AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, products.getProductsbycategory(), mViewModel);
+                    AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, productsData, mViewModel);
                     productsRecycle.setAdapter(AllProductsAdapter);
                 } else {
-                    notfound.setVisibility(View.VISIBLE);
-                    changeSpane.setEnabled(false);
-//                    filter.setEnabled(false);
+                    getDataNow = false;
+
+                    productsData.addAll(products.getProductsbycategory());
+                    AllProductsAdapter.notifyDataSetChanged();
+                    productsRecycle.scrollToPosition(AllProductsAdapter.getItemCount() - 19);
                 }
             } else {
-                notfound.setVisibility(View.GONE);
-                changeSpane.setEnabled(false);
-              //  filter.setEnabled(false);
+             //   notfound.setVisibility(View.VISIBLE);
+               // changeSpane.setEnabled(false);
+               // filter.setEnabled(false);
             }
+
         });
 
         mViewModel.throwableMutableLiveData.observe(this, throwable ->
@@ -84,9 +95,24 @@ public class ProductsFragment extends Fragment {
             Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show();
         });
 
+        productsRecycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int lastVisibleItem = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager())).findLastVisibleItemPosition();
+                Log.d("lastVisible", String.valueOf(lastVisibleItem));
+                if (lastVisibleItem == (AllProductsAdapter.getItemCount() - 1)) {
+                    if (!getDataNow) {
+                        page++;
+                        mViewModel.getData(page);
+                        getDataNow = true;
+                    }
+                }
+            }
+        });
         mViewModel.addToFavMutableLiveData.observe(this, addToFavModel -> {
             try { if (addToFavModel.getLikeid()>0)
-                productsData.getProductsbycategory().get(mViewModel.current_item)
+                productsData.get(mViewModel.current_item)
                         .getFavourites().add(new Products.ProductsbycategoryBean.FavouritesBean(addToFavModel.getLikeid()));
                 AllProductsAdapter.notifyDataSetChanged();
             }
@@ -96,7 +122,7 @@ public class ProductsFragment extends Fragment {
         });
 
         mViewModel.deleteToFavMutableLiveData.observe(this, aBoolean -> {
-            productsData.getProductsbycategory().get(mViewModel.current_item).getFavourites().clear();
+            productsData.get(mViewModel.current_item).getFavourites().clear();
             AllProductsAdapter.notifyDataSetChanged();
         });
         return view;
@@ -152,12 +178,12 @@ public class ProductsFragment extends Fragment {
         public void onClick(View v) {
             if (!RecycleIsHorizental) {
                 productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, productsData.getProductsbycategory(), mViewModel);
+                AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, productsData, mViewModel);
                 productsRecycle.setAdapter(AllProductsAdapter);
                 RecycleIsHorizental = true;
             } else {
                 productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-                AllProductsAdapter = new AllProductsAdapter(getActivity(), 1, productsData.getProductsbycategory(), mViewModel);
+                AllProductsAdapter = new AllProductsAdapter(getActivity(), 1, productsData, mViewModel);
                 productsRecycle.setAdapter(AllProductsAdapter);
                 RecycleIsHorizental = false;
             }
