@@ -1,16 +1,25 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.getuserlocation;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,21 +84,23 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
         setContentView(R.layout.activity_get_user_location);
         // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Make to run your application only in portrait mode
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        getLocationPermission();
+    getLocationPermission();
+
         search = findViewById(R.id.search);
         detatils_address = findViewById(R.id.detailsaddress);
+     GetLocation();
         search.setOnClickListener(view -> {
             try {
-                Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.RESULT_ERROR)
                         .build(this);
                 startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-            } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
-                Snackbar.make(view, "Can't search for address now", Snackbar.LENGTH_LONG).show();
+            } catch (Exception e) {
             }
         });
 
         ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.usermap)).getMapAsync(this);
+
 
     }
 
@@ -159,8 +170,77 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
             }
         }
     }
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
+    private void GetLocation() {
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ex) {
+        }
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (Exception ex) {
+        }
+
+        if (!gps_enabled && !network_enabled) {
+            // notify user
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.choice_location)
+                        .setMessage(R.string.addlocation)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Prompt the user once explanation has been shown
+                                ActivityCompat.requestPermissions(new AppCompatActivity(),
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        MY_PERMISSIONS_REQUEST_LOCATION);
+                            }
+                        })
+                        .create()
+                        .show();
+            }
+            statusCheck();
+
+        }
 
 
+    }
+    public void statusCheck() {
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+
+        }
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
     private void getLocationPermission() {
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
@@ -178,8 +258,9 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
             });
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.CALL_PHONE,Manifest.permission.READ_CONTACTS
+                            ,Manifest.permission.WRITE_CONTACTS}, 112);
         }
     }
 
@@ -219,6 +300,7 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
     }
 
     public void send(View view) {
+
         if (!address.matches("")) {
             if (!detatils_address.getText().toString().matches("")) {
                 Intent data = new Intent();
@@ -231,6 +313,8 @@ public class GetUserLocationActivity extends AppCompatActivity implements OnMapR
                 finish();
             }
             else
+
+               //  GetLocation();
                 Snackbar.make(findViewById(R.id.usermap), getText(R.string.adddetailsaddress), Snackbar.LENGTH_LONG).show();
         }
         else

@@ -6,20 +6,18 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
+import com.codesroots.osamaomar.shopgate.entities.MainView;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.FamousProductsAdapter;
@@ -29,7 +27,6 @@ import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.main
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.viewpagerindicator.CirclePageIndicator;
 
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -103,8 +100,8 @@ public class MainFragment extends Fragment {
         slider.setClipToPadding(false);
         slider.setClipChildren(false);
         indicator.setViewPager(slider);
-        morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getProductsbyrate()));
-        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getOfferproducts()));
+        morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getNewdata()));
+        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getOffernew()));
         recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getProductsbysales()));
         departments.setAdapter(new DepartmentsAdapter(getActivity(),mainView.getCategory()));
 

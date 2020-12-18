@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.Countries;
+import com.codesroots.osamaomar.shopgate.entities.CountriesData;
+import com.codesroots.osamaomar.shopgate.entities.DataBean;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
@@ -19,7 +21,8 @@ import java.util.List;
 public class CountriesActivity extends AppCompatActivity {
 
     CountryViewModel mViewModel;
-    List<Countries.DataBean>countries = new ArrayList<>();
+    List<CountriesData> countries = new ArrayList<>();
+
     TextView country,done;
     ImageView next,prev;
     private int index = 0;
@@ -36,7 +39,7 @@ public class CountriesActivity extends AppCompatActivity {
         mViewModel = ViewModelProviders.of(this,getViewModelFactory()).get(CountryViewModel.class);
 
         mViewModel.countriesMutableLiveData.observe(this,data ->{
-            if (data.getData()!=null)
+            if (data!=null)
             countries=data.getData();
             if (countries.size()>0) {
                 next.setEnabled(true);

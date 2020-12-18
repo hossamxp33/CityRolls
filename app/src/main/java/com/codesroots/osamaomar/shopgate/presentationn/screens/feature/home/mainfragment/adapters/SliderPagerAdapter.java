@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
+import com.codesroots.osamaomar.shopgate.entities.Slider;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ import java.util.List;
 
 public class SliderPagerAdapter extends PagerAdapter {
     private Context activity;
-   private List<MainView.SlidersBean> slider;
-    public SliderPagerAdapter(FragmentActivity context, List<MainView.SlidersBean> sliders) {
+   private List<Slider> slider;
+    public SliderPagerAdapter(FragmentActivity context, List<Slider> sliders) {
         activity=context;
         slider=sliders;
     }

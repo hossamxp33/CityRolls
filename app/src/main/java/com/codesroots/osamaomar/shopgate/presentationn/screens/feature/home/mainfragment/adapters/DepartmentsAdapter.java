@@ -14,7 +14,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
+import com.codesroots.osamaomar.shopgate.entities.Category;
+import com.codesroots.osamaomar.shopgate.entities.Subcat;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.subcategryfragment.SubcategryFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
 
@@ -23,13 +24,12 @@ import java.util.List;
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_ID;
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_NAME;
 import static com.codesroots.osamaomar.shopgate.entities.names.CAT_TYPE;
-import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 
 public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<MainView.CategoryBean> categories;
-    public  DepartmentsAdapter(Context mcontext, List<MainView.CategoryBean> categories1) {
+    private List<Category> categories;
+    public  DepartmentsAdapter(Context mcontext, List<Category> categories1) {
         context = mcontext;
         categories = categories1;
     }
@@ -58,7 +58,7 @@ public class DepartmentsAdapter extends RecyclerView.Adapter<DepartmentsAdapter.
         sucCates_fragment.setArguments(bundle);
         product_fragment.setArguments(bundle);
 
-        if (categories.get(position).getSubcats().size()>0)
+        if (categories.size()>0)
         holder.mView.setOnClickListener(v ->
                 ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
                 replace(R.id.mainfram, sucCates_fragment).addToBackStack(null).commit());

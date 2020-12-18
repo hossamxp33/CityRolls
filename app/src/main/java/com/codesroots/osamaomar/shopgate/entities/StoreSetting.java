@@ -32,7 +32,7 @@ public class StoreSetting {
     }
 
 
-    public static class DataBean {
+    public static class  DataBean {
         /**
          * id : 1
          * model_id : 1

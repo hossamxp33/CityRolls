@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
+import com.codesroots.osamaomar.shopgate.entities.Offernew;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 
@@ -27,9 +27,9 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
 
     private Context context;
-    List<MainView.Offerproducts> offerproducts;
+    List<Offernew> offerproducts;
 
-    public MoreSalesProductsAdapter(Context context, List<MainView.Offerproducts> offers) {
+    public MoreSalesProductsAdapter(Context context, List<Offernew> offers) {
         this.context = context;
         this.offerproducts = offers;
     }
@@ -57,7 +57,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
                             .into(holder.item_img);
             }
             if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Float.valueOf((float) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
+                holder.price.setText(Integer.valueOf((int) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
                         PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
 
             else

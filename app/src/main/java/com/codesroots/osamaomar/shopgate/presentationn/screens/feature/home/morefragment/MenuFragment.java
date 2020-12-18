@@ -17,10 +17,10 @@ import android.widget.Toast;
 
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.Currency;
+import com.codesroots.osamaomar.shopgate.entities.DataBean;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.aboutus.contactus;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.chating.MessagesChatingActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.conditions.ConditionsActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.contact.ContactFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.country.CountriesActivity;
@@ -36,7 +36,7 @@ public class MenuFragment extends Fragment {
 
     private MenuViewModel mViewModel;
     private TextView currency, lang, login, logout, contact, about, terms, chat,change_country;
-    private List<Currency.DataBean> dataBeanList = new ArrayList<>();
+    private List<DataBean> dataBeanList = new ArrayList<>();
 
     public static MenuFragment newInstance() {
         return new MenuFragment();
@@ -135,7 +135,7 @@ public class MenuFragment extends Fragment {
         return view;
     }
 
-    private void showDialog(List<Currency.DataBean> dataBeanList) {
+    private void showDialog(List<DataBean> dataBeanList) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(getActivity());
         builderSingle.setTitle("Select One Name:-");
 

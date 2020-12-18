@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
+import com.codesroots.osamaomar.shopgate.entities.Productsbysale;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 
@@ -28,9 +28,9 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
 
     private Context context;
-    List<MainView.Productsbysales> recommendesProducts;
+    List<Productsbysale> recommendesProducts;
 
-    public RecommendedProductsAdapter(Context context, List<MainView.Productsbysales> productsbyrate) {
+    public RecommendedProductsAdapter(Context context, List<Productsbysale> productsbyrate) {
         this.context = context;
         this.recommendesProducts = productsbyrate;
     }
@@ -58,7 +58,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
 
             if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Float.valueOf(recommendesProducts.get(position).getStart_price()) *
+                holder.price.setText(Integer.valueOf(recommendesProducts.get(position).getStart_price()) *
                         PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
             else
                 holder.price.setText(recommendesProducts.get(position).getStart_price() + " " + context.getText(R.string.coin));

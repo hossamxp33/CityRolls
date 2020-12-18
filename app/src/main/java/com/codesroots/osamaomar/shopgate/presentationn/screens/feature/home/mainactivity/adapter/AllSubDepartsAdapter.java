@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.Sidemenu;
+
+
+import com.codesroots.osamaomar.shopgate.entities.Subcat;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
@@ -31,8 +33,8 @@ import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class AllSubDepartsAdapter extends RecyclerView.Adapter<AllSubDepartsAdapter.ViewHolder>  {
 
     private Context context;
-    private  List<Sidemenu.CategoryBean.SubcatsBean> subcats;
-    public AllSubDepartsAdapter(Context mcontext, List<Sidemenu.CategoryBean.SubcatsBean> subcats1) {
+    private  List<Subcat> subcats;
+    public AllSubDepartsAdapter(Context mcontext, List<Subcat> subcats1) {
         context = mcontext;
         subcats = subcats1;
     }
@@ -49,7 +51,7 @@ public class AllSubDepartsAdapter extends RecyclerView.Adapter<AllSubDepartsAdap
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.text.setText(subcats.get(position).getName());
-        Glide.with(context).load(subcats.get(position).getIcon()).into(holder.Image);
+        Glide.with(context).load(subcats.get(position).getPhoto()).into(holder.Image);
         holder.mView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putInt(CAT_ID,subcats.get(position).getId());

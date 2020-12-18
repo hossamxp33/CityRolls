@@ -1,7 +1,6 @@
 package com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,10 +17,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.MainView;
+import com.codesroots.osamaomar.shopgate.entities.Newdata;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.rate.RateActivity;
 
 import java.util.List;
 
@@ -32,9 +29,9 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
 
 
     private Context context;
-    List<MainView.Newdata> famousProduct;
+    List<Newdata> famousProduct;
 
-    public FamousProductsAdapter(Context context, List<MainView.Newdata> newdata) {
+    public FamousProductsAdapter(Context context, List<Newdata> newdata) {
         this.context = context;
         this.famousProduct = newdata;
     }
@@ -59,7 +56,7 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
         }
 
         if (PreferenceHelper.getCurrency() !=  null)
-            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
+            holder.price.setText(Integer.valueOf((int) famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
                     PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
          else
             holder.price.setText(famousProduct.get(position).getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));

@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.codesroots.osamaomar.shopgate.R;
-import com.codesroots.osamaomar.shopgate.entities.Sidemenu;
+import com.codesroots.osamaomar.shopgate.entities.Category;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainactivity.MainActivity;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.smallstore.smallStoreFramgent;
@@ -27,9 +27,9 @@ import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class AllDepartsAdapter extends RecyclerView.Adapter<AllDepartsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<Sidemenu.CategoryBean> categories;
+    private List<Category> categories;
 
-    public AllDepartsAdapter(Context mcontext, List<Sidemenu.CategoryBean> category) {
+    public AllDepartsAdapter(Context mcontext, List<Category> category) {
         context = mcontext;
         categories = category;
     }
