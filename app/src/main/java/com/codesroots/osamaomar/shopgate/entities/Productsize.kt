@@ -1,7 +1,7 @@
 package com.codesroots.osamaomar.shopgate.entities
 
 data class Productsize(
-    val amount: Int,
+    val amount: String,
     val created: String,
     val current_price: Float,
     val id: Int,

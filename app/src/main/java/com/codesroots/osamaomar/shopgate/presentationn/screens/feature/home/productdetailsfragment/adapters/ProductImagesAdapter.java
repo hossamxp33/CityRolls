@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
+import com.codesroots.osamaomar.shopgate.entities.ProductphotosBean;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
 
 import java.util.List;
@@ -18,10 +19,10 @@ import java.util.List;
 public class ProductImagesAdapter extends RecyclerView.Adapter<ProductImagesAdapter.ViewHolder>  {
 
     private Context context;
-    List<ProductDetails.ProductdetailsBean.ProductphotosBean> productphotos;
+    List<ProductphotosBean> productphotos;
     public  int mSelectedItem = 0 ;
     ProductDetailsFragment fragment ;
-    public ProductImagesAdapter(Context mcontext, List<ProductDetails.ProductdetailsBean.ProductphotosBean> productphotos1,
+    public ProductImagesAdapter(Context mcontext, List<ProductphotosBean> productphotos1,
                                 ProductDetailsFragment detailsFragment) {
         context = mcontext;
         productphotos = productphotos1;

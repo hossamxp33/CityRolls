@@ -55,8 +55,9 @@ class smallStoreAdapter(activity: FragmentActivity, offers: List<Data>) : Recycl
 
         loudImage(context,holder.img,StoresData[position].logo)
 
-       val store_phone =StoresData[position].phone
-//// Make Call
+
+    //// Make Call ////////////
+        val store_phone =StoresData[position].phone
         holder.call.setOnClickListener({ v -> ResourceUtil.callNumber(store_phone, this.context) })
       ///////////////  Get Location ---------- //////////////
         val lat = StoresData[position].latitude

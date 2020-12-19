@@ -82,8 +82,8 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
 
         if (productsbysubcats.get(position).getProductsizes().size() > 0) {
             holder.amount.setText(context.getText(R.string.remendier) + " " +
-                    String.valueOf(productsbysubcats.get(position).getProductsizes().get(0).getAmount()) + " " + context.getText(R.string.num));
-            holder.price.setText(productsbysubcats.get(position).getProductsizes().get(0).getStart_price() + " " + context.getText(R.string.realcoin));
+                    String.valueOf(productsbysubcats.get(position).getProductsizes().get(position).getAmount()) + " " + context.getText(R.string.num));
+            holder.price.setText(productsbysubcats.get(position).getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.realcoin));
         }
 
         Fragment fragment = new ProductDetailsFragment();

@@ -73,7 +73,7 @@ holder.oldprice.setVisibility(View.INVISIBLE);
                 }
             holder.amount.setText(context.getText(R.string.remendier) + " " +
                     String.valueOf(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getAmount()) + " " + context.getText(R.string.num));
-            holder.price.setText(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getStart_price() + " " +
+            holder.price.setText(productsbysubcats.get(position).getProduct().getProductsizes().get(0).getCurrent_price() + " " +
                     PreferenceHelper.getCurrency());
         } catch (Exception e) {
         }

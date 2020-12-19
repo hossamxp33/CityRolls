@@ -374,7 +374,7 @@ share.setOnClickListener(v -> {
             } else {
                 price.setText(String.valueOf(priceafteroffer) + getText(R.string.realcoin));
                 oldprice.setText(productdetailsBean.getProductsizes().
-                        get(productSizesAdapter.mSelectedItem).getCurrent_price() + getText(R.string.realcoin));
+                        get(productSizesAdapter.mSelectedItem).getCurrent_price() +""+ getText(R.string.realcoin));
             }
         } else
             price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() +  PreferenceHelper.getCurrency());

@@ -5,5 +5,6 @@ data class DataBean(
         val id: Int,
         val name: String,
         val name_ar: String,
-        val value: Float
+        val value: Float,
+        var photo: String? = null
 )

@@ -2,11 +2,12 @@ package com.codesroots.osamaomar.shopgate.helper
 
 import com.codesroots.osamaomar.shopgate.entities.ProductColor
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails
+import com.codesroots.osamaomar.shopgate.entities.Productsize
 
 public class kotlinusercase {
 
 
-    fun makestringarray(list: List<ProductDetails.ProductdetailsBean.ProductsizesBean>) : List<String> {
+    fun makestringarray(list: List<Productsize>) : List<String> {
       return  list.map { e -> e.size }
 
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
+import com.codesroots.osamaomar.shopgate.entities.Productsize;
 import com.codesroots.osamaomar.shopgate.entities.StoreSetting;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productdetailsfragment.ProductDetailsFragment;
@@ -21,7 +22,7 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
 
     private Context context;
     ProductDetailsFragment fragment;
-    List<ProductDetails.ProductdetailsBean.ProductsizesBean> productsizes;
+    List<Productsize> productsizes;
     public int mSelectedItem = 0;
     public float priceafteroffer = 0;
 
@@ -29,7 +30,7 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
     private int offer;
     private StoreSetting setting;
 
-    public ProductSizesAdapter(Context mcontext, List<ProductDetails.ProductdetailsBean.ProductsizesBean> sizes,
+    public ProductSizesAdapter(Context mcontext, List<Productsize> sizes,
                                ProductDetailsFragment detailsFragment, int offer1) {
         context = mcontext;
         productsizes = sizes;
@@ -94,7 +95,7 @@ public class  ProductSizesAdapter extends RecyclerView.Adapter<ProductSizesAdapt
                     else
                         fragment.charege.setText(R.string.free_charge);
                 } else {
-                    fragment.price.setText(productsizes.get(mSelectedItem).getCurrent_price() + context.getText(R.string.realcoin));
+                    fragment.price.setText(productsizes.get(mSelectedItem).getCurrent_price() + " " + context.getText(R.string.realcoin));
                     if (Float.valueOf(productsizes.get(mSelectedItem).getCurrent_price()) < fragment.setting.getData().get(0).getShippingPrice()) {
                         fragment.charege.setText(R.string.charge_rules);
                         fragment.freecharg = false;

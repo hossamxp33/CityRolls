@@ -69,23 +69,25 @@ private int page = 1;
         {
             productsData = products.getProductsbycategory();
             progress.setVisibility(View.GONE);
-            if (products.getProductsbycategory().size() > 0) {
-                if (page == 1) {
-                    productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                    AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, productsData, mViewModel);
-                    productsRecycle.setAdapter(AllProductsAdapter);
+            try {
+                if (products.getProductsbycategory().size() > 0) {
+                    if (page == 1) {
+                        productsRecycle.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                        AllProductsAdapter = new AllProductsAdapter(getActivity(), 0, productsData, mViewModel);
+                        productsRecycle.setAdapter(AllProductsAdapter);
+                    } else {
+                        getDataNow = false;
+                        productsData.addAll(products.getProductsbycategory());
+                        AllProductsAdapter.notifyDataSetChanged();
+                        productsRecycle.scrollToPosition(AllProductsAdapter.getItemCount() - 19);
+                    }
                 } else {
-                    getDataNow = false;
-
-                    productsData.addAll(products.getProductsbycategory());
-                    AllProductsAdapter.notifyDataSetChanged();
-                    productsRecycle.scrollToPosition(AllProductsAdapter.getItemCount() - 19);
+                    notfound.setVisibility(View.VISIBLE);
+                    changeSpane.setEnabled(false);
+                    filter.setEnabled(false);
                 }
-            } else {
-             //   notfound.setVisibility(View.VISIBLE);
-               // changeSpane.setEnabled(false);
-               // filter.setEnabled(false);
-            }
+            }catch (Exception e){};
+
 
         });
 

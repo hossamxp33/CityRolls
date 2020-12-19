@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.codesroots.osamaomar.shopgate.R;
+import com.codesroots.osamaomar.shopgate.entities.DataBean;
 import com.codesroots.osamaomar.shopgate.entities.SubCategriesWithProducts;
 import com.codesroots.osamaomar.shopgate.helper.ResourceUtil;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.productfragment.ProductsFragment;
@@ -27,8 +28,8 @@ import static com.codesroots.osamaomar.shopgate.entities.names.SUB_CAT_ID;
 public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHolder>  {
 
     private Context context;
-    private List<SubCategriesWithProducts.DataBean> subcates;
-    public SubCatsAdapter(Context mcontext, List<SubCategriesWithProducts.DataBean> data) {
+    private List<DataBean> subcates;
+    public SubCatsAdapter(Context mcontext, List<DataBean> data) {
         context = mcontext;
         subcates = data;
     }

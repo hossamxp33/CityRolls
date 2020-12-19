@@ -54,7 +54,7 @@ public class ProductDetails {
         private String img;
         private String description;
         private String description_en;
-        private List<ProductsizesBean> productsizes;
+        private List<Productsize> productsizes;
         private List<TotalRatingBean> total_rating;
         private List<ProductphotosBean> productphotos;
         private List<OffersBean> offers;
@@ -115,11 +115,11 @@ public class ProductDetails {
             this.description_en = description_en;
         }
 
-        public List<ProductsizesBean> getProductsizes() {
+        public List<Productsize> getProductsizes() {
             return productsizes;
         }
 
-        public void setProductsizes(List<ProductsizesBean> productsizes) {
+        public void setProductsizes(List<Productsize> productsizes) {
             this.productsizes = productsizes;
         }
         public List<ProductColor> getProductcolor() {
@@ -161,133 +161,9 @@ public class ProductDetails {
             this.favourites = favourites;
         }
 
-        public static class ProductsizesBean {
-            /**
-             * id : 3
-             * product_id : 31
-             * start_price : 300
-             * amount : 1
-             * size : 100
-             */
 
-            private int id;
-            private int product_id;
-            private String current_price;
-            private String amount;
-            private String size;
 
-            public int getId() {
-                return id;
-            }
 
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public String getCurrent_price() {
-                return current_price;
-            }
-
-            public void setCurrent_price(String start_price) {
-                this.current_price = start_price;
-            }
-
-            public String getAmount() {
-                return amount;
-            }
-
-            public void setAmount(String amount) {
-                this.amount = amount;
-            }
-
-            public String getSize() {
-                return size;
-            }
-
-            public void setSize(String size) {
-                this.size = size;
-            }
-        }
-
-        public static class TotalRatingBean {
-            /**
-             * product_id : 31
-             * stars : 5
-             * count : 2
-             */
-
-            private int product_id;
-            private float stars;
-            private int count;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public float getStars() {
-                return stars;
-            }
-
-            public void setStars(float stars) {
-                this.stars = stars;
-            }
-
-            public int getCount() {
-                return count;
-            }
-
-            public void setCount(int count) {
-                this.count = count;
-            }
-        }
-
-        public static class ProductphotosBean {
-            /**
-             * product_id : 31
-             * id : 3
-             * photo : http://shopgate.codesroots.com/library/attachment/pd3.jpg
-             */
-
-            private int product_id;
-            private int id;
-            private String photo;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getPhoto() {
-                return photo;
-            }
-
-            public void setPhoto(String photo) {
-                this.photo = photo;
-            }
-        }
 
         public static class OffersBean {
             /**
@@ -373,7 +249,7 @@ public class ProductDetails {
         private int store_id;
 
 
-        private List<ProductsizesBean> productsizes;
+        private List<Productsize> productsizes;
         private List<TotalRatingBean> total_rating;
         private List<ProductphotosBean> productphotos;
 
@@ -441,11 +317,11 @@ public class ProductDetails {
             this.description_en = description_en;
         }
 
-        public List<ProductsizesBean> getProductsizes() {
+        public List<Productsize> getProductsizes() {
             return productsizes;
         }
 
-        public void setProductsizes(List<ProductsizesBean> productsizes) {
+        public void setProductsizes(List<Productsize> productsizes) {
             this.productsizes = productsizes;
         }
 
@@ -468,133 +344,11 @@ public class ProductDetails {
 
 
 
-        public static class ProductsizesBean {
-            /**
-             * id : 3
-             * product_id : 31
-             * start_price : 300
-             * amount : 1
-             * size : 100
-             */
 
-            private int id;
-            private int product_id;
-            private String current_price;
-            private String amount;
-            private String size;
 
-            public int getId() {
-                return id;
-            }
 
-            public void setId(int id) {
-                this.id = id;
-            }
 
-            public int getProduct_id() {
-                return product_id;
-            }
 
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public String getCurrent_price() {
-                return current_price;
-            }
-
-            public void setCurrent_price(String start_price) {
-                this.current_price = start_price;
-            }
-
-            public String getAmount() {
-                return amount;
-            }
-
-            public void setAmount(String amount) {
-                this.amount = amount;
-            }
-
-            public String getSize() {
-                return size;
-            }
-
-            public void setSize(String size) {
-                this.size = size;
-            }
-        }
-
-        public static class TotalRatingBean {
-            /**
-             * product_id : 31
-             * stars : 5
-             * count : 2
-             */
-
-            private int product_id;
-            private float stars;
-            private int count;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public float getStars() {
-                return stars;
-            }
-
-            public void setStars(float stars) {
-                this.stars = stars;
-            }
-
-            public int getCount() {
-                return count;
-            }
-
-            public void setCount(int count) {
-                this.count = count;
-            }
-        }
-
-        public static class ProductphotosBean {
-            /**
-             * product_id : 31
-             * id : 3
-             * photo : http://shopgate.codesroots.com/library/attachment/pd3.jpg
-             */
-
-            private int product_id;
-            private int id;
-            private String photo;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getPhoto() {
-                return photo;
-            }
-
-            public void setPhoto(String photo) {
-                this.photo = photo;
-            }
-        }
 
 
     }

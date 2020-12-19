@@ -119,7 +119,7 @@ public class ProductsViewModel extends ViewModel {
     {
 
             Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
-                return Float.valueOf(o1.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o2.getProductsizes().get(0).getStart_price()));
+                return Float.valueOf(o1.getProductsizes().get(0).getCurrent_price()).compareTo(Float.valueOf(o2.getProductsizes().get(0).getStart_price()));
             });
             productsMutableLiveData.postValue(resultData);
 
@@ -128,7 +128,7 @@ public class ProductsViewModel extends ViewModel {
     public  void  compareMoreprice()
     {
         Collections.sort(resultData.getProductsbycategory(), (o1, o2) -> {
-            return Float.valueOf(o2.getProductsizes().get(0).getStart_price()).compareTo(Float.valueOf(o1.getProductsizes().get(0).getStart_price()));
+            return Float.valueOf(o2.getProductsizes().get(0).getCurrent_price()).compareTo(Float.valueOf(o1.getProductsizes().get(0).getStart_price()));
         });
         productsMutableLiveData.postValue(resultData);
     }

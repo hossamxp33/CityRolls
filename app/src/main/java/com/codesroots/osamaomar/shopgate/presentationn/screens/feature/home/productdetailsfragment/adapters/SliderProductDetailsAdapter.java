@@ -11,14 +11,15 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.entities.ProductDetails;
+import com.codesroots.osamaomar.shopgate.entities.ProductphotosBean;
 
 import java.util.List;
 
 
 public class SliderProductDetailsAdapter extends PagerAdapter {
     private Context activity;
-   private List<ProductDetails.ProductdetailsBean.ProductphotosBean> slider;
-    public SliderProductDetailsAdapter(FragmentActivity context, List<ProductDetails.ProductdetailsBean.ProductphotosBean> sliders) {
+   private List<ProductphotosBean> slider;
+    public SliderProductDetailsAdapter(FragmentActivity context, List<ProductphotosBean> sliders) {
         activity=context;
         slider=sliders;
     }
