@@ -48,6 +48,11 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         try {
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Float.valueOf(famousProduct.get(position).
+                    getProductsizes().get(0).getCurrent_price() *
+                    PreferenceHelper.getCurrencyValue()) );
+            //////////////////////////////////
         holder.name.setText(famousProduct.get(position).getName());
         if (famousProduct.get(position).getImg() != null) {
                 Glide.with(context.getApplicationContext())
@@ -55,9 +60,9 @@ public class FamousProductsAdapter extends RecyclerView.Adapter<FamousProductsAd
                         .into(holder.item_img);
         }
 
+
         if (PreferenceHelper.getCurrency() !=  null)
-            holder.price.setText(Integer.valueOf((int) famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
-                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+            holder.price.setText( price + " " + PreferenceHelper.getCurrency() );
          else
             holder.price.setText(famousProduct.get(position).getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));
 

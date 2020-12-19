@@ -55,9 +55,11 @@ public class RelatedProductsAdapter extends RecyclerView.Adapter<RelatedProducts
                         .load(famousProduct.get(position).getImg())
                         .into(holder.item_img);
         }
+            String the_price = String.format("%.2f",Float.valueOf(famousProduct.get(position).getProductsizes()
+                    .get(0).getCurrent_price() *
+                    PreferenceHelper.getCurrencyValue()) );
         if (PreferenceHelper.getCurrencyValue() > 0)
-            holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) *
-                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+            holder.price.setText(the_price + " " + PreferenceHelper.getCurrency());
         else
             holder.price.setText(Float.valueOf(famousProduct.get(position).getProductsizes().get(0).getCurrent_price()) + " " + context.getText(R.string.coin));
 

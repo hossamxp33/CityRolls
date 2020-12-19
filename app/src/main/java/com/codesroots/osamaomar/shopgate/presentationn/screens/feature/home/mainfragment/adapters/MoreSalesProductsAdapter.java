@@ -47,6 +47,11 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         try {
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Integer.valueOf((int) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
+                    PreferenceHelper.getCurrencyValue() );
+            ////////////  //////////////
+
             holder.name.setText(offerproducts.get(position).getProduct().getName());
             holder.discount.setText(context.getText(R.string.disscount)+" "+offerproducts.get(position).getPercentage()+" "+"%");
 
@@ -57,8 +62,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
                             .into(holder.item_img);
             }
             if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Integer.valueOf((int) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
-                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+                holder.price.setText(price + " " + PreferenceHelper.getCurrency());
 
             else
                 holder.price.setText(offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));

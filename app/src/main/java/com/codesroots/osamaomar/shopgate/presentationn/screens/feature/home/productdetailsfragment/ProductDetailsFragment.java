@@ -56,7 +56,7 @@ import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
 public class ProductDetailsFragment extends Fragment {
     CirclePageIndicator indicator;
-ConstraintLayout product_view;
+    ConstraintLayout product_view;
     ViewPager slider;
     Spinner spinner ,color_spinner;
     private static int currentPage = 0;
@@ -90,7 +90,7 @@ ConstraintLayout product_view;
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.product_details_fragment, container, false);
-       //((MainActivity) getActivity()).head_title.setText(getText(R.string.product_details));
+        //((MainActivity) getActivity()).head_title.setText(getText(R.string.product_details));
         ((MainActivity) getActivity()).logo.setVisibility(View.VISIBLE);
         productid = getArguments().getInt(PRODUCT_ID, 0);
         findViewsFromXml(view);
@@ -106,15 +106,15 @@ ConstraintLayout product_view;
                 Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show());
 
 
-share.setOnClickListener(v -> {
-    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-    sharingIntent.setType("text/plain");
-    String shareBody = "Here is the share content body";
-    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-    startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        share.setOnClickListener(v -> {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Here is the share content body";
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
-});
+        });
 
 
 
@@ -206,21 +206,15 @@ share.setOnClickListener(v -> {
             return true;
         });
 
-//        item_img.setOnClickListener(v ->
-//                {
-//                    Intent intent = new Intent(getContext(), ImageActivity.class);
-//                    intent.putExtra("url",imagurl);
-//                    getContext().startActivity(intent);
-//                }
-//        );
+
         return view;
     }
 
     private void findViewsFromXml(View view) {
-   //     images_rec = view.findViewById(R.id.images_rec);
-      //  sizes_rec = view.findViewById(R.id.sizes);
+        //     images_rec = view.findViewById(R.id.images_rec);
+        //  sizes_rec = view.findViewById(R.id.sizes);
         loading = view.findViewById(R.id.progress);
-         product_name = view.findViewById(R.id.product_name);
+        product_name = view.findViewById(R.id.product_name);
 
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
@@ -230,10 +224,10 @@ share.setOnClickListener(v -> {
         addToFav = view.findViewById(R.id.fav);
         amount = view.findViewById(R.id.amount);
         addtocart = view.findViewById(R.id.addtocart);
-     //   charege = view.findViewById(R.id.charge);
+        //   charege = view.findViewById(R.id.charge);
         share = view.findViewById(R.id.share_button);
         product_view = view.findViewById(R.id.product_view);
-     //   oldprice = view.findViewById(R.id.oldprice);
+        //   oldprice = view.findViewById(R.id.oldprice);
 //        oldprice.setPaintFlags(oldprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         slider = view.findViewById(R.id.sliderr);
         indicator = view.findViewById(R.id.indicatorProductDetails);
@@ -241,14 +235,18 @@ share.setOnClickListener(v -> {
         spinner = view.findViewById(R.id.planets_spinner);
         color_spinner = view.findViewById(R.id.color_spinner);
     }
+
     private void setDatainViews(ProductDetails productDetails) {
-        recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.getRelated()));
+        recommended_products.setAdapter(new RelatedProductsAdapter(getActivity(),productDetails.
+                getRelated()));
 
         if (productDetails.getProductdetails().size() > 0) {
             slider.setAdapter(new SliderProductDetailsAdapter(getActivity(), productDetails.getProductdetails().get(0).getProductphotos()));
             indicator.setViewPager(slider);
             init(productDetails.getProductdetails().get(0).getProductphotos().size());
             product_name.setText(productDetails.getProductdetails().get(0).getName());
+
+
         } else {
             slider.setVisibility(View.GONE);
         }
@@ -257,48 +255,49 @@ share.setOnClickListener(v -> {
 
     }
 
-
-
     private void setDataToViews(@NotNull ProductDetails.ProductdetailsBean productdetailsBean) {
-         loading.setVisibility(View.GONE);
+        loading.setVisibility(View.GONE);
 
-        if (productdetailsBean.getProductsizes().size() > 0) {
-            amount.setText(productdetailsBean.getProductsizes().get(0).getAmount());
-            price.setText(Float.valueOf(productdetailsBean.getProductsizes().get(0).getCurrent_price()) *
-                    PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
-        }else {
-            Toast.makeText(getActivity(), getActivity().getText(R.string.error_in_data), Toast.LENGTH_SHORT).show();
-        }
-            ////////////////////////// Spinner /////////////////////////////////
+        ////////////////// Price /////////////////
+        String the_price = String.format("%.2f",Float.valueOf(productdetailsBean.
+                getProductsizes().get(0).getCurrent_price() *
+                PreferenceHelper.getCurrencyValue()) );
+
+            if (productdetailsBean.getProductsizes().size() > 0) {
+                amount.setText(productdetailsBean.getProductsizes().get(0).getAmount());
+                price.setText(the_price  + PreferenceHelper.getCurrency());
+            }else {
+                Toast.makeText(getActivity(), getActivity().getText(R.string.error_in_data), Toast.LENGTH_SHORT).show();
+            }
+        ////////////////////////// Spinner /////////////////////////////////
         List values = new kotlinusercase().makestringarray(productdetailsBean.getProductsizes());
-      //  String values = productdetailsBean.getProductsizes().get(0).getSize();
+        //  String values = productdetailsBean.getProductsizes().get(0).getSize();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
 
-            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-            adapter.notifyDataSetChanged();
-            spinner.setAdapter(adapter);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        adapter.notifyDataSetChanged();
+        spinner.setAdapter(adapter);
 
-             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 sizeid = productdetailsBean.getProductsizes().get(position).getId();
-             //   if (position > 0 )
+                //   if (position > 0 )
                 if (productdetailsBean.getOffers().size() > 0) {
                     //hasOffer = true;
                     float offerPercentage = Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) * productdetailsBean.getOffers().get(0).getPercentage() / 100;
-                    priceafteroffer = Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) - offerPercentage;
+                    String   priceafteroffer = String.format("%.2f",Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) - offerPercentage);
                     if (PreferenceHelper.getCurrency()!=null)
-                        price.setText(String.valueOf(priceafteroffer*PreferenceHelper.getCurrencyValue()) + PreferenceHelper.getCurrency());
+                        price.setText(priceafteroffer + " " + PreferenceHelper.getCurrency());
                     else
-                        price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
+                        price.setText(String.valueOf(the_price) + PreferenceHelper.getCurrency());
 
 
                 } else {
-                    price.setText(Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) *
-                            PreferenceHelper.getCurrencyValue() + PreferenceHelper.getCurrency());
+                    price.setText(the_price + " " +PreferenceHelper.getCurrency());
                     if (Float.valueOf(productdetailsBean.getProductsizes().get(position).getCurrent_price()) < setting.getData().get(0).getShippingPrice()) {
 
                     }
@@ -306,14 +305,14 @@ share.setOnClickListener(v -> {
                 }
 
                 amount.setText( String.valueOf(productdetailsBean.getProductsizes().get(position).getAmount())
-                       );
+                );
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-       ///////////////////////// COLOR SPINNER /////////////////
+        ///////////////////////// COLOR SPINNER /////////////////
         ////////////////////////// Spinner /////////////////////////////////
         List colorvalues = new kotlinusercase().makestringarrayForColor(productdetailsBean.getProductcolor());
         //  String values = productdetailsBean.getProductsizes().get(0).getSize();
@@ -339,70 +338,71 @@ share.setOnClickListener(v -> {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        description.setMovementMethod(new ScrollingMovementMethod());
+            description.setMovementMethod(new ScrollingMovementMethod());
 
-        description.setText(Html.fromHtml(productdetailsBean.getDescription(),Html.FROM_HTML_MODE_COMPACT));
+            description.setText(Html.fromHtml(productdetailsBean.getDescription(),Html.FROM_HTML_MODE_COMPACT));
         }
 
 
         try {
-        for (int i = 0; i < productdetailsBean.getProductphotos().size(); i++)
-            images.add(productdetailsBean.getProductphotos().get(i).getPhoto());
-        Glide.with(getActivity()).load(productdetailsBean.getImg())
-                .useAnimationPool(true).placeholder(R.drawable.product).into(item_img);
-        imagurl = productdetailsBean.getImg();
-        if (productdetailsBean.getOffers().size() > 0)
-            productSizesAdapter = new ProductSizesAdapter(getActivity(), productdetailsBean.getProductsizes(),
-                    this, productdetailsBean.getOffers().get(0).getPercentage());
-        else
-
-      productSizesAdapter = new ProductSizesAdapter(getActivity(), productdetailsBean.getProductsizes(), this, 0);
-        productImagesAdapter = new ProductImagesAdapter(getActivity(), productdetailsBean.getProductphotos(), this);
-        images_rec.setAdapter(productImagesAdapter);
-        sizes_rec.setAdapter(productSizesAdapter);
-        product_name.setText(productdetailsBean.getName());
-
-        if (productdetailsBean.getOffers().size() > 0) {
-            float priceafteroffer = Float.valueOf(productdetailsBean.getProductsizes().
-                    get(productSizesAdapter.mSelectedItem).getCurrent_price()) - Float.valueOf(productdetailsBean.getProductsizes()
-                    .get(productSizesAdapter.mSelectedItem).getCurrent_price()) *
-                    productdetailsBean.getOffers().get(0).getPercentage() / 100;
-            if (PreferenceHelper.getCurrencyValue() > 0) {
-                price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
-                oldprice.setText(productdetailsBean.getProductsizes().
-                        get(productSizesAdapter.mSelectedItem).getCurrent_price() + PreferenceHelper.getCurrency());
-            } else {
-                price.setText(String.valueOf(priceafteroffer) + getText(R.string.realcoin));
-                oldprice.setText(productdetailsBean.getProductsizes().
-                        get(productSizesAdapter.mSelectedItem).getCurrent_price() +""+ getText(R.string.realcoin));
-            }
-        } else
-            price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() +  PreferenceHelper.getCurrency());
-
-        if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price()) <
-                setting.getData().get(0).getShippingPrice()) {
-            if (PreferenceHelper.getCOUNTRY_ID()==1)
-            charege.setText(String.valueOf(PreferenceHelper.getIN_OMAN())+" "+getString(R.string.coin));
+            for (int i = 0; i < productdetailsBean.getProductphotos().size(); i++)
+                images.add(productdetailsBean.getProductphotos().get(i).getPhoto());
+            Glide.with(getActivity()).load(productdetailsBean.getImg())
+                    .useAnimationPool(true).placeholder(R.drawable.product).into(item_img);
+            imagurl = productdetailsBean.getImg();
+            if (productdetailsBean.getOffers().size() > 0)
+                productSizesAdapter = new ProductSizesAdapter(getActivity(), productdetailsBean.getProductsizes(),
+                        this, productdetailsBean.getOffers().get(0).getPercentage());
             else
-                charege.setText(String.valueOf(PreferenceHelper.getOUT_OMAN())+" "+getString(R.string.coin));
-        }
 
-        if (productdetailsBean.getTotal_rating() != null) {
-            if (productdetailsBean.getTotal_rating().size() > 0) {
-                ratecount.setText("(" + productdetailsBean.getTotal_rating().get(0).getCount() + ")");
-                ratingBar.setRating(productdetailsBean.getTotal_rating().get(0).getStars() /
-                        productdetailsBean.getTotal_rating().get(0).getCount());
+                productSizesAdapter = new ProductSizesAdapter(getActivity(), productdetailsBean.getProductsizes(), this, 0);
+            productImagesAdapter = new ProductImagesAdapter(getActivity(), productdetailsBean.getProductphotos(), this);
+            images_rec.setAdapter(productImagesAdapter);
+            sizes_rec.setAdapter(productSizesAdapter);
+            product_name.setText(productdetailsBean.getName());
+
+            if (productdetailsBean.getOffers().size() > 0) {
+
+                String priceafteroffer = String.format("%.4f", Float.valueOf(productdetailsBean.getProductsizes().
+                        get(productSizesAdapter.mSelectedItem).getCurrent_price()) - Float.valueOf(productdetailsBean.getProductsizes()
+                        .get(productSizesAdapter.mSelectedItem).getCurrent_price()) *
+                        productdetailsBean.getOffers().get(0).getPercentage() / 100);
+                if (PreferenceHelper.getCurrencyValue() > 0) {
+                    price.setText(String.valueOf(priceafteroffer) + PreferenceHelper.getCurrency());
+                    oldprice.setText(productdetailsBean.getProductsizes().
+                            get(productSizesAdapter.mSelectedItem).getCurrent_price() + PreferenceHelper.getCurrency());
+                } else {
+                    price.setText(String.valueOf(priceafteroffer) + getText(R.string.realcoin));
+                    oldprice.setText(productdetailsBean.getProductsizes().
+                            get(productSizesAdapter.mSelectedItem).getCurrent_price() +""+ getText(R.string.realcoin));
+                }
+            } else
+                price.setText(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price() +  PreferenceHelper.getCurrency());
+
+            if (Float.valueOf(productdetailsBean.getProductsizes().get(productSizesAdapter.mSelectedItem).getCurrent_price()) <
+                    setting.getData().get(0).getShippingPrice()) {
+                if (PreferenceHelper.getCOUNTRY_ID()==1)
+                    charege.setText(String.valueOf(PreferenceHelper.getIN_OMAN())+" "+getString(R.string.coin));
+                else
+                    charege.setText(String.valueOf(PreferenceHelper.getOUT_OMAN())+" "+getString(R.string.coin));
             }
-        }
 
-        if (productdetailsBean.getFavourites().size() > 0) {
-            addToFav.setImageResource(R.drawable.favoried);
-            productfav = true;
-            favid = productdetailsBean.getFavourites().get(0).getId();
-        } else {
-            addToFav.setImageResource(R.drawable.like);
-            productfav = false;
-        }
+            if (productdetailsBean.getTotal_rating() != null) {
+                if (productdetailsBean.getTotal_rating().size() > 0) {
+                    ratecount.setText("(" + productdetailsBean.getTotal_rating().get(0).getCount() + ")");
+                    ratingBar.setRating(productdetailsBean.getTotal_rating().get(0).getStars() /
+                            productdetailsBean.getTotal_rating().get(0).getCount());
+                }
+            }
+
+            if (productdetailsBean.getFavourites().size() > 0) {
+                addToFav.setImageResource(R.drawable.favoried);
+                productfav = true;
+                favid = productdetailsBean.getFavourites().get(0).getId();
+            } else {
+                addToFav.setImageResource(R.drawable.like);
+                productfav = false;
+            }
         }
         catch (Exception e)
         {}
@@ -419,9 +419,10 @@ share.setOnClickListener(v -> {
     private ProductDetailsModelFactory getViewModelFactory() {
         return new ProductDetailsModelFactory(this.getActivity().getApplication(), productid, userid);
     }
+
     private void init(int size) {
         final float density = getResources().getDisplayMetrics().density;
-    indicator.setRadius(4 * density);
+        indicator.setRadius(4 * density);
         NUM_PAGES = size;
         final Handler handler = new Handler();
         final Runnable Update = () -> {

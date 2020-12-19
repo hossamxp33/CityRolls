@@ -48,6 +48,11 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         try {
+
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Integer.valueOf(recommendesProducts.get(position).getStart_price()) *
+                    PreferenceHelper.getCurrencyValue());
+            ///////////////////////////
             holder.name.setText(recommendesProducts.get(position).getProduct().getName());
             if (recommendesProducts.get(position).getProduct().getImg() != null) {
                     Glide.with(context.getApplicationContext())
@@ -58,8 +63,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
 
             if (PreferenceHelper.getCurrencyValue() > 0)
-                holder.price.setText(Integer.valueOf(recommendesProducts.get(position).getStart_price()) *
-                        PreferenceHelper.getCurrencyValue() + " " + PreferenceHelper.getCurrency());
+                holder.price.setText(price + " " + PreferenceHelper.getCurrency());
             else
                 holder.price.setText(recommendesProducts.get(position).getStart_price() + " " + context.getText(R.string.coin));
 
