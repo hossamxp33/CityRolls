@@ -26,6 +26,7 @@ import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.main
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.LinePageIndicator;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,7 +36,7 @@ public class MainFragment extends Fragment {
     private MainFragmentViewModel mViewModel;
     RecyclerView departments, morerate_products, more_sales,recommended_products;
     ViewPager slider;
-    CirclePageIndicator indicator;
+    LinePageIndicator indicator;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private FrameLayout progress;
@@ -94,12 +95,13 @@ public class MainFragment extends Fragment {
         }
         init(mainView.getSliders().size());
         slider.setAdapter(new SliderPagerAdapter(getActivity(),mainView.getSliders()));
-        slider.setPadding(80, 0, 50, 0);
-        slider.setOffscreenPageLimit(3);
-        slider.setPageMargin(20);
-        slider.setClipToPadding(false);
-        slider.setClipChildren(false);
+//        slider.setPadding(80, 0, 50, 0);
+   //     slider.setOffscreenPageLimit(3);
+//        slider.setPageMargin(20);
+//        slider.setClipToPadding(false);
+//        slider.setClipChildren(false);
         indicator.setViewPager(slider);
+
         morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getNewdata()));
         more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getOffernew()));
         recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getProductsbysales()));
@@ -112,7 +114,7 @@ public class MainFragment extends Fragment {
 
     private void init(int size) {
         final float density = getResources().getDisplayMetrics().density;
-        indicator.setRadius(4 * density);
+        //indicator.setRadius(4 * density);
         NUM_PAGES = size;
         final Handler handler = new Handler();
         final Runnable Update = () -> {

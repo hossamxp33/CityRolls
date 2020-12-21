@@ -13,6 +13,8 @@
     <string name="noaddressfound">لا يوجد عناوين لديك</string>
     <string name="newaddress">اضافة عنوان جديد</string>
     <string name="editaddress">تعديل عنوانك </string>
+    <string name="read_more">قراءة المزيد...</string>
+
     <string name="save">حفظ</string>
     <string name="choicename">اختر الاسم</string>
     <string name="choicephone">اختر الهاتف</string>

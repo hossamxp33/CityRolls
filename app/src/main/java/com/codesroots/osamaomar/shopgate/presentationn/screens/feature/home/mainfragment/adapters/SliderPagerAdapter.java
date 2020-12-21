@@ -58,9 +58,9 @@ public class SliderPagerAdapter extends PagerAdapter {
         container.removeView(view);
     }
 
-    @Override
-    public float getPageWidth(int position) {
-        return 0.93f;
-    }
+//    @Override
+//    public float getPageWidth(int position) {
+//        return 0.93f;
+//    }
 }
 

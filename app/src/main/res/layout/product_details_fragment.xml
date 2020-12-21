@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+          android:id="@+id/mainscroll"
         android:fillViewport="true">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/product_view"
         android:layout_width="match_parent"
@@ -227,15 +229,13 @@
             app:layout_constraintTop_toBottomOf="@+id/info"
             app:layout_constraintWidth_percent="0.9" />
 
-        <ScrollView
+        <RelativeLayout
             android:id="@+id/horizontalScrollView1"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintWidth_percent="0.9"
             app:layout_constraintStart_toStartOf="parent"
             android:fillViewport="true"
@@ -247,22 +247,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
+                android:maxLines="5"
                 android:gravity="center_vertical|start"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
                 android:text=""
-                android:overScrollMode="always"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/des_title"
+
           />
 
-        </ScrollView>
+            <Button
+                android:id="@+id/show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_arrow_drop_down_black_24dp"
+                android:clickable="true"
+                />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/description"
+                android:layout_marginTop="5dp"
+
+                android:background="#F0F0F0" />
+
+            <Button
+                android:id="@+id/hide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/description"
+                android:background="@drawable/ic_arrow_drop_up_black_24dp"
+
+                android:clickable="true"
+                android:visibility="invisible" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/size_title"
             android:layout_width="wrap_content"
@@ -374,4 +401,4 @@
         </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
