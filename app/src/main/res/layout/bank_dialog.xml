@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,9 +14,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/logo"
-            app:srcCompat="@drawable/logo"
-            tools:srcCompat="@drawable/logo" />
+            android:background="@drawable/cach" />
 
     </RelativeLayout>
 
@@ -53,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text=" جويد "
+            android:text=" Bank Muscat "
             app:layout_constraintStart_toEndOf="@id/bankname"
             app:layout_constraintTop_toBottomOf="@+id/title"
             android:textColor="@color/black"
@@ -78,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text=" جويد "
+            android:text="  SHOPGATE  "
             app:layout_constraintStart_toEndOf="@id/benifitname"
             app:layout_constraintTop_toBottomOf="@+id/bankname"
             android:textColor="@color/black"
@@ -105,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="  07727402693 "
+            android:text="  0317051679970018  "
             app:layout_constraintStart_toEndOf="@id/accountnum"
             app:layout_constraintTop_toBottomOf="@+id/benifitname"
             android:textColor="@color/black"

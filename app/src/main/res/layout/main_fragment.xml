@@ -119,7 +119,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="16dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toStartOf="@+id/famous_products_txt"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/departments" />
@@ -131,7 +131,7 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="16dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/famous_products_txt"
                 app:layout_constraintTop_toBottomOf="@+id/departments" />
@@ -211,7 +211,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="16dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toStartOf="@+id/diff_products_txt"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/famous_products" />
@@ -225,7 +225,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="16dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/diff_products_txt"
                 app:layout_constraintTop_toBottomOf="@+id/famous_products" />
@@ -277,7 +277,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="8dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/suggested_products_txt"
                 app:layout_constraintTop_toBottomOf="@+id/sales_products" />
@@ -290,7 +290,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="8dp"
-                android:background="#16736a"
+                android:background="#36B5F1"
                 app:layout_constraintEnd_toStartOf="@+id/suggested_products_txt"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sales_products" />

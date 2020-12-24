@@ -4,10 +4,10 @@
 
 //specify gradient
 <gradient
-    android:startColor="#16736a"
-    android:endColor="#16736a"
+    android:startColor="#36B5F1"
+    android:endColor="#36B5F1"
     android:angle="90"/>
-
+    
 <corners
     android:bottomRightRadius="12dp"
     android:bottomLeftRadius="12dp"

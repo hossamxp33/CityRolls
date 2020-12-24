@@ -12,10 +12,10 @@ public class kotlinusercase {
 
 
     }
-    fun makestringarrayForColor(list: List<ProductColor>) : List<String> {
-        return  list.map { e -> e.color }
-
-
-    }
+//    fun makestringarrayForColor(list: List<ProductColor>) : List<String> {
+//        return  list.map { e -> e.color }
+//
+//
+//    }
 
 }

@@ -3,7 +3,7 @@ package com.codesroots.osamaomar.shopgate.entities
 data class Productsbysale(
         val amount: Int,
         val created: String,
-        val current_price: Int,
+        val current_price: Float,
         val id: Int,
         val modified: String,
         val orderdetails: List<Orderdetail>,

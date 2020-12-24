@@ -49,9 +49,7 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
 
         try {
 
-            //////////// Round Float Number //////////////
-            String price = String.format("%.2f",Integer.valueOf(recommendesProducts.get(position).getStart_price()) *
-                    PreferenceHelper.getCurrencyValue());
+
             ///////////////////////////
             holder.name.setText(recommendesProducts.get(position).getProduct().getName());
             if (recommendesProducts.get(position).getProduct().getImg() != null) {
@@ -61,11 +59,13 @@ public class RecommendedProductsAdapter extends RecyclerView.Adapter<Recommended
                             .into(holder.item_img);
             }
 
-
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Float.valueOf(recommendesProducts.get(position).getCurrent_price()) *
+                    PreferenceHelper.getCurrencyValue());
             if (PreferenceHelper.getCurrencyValue() > 0)
                 holder.price.setText(price + " " + PreferenceHelper.getCurrency());
             else
-                holder.price.setText(recommendesProducts.get(position).getStart_price() + " " + context.getText(R.string.coin));
+                holder.price.setText(recommendesProducts.get(position).getCurrent_price() + " " + context.getText(R.string.coin));
 
 
 
