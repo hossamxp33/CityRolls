@@ -97,11 +97,14 @@ public interface ServerGateway {
     //////////////////////////////////////////////////////////////////////////////
 
     /////////////// Get Product By Cat ID
-    @GET("products/getproductsbycatid/{subcat_id}/{user_id}/1.json")
+    @GET("products/getproductsbycatid/{type}/{subcat_id}/{user_id}/1.json")
     Observable<Products> getProducts(
+            @Path("type") int type,
+
             @Path("subcat_id") int id,
             @Path("user_id") int user_id,
             @Path("user_id") int pager
+
     );
 
 

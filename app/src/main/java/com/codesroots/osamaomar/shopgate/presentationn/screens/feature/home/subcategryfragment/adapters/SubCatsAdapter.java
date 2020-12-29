@@ -50,7 +50,7 @@ public class SubCatsAdapter extends RecyclerView.Adapter<SubCatsAdapter.ViewHold
             holder.name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
 
         holder.itemView.setOnClickListener(v -> {
-            Fragment fragment = new smallStoreFramgent();
+            Fragment fragment = new ProductsFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(CAT_ID,subcates.get(position).getId());
             bundle.putString(SUBCATES_NAME,subcates.get(position).getName());

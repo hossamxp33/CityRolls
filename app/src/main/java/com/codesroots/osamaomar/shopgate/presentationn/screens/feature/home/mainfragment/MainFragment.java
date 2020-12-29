@@ -88,8 +88,8 @@ public class MainFragment extends Fragment {
         PreferenceHelper.setDoller_value(mainView.getCurrency().getValue());
         if (PreferenceHelper.getCurrency() == null) {
             PreferenceHelper.setCURRENCY_VALUE(1);
-            PreferenceHelper.setCURRENCY("IQ");
-            PreferenceHelper.setCURRENCYArabic("عراقي");
+            PreferenceHelper.setCURRENCY("OMR");
+            PreferenceHelper.setCURRENCYArabic("عماني");
 
         }
         init(mainView.getSliders().size());

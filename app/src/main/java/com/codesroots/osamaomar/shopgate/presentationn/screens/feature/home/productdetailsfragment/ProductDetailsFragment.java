@@ -101,7 +101,7 @@ public class ProductDetailsFragment extends Fragment {
 
         if (ResourceUtil.getCurrentLanguage(getActivity()).matches("en"))
             description.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_next, 0);
-
+        description.setMovementMethod(new ScrollingMovementMethod());
         mViewModel.throwableMutableLiveData.observe(this, throwable ->
                 Toast.makeText(getActivity(), throwable.toString(), Toast.LENGTH_SHORT).show());
 

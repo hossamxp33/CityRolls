@@ -58,15 +58,8 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
                     .into(holder.Image);
 
             holder.name.setText(offersData.get(position).getProduct().getName());
-        if (offersData.get(position).getProduct().getTotal_rating()!=null)
-        if (offersData.get(position).getProduct().getTotal_rating().size()>0) {
-            holder.ratingBar.setRating(offersData.get(position).getProduct().getTotal_rating().get(0).getStars() /
-                    offersData.get(position).getProduct().getTotal_rating().get(0).getCount());
-            holder.rateCount.setText("("+ offersData.get(position).getProduct().getTotal_rating().get(0).getCount()+")");
-        }
 
-        holder.amount.setText(context.getText(R.string.remendier)+" "+
-                String.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getAmount())+" "+context.getText(R.string.num));
+
 
         priceafteroffer =Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())- Float.valueOf(offersData.get(position).getProduct().getProductsizes().get(0).getCurrent_price())*
                 Integer.valueOf(offersData.get(position).getPercentage())/100;
@@ -104,14 +97,7 @@ public class AllOffersAdapter extends RecyclerView.Adapter<AllOffersAdapter.View
                 replace(R.id.mainfram,fragment)
                 .addToBackStack(null).commit());
 
-        holder.ratingBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID,offersData.get(position).getId());
-                context.startActivity(intent);
-            }
-            return true;
-        });
+
 
     }
 

@@ -73,18 +73,9 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
 
         holder.name.setText(productsbysubcats.get(position).getName());
 
-        if (productsbysubcats.get(position).getTotal_rating() != null)
-            if (productsbysubcats.get(position).getTotal_rating().size() > 0) {
-                holder.ratingBar.setRating(productsbysubcats.get(position).getTotal_rating().get(0).getStars() /
-                        productsbysubcats.get(position).getTotal_rating().get(0).getCount());
-                holder.rateCount.setText("(" + productsbysubcats.get(position).getTotal_rating().get(0).getCount() + ")");
-            }
 
-        if (productsbysubcats.get(position).getProductsizes().size() > 0) {
-            holder.amount.setText(context.getText(R.string.remendier) + " " +
-                    String.valueOf(productsbysubcats.get(position).getProductsizes().get(position).getAmount()) + " " + context.getText(R.string.num));
-            holder.price.setText(productsbysubcats.get(position).getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.realcoin));
-        }
+
+
 
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle();
@@ -94,14 +85,7 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
                 replace(R.id.mainfram, fragment)
                 .addToBackStack(null).commit());
 
-        holder.ratingBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID, productsbysubcats.get(position).getId());
-                context.startActivity(intent);
-            }
-            return true;
-        });
+
 
         //////////////////  inialize with all product
         if (userid > 0) {
@@ -151,9 +135,6 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
             Image = mView.findViewById(R.id.item_img);
             name = mView.findViewById(R.id.item_name);
             price = mView.findViewById(R.id.item_price);
-            amount = mView.findViewById(R.id.quentity);
-            rateCount = mView.findViewById(R.id.rate_count);
-            ratingBar = mView.findViewById(R.id.rates);
             favorite = mView.findViewById(R.id.favorite);
             add_to_cart = mView.findViewById(R.id.add_to_cart);
         }

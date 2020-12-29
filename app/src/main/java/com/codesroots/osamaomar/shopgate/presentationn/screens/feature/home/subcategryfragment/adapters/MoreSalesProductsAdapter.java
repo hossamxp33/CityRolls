@@ -53,16 +53,11 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
 
      //   try {
-        holder.quntity.setText(context.getText(R.string.remendier)+" "+String.valueOf(products.get(position).getAmount())+" "+context.getText(R.string.num));
         holder.price.setText(products.get(position).getStart_price()+" "+context.getText(R.string.realcoin));
         if (products.get(position).getProduct()!=null)
         {
             holder.name.setText(products.get(position).getProduct().getName());
-            if (products.get(position).getProduct().getTotal_rating().size() > 0) {
-                holder.ratecount.setText("(" + products.get(position).getProduct().getTotal_rating().get(0).getCount() + ")");
-                holder.ratingBar.setRating(products.get(position).getProduct().getTotal_rating().get(0).getStars() /
-                        products.get(position).getProduct().getTotal_rating().get(0).getCount());
-            }
+
             if (products.get(position).getProduct().getProductphotos()!=null) {
                 if (products.get(position).getProduct().getProductphotos().size() > 0)
                     Glide.with(context).load(products.get(position).getProduct().getImg())
@@ -100,14 +95,7 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 //        catch (Exception e)
 //        {}
 
-        holder.ratingBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID,products.get(position).getId());
-                context.startActivity(intent);
-            }
-            return true;
-        });
+
 
         Fragment fragment = new ProductDetailsFragment();
         Bundle bundle = new Bundle() ;
