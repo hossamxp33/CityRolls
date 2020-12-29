@@ -24,6 +24,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +67,7 @@ public class ProductDetailsFragment extends Fragment {
     RecyclerView images_rec, sizes_rec,recommended_products;
     private int productid;
     private int sizeid,colorid;
-
+    RelativeLayout textscroll;
     FrameLayout loading;
     public TextView product_name, description, price, ratecount, amount, addtocart, charege, oldprice;
     RatingBar ratingBar;
@@ -75,7 +77,7 @@ public class ProductDetailsFragment extends Fragment {
     ProductImagesAdapter productImagesAdapter;
     ArrayList<String> images = new ArrayList<>();
     ImageView addToFav;
-    Button share;
+    Button share , hide_desc , show_desc;
     boolean productfav;
     public float priceafteroffer = 0;
 
@@ -215,9 +217,12 @@ public class ProductDetailsFragment extends Fragment {
         //  sizes_rec = view.findViewById(R.id.sizes);
         loading = view.findViewById(R.id.progress);
         product_name = view.findViewById(R.id.product_name);
-
+        textscroll  = view.findViewById(R.id.horizontalScrollView1);
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
+        show_desc = view.findViewById(R.id.show);
+        hide_desc = view.findViewById(R.id.hide);
+
         ratecount = view.findViewById(R.id.rate_count);
         ratingBar = view.findViewById(R.id.rates);
         item_img = view.findViewById(R.id.item_img);
@@ -257,7 +262,29 @@ public class ProductDetailsFragment extends Fragment {
 
     private void setDataToViews(@NotNull ProductDetails.ProductdetailsBean productdetailsBean) {
         loading.setVisibility(View.GONE);
+        show_desc.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                System.out.println("Show button");
+                show_desc.setVisibility(View.INVISIBLE);
+                hide_desc.setVisibility(View.VISIBLE);
+                description.setMaxLines(Integer.MAX_VALUE);
+
+            }
+        });
+
+        hide_desc.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("Hide button");
+                hide_desc.setVisibility(View.INVISIBLE);
+                show_desc.setVisibility(View.VISIBLE);
+                description.setMaxLines(5);
+
+            }
+        });
         ////////////////// Price /////////////////
         String the_price = String.format("%.2f",Float.valueOf(productdetailsBean.
                 getProductsizes().get(0).getCurrent_price() *
@@ -310,8 +337,10 @@ public class ProductDetailsFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        });
 
+
+        });
+     //   textscroll.smoothScrollBy(0,0);
         ///////////////////////// COLOR SPINNER /////////////////
         ////////////////////////// Spinner /////////////////////////////////
       //  List colorvalues = new kotlinusercase().makestringarrayForColor(productdetailsBean.getProductcolor());

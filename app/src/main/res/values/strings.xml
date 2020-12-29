@@ -95,6 +95,8 @@
     <string name="searchabout">search by products</string>
     <string name="send">confirm</string>
     <string name="sendrate">send</string>
+    <string name="read_more">Read More....</string>
+
     <string name="sure_order">confirm order</string>
     <string name="title">Login</string>
     <string name="total">Tatal :</string>
