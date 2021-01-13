@@ -87,14 +87,14 @@ holder.oldprice.setVisibility(View.INVISIBLE);
                 replace(R.id.mainfram, fragment)
                 .addToBackStack(null).commit());
 
-        holder.ratingBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Intent intent = new Intent(context, RateActivity.class);
-                intent.putExtra(PRODUCT_ID, productsbysubcats.get(position).getId());
-                context.startActivity(intent);
-            }
-            return true;
-        });
+//        holder.ratingBar.setOnTouchListener((v, event) -> {
+//            if (event.getAction() == MotionEvent.ACTION_UP) {
+//                Intent intent = new Intent(context, RateActivity.class);
+//                intent.putExtra(PRODUCT_ID, productsbysubcats.get(position).getId());
+//                context.startActivity(intent);
+//            }
+//            return true;
+//        });
 
         holder.favorite.setOnClickListener(v -> {
             viewModel.curent_position=position;

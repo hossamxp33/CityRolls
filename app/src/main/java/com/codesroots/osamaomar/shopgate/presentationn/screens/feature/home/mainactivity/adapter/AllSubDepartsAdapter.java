@@ -51,14 +51,13 @@ public class AllSubDepartsAdapter extends RecyclerView.Adapter<AllSubDepartsAdap
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.text.setText(subcats.get(position).getName());
-        Glide.with(context).load(subcats.get(position).getPhoto()).into(holder.Image);
+   //     Glide.with(context).load(subcats.get(position).getPhoto()).into(holder.Image);
         holder.mView.setOnClickListener(v -> {
+            Fragment fragment  = new ProductsFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(CAT_ID,subcats.get(position).getId());
             bundle.putString(SUBCATES_NAME,subcats.get(position).getName());
             bundle.putInt(CAT_TYPE,1);
-
-            Fragment fragment  = new smallStoreFramgent();
             fragment.setArguments(bundle);
             ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.mainfram,fragment).addToBackStack(null).commit();
             ((MainActivity)context).drawer.closeDrawer(GravityCompat.START);;

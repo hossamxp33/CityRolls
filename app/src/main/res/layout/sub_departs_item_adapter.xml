@@ -4,27 +4,19 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/item_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/hair_dryer"
-        android:layout_marginStart="20dp"
-        />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:gravity="center"
+        android:padding="8dp"
         android:text="أجهزة العناية بالشعر "
-        app:layout_constraintStart_toEndOf="@id/item_img"
-        app:layout_constraintTop_toTopOf="@+id/item_img"
         android:textColor="@color/black"
-        android:layout_marginStart="9dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_img"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_img" />
 
     <View
         android:layout_width="match_parent"

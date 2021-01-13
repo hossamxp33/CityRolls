@@ -42,7 +42,7 @@ public class ContactFragment extends Fragment {
         phone2.setOnClickListener(v -> ResourceUtil.callNumber("+07735588559",getContext()));
         insta.setOnClickListener(v ->
                 {
-                    String url = "https://instagram.com/alajwadshopp_iq";
+                    String url = "https://instagram.com/shopgate_om?igshid=wv1mwpl97rkx";
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(url));
                     startActivity(i);

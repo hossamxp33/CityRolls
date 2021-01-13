@@ -27,11 +27,10 @@
     <string name="diffs_product">منتجات منوعة</string>
     <string name="addtocart">اضافة الي العربة</string>
     <string name="more">المزيد</string>
-    <string name="more_sale">الأكثر مبيعا في العناية بالشعر</string>
+    <string name="more_sale">الأكثر مبيعا  </string>
     <string name="cart">سلة التسوق</string>
     <string name="product_des">وصف المنتج</string>
     <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
-
     <string name="choice_size">اختر الحجم</string>
     <string name="coin"> دينار عراقي </string>
     <string name="remendier">  متوفر  </string>
@@ -59,7 +58,6 @@
     <string name="order_date">   تاريخ الطلب : </string>
     <string name="order_num">  رقم الطلب : </string>
     <string name="product_color"> لون المنتج</string>
-
     <string name="total">  المجموع :  </string>
     <string name="order_details">تفاصيل الطلب</string>
     <string name="product_num">  عدد المنتجات : </string>
@@ -150,7 +148,7 @@
     <string name="currency">pound</string>
     <string name="more_sales">الاكثر مبيعا</string>
     <string name="more_rates"> أحدث المنتجات </string>
-    <string name="suggestedproduct">منتجات يوصي بها</string>
+    <string name="suggestedproduct">منتجات ينصح بها</string>
     <string name="aboutus">اتصل بنا</string>
     <string name="conditions">الشروط والاحكام</string>
     <string name="chat">الرسائل الخاصة </string>

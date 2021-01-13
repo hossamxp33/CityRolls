@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/more_sales"
+                android:text="@string/offers"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="14sp"
