@@ -217,11 +217,11 @@ public class ProductDetailsFragment extends Fragment {
         //  sizes_rec = view.findViewById(R.id.sizes);
         loading = view.findViewById(R.id.progress);
         product_name = view.findViewById(R.id.product_name);
-        textscroll  = view.findViewById(R.id.horizontalScrollView1);
+//        textscroll  = view.findViewById(R.id.horizontalScrollView1);
         description = view.findViewById(R.id.description);
         price = view.findViewById(R.id.price);
-        show_desc = view.findViewById(R.id.show);
-        hide_desc = view.findViewById(R.id.hide);
+//        show_desc = view.findViewById(R.id.show);
+//        hide_desc = view.findViewById(R.id.hide);
 
         ratecount = view.findViewById(R.id.rate_count);
         ratingBar = view.findViewById(R.id.rates);
@@ -262,29 +262,29 @@ public class ProductDetailsFragment extends Fragment {
 
     private void setDataToViews(@NotNull ProductDetails.ProductdetailsBean productdetailsBean) {
         loading.setVisibility(View.GONE);
-        show_desc.setOnClickListener(new View.OnClickListener() {
+//        show_desc.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("Show button");
+//                show_desc.setVisibility(View.INVISIBLE);
+//                hide_desc.setVisibility(View.VISIBLE);
+//                description.setMaxLines(Integer.MAX_VALUE);
+//
+//            }
+//        });
 
-            @Override
-            public void onClick(View v) {
-                System.out.println("Show button");
-                show_desc.setVisibility(View.INVISIBLE);
-                hide_desc.setVisibility(View.VISIBLE);
-                description.setMaxLines(Integer.MAX_VALUE);
-
-            }
-        });
-
-        hide_desc.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                System.out.println("Hide button");
-                hide_desc.setVisibility(View.INVISIBLE);
-                show_desc.setVisibility(View.VISIBLE);
-                description.setMaxLines(5);
-
-            }
-        });
+//        hide_desc.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("Hide button");
+//                hide_desc.setVisibility(View.INVISIBLE);
+//                show_desc.setVisibility(View.VISIBLE);
+//                description.setMaxLines(5);
+//
+//            }
+//        });
         ////////////////// Price /////////////////
         String the_price = String.format("%.2f",Float.valueOf(productdetailsBean.
                 getProductsizes().get(0).getCurrent_price() *
