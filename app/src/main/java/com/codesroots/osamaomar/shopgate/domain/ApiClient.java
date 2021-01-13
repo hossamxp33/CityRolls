@@ -34,6 +34,7 @@ public class ApiClient {
                 .addInterceptor(logging)
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .addInterceptor(chain -> {
                     Request originalRequest = chain.request();
                     Request.Builder builder = originalRequest.newBuilder();

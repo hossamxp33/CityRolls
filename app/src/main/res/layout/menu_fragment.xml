@@ -81,6 +81,22 @@
 
 
     <TextView
+        android:id="@+id/share"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/background_for_menu"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:drawableRight="@drawable/ic_arrow"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:text="@string/share"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/conditions" />
+
+    <TextView
         android:id="@+id/aboutus"
         app:layout_constraintTop_toBottomOf="@+id/conditions"
         android:layout_width="match_parent"
@@ -136,7 +152,7 @@
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/background_for_menu"
         android:drawableEnd="@drawable/ic_arrow"
         android:drawableRight="@drawable/ic_arrow"
@@ -146,8 +162,9 @@
         android:textColor="@color/black"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conditions" />
+        app:layout_constraintTop_toBottomOf="@+id/share" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

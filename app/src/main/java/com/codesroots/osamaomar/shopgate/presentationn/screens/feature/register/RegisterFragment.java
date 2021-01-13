@@ -25,7 +25,7 @@ public class RegisterFragment extends Fragment {
 
     TextView registerbtn;
     EditText username,password,repassword,phone,mail;
-    private User user = new User();
+    public User user = new User();
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {

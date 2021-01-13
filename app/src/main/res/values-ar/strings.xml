@@ -46,6 +46,8 @@
     <string name="main">الرئيسية</string>
     <string name="my_order">طلباتي</string>
     <string name="offers">عروض</string>
+    <string name="share">مشاركة التطبيق</string>
+
     <string name="day_offers">عروض اليوم </string>
     <string name="notifications">اشعارات</string>
     <string name="charge_ready">جاهزة للشحن</string>

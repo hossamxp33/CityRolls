@@ -9,7 +9,7 @@ class Register {
      */
 
     var isSuccess: Boolean = false
-    var user_id: Int = 0
+    var user_id: Int ? = null
     var delivery_id: Int = 0
     /**
      * data : {"id":25,"username":"osama","photo":null,"code":200,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1LCJleHAiOjE1NTU1MTgyNzF9.b6AloBuijHYaYdgBugwjr3ca6zBLdms1zjVzyOOVc9s"}
