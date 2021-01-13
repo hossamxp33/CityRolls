@@ -23,15 +23,12 @@ public class ApiClient {
 
     @NonNull
     private static OkHttpClient getOkHttpClient() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 // set your desired log level
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 // add your other interceptors …
 // add logging as last interceptor
         return new OkHttpClient()
                 .newBuilder()
                 .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-                .addInterceptor(logging)
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))

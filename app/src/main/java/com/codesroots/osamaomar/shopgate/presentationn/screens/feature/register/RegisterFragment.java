@@ -62,7 +62,7 @@ public class RegisterFragment extends Fragment {
                 {
                     registerbtn.setEnabled(true);
                     registerbtn.setText(R.string.register);
-                 if (register.isSuccess()) {
+                 if (register.getSuccess()) {
                      PreferenceHelper.setUserId(register.getData().getId());
                      PreferenceHelper.setUserName(register.getData().getUsername());
                      PreferenceHelper.setToken(register.getData().getToken());

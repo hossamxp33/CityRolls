@@ -8,7 +8,7 @@ class Register {
      * delivery_id : 106
      */
 
-    var isSuccess: Boolean = false
+    var success: Boolean  = false
     var user_id: Int ? = null
     var delivery_id: Int = 0
     /**
@@ -28,7 +28,6 @@ class Register {
 
         var id: Int = 0
         var username: String? = null
-        var photo: Any? = null
         var code: Int = 0
         var token: String? = null
     }
