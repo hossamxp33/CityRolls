@@ -63,7 +63,7 @@ public class OffersProductsAdapter extends RecyclerView.Adapter<OffersProductsAd
                 holder.price.setText(price + " " + PreferenceHelper.getCurrency());
 
             else
-                holder.price.setText(offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));
+                holder.price.setText(offerproducts.get(position).getProduct().getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));
 
             //
 
