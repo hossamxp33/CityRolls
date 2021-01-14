@@ -21,11 +21,10 @@ import com.codesroots.osamaomar.shopgate.R;
 import com.codesroots.osamaomar.shopgate.helper.PreferenceHelper;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.DepartmentsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.FamousProductsAdapter;
-import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.MoreSalesProductsAdapter;
+import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.OffersProductsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.RecommendedProductsAdapter;
 import com.codesroots.osamaomar.shopgate.presentationn.screens.feature.home.mainfragment.adapters.SliderPagerAdapter;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.LinePageIndicator;
 
 import java.util.Timer;
@@ -103,7 +102,7 @@ public class MainFragment extends Fragment {
         indicator.setViewPager(slider);
 
         morerate_products.setAdapter(new FamousProductsAdapter(getActivity(),mainView.getNewdata()));
-        more_sales.setAdapter(new MoreSalesProductsAdapter(getActivity(),mainView.getOffernew()));
+        more_sales.setAdapter(new OffersProductsAdapter(getActivity(),mainView.getOffernew()));
         recommended_products.setAdapter(new RecommendedProductsAdapter(getActivity(),mainView.getProductsbysales()));
         departments.setAdapter(new DepartmentsAdapter(getActivity(),mainView.getCategory()));
 

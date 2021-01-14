@@ -8,6 +8,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -71,8 +73,28 @@ public class AllProductsAdapter extends RecyclerView.Adapter<AllProductsAdapter.
                     .load(productsbysubcats.get(position).getImg()).placeholder(R.drawable.product).dontAnimate()
                     .into(holder.Image);
 
-        holder.name.setText(productsbysubcats.get(position).getName());
+     //   holder.name.setText(productsbysubcats.get(position).getName());
+        try {
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Float.valueOf(productsbysubcats.get(position).
+                    getProductsizes().get(0).getCurrent_price() *
+                    PreferenceHelper.getCurrencyValue()) );
+            //////////////////////////////////
+            holder.name.setText(productsbysubcats.get(position).getName());
 
+
+            if (PreferenceHelper.getCurrency() !=  null)
+                holder.price.setText( price + " " + PreferenceHelper.getCurrency() );
+            else
+                holder.price.setText(productsbysubcats.get(position).getProductsizes().get(0).getCurrent_price() + " " + context.getText(R.string.coin));
+
+
+
+        }catch (Exception e)
+        {
+
+            Log.i("error", "onBindViewHolder: "+e);
+        }
 
 
 

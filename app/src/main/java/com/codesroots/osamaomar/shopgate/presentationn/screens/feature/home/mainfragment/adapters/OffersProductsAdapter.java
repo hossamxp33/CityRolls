@@ -23,13 +23,13 @@ import java.util.List;
 
 import static com.codesroots.osamaomar.shopgate.entities.names.PRODUCT_ID;
 
-public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProductsAdapter.ViewHolder> {
+public class OffersProductsAdapter extends RecyclerView.Adapter<OffersProductsAdapter.ViewHolder> {
 
 
     private Context context;
     List<Offernew> offerproducts;
 
-    public MoreSalesProductsAdapter(Context context, List<Offernew> offers) {
+    public OffersProductsAdapter(Context context, List<Offernew> offers) {
         this.context = context;
         this.offerproducts = offers;
     }
@@ -45,28 +45,25 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
+        if (offerproducts.get(position).getProduct() != null) {
+            Glide.with(context.getApplicationContext())
+                    .load(offerproducts.get(position).getProduct().getImg())
+                    .placeholder(R.drawable.product)
+                    .into(holder.item_img);
+        }
         try {
-            //////////// Round Float Number //////////////
-            String price = String.format("%.2f",Integer.valueOf((int) offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price()) *
-                    PreferenceHelper.getCurrencyValue() );
-            ////////////  //////////////
-
             holder.name.setText(offerproducts.get(position).getProduct().getName());
             holder.discount.setText(context.getText(R.string.disscount)+" "+offerproducts.get(position).getPercentage()+" "+"%");
 
-            if (offerproducts.get(position).getProduct() != null) {
-                    Glide.with(context.getApplicationContext())
-                            .load(offerproducts.get(position).getProduct().getImg())
-                            .placeholder(R.drawable.product)
-                            .into(holder.item_img);
-            }
+            //////////// Round Float Number //////////////
+            String price = String.format("%.2f",Integer.valueOf((int) offerproducts.get(position).getProduct().getProductsizes().get(0).getCurrent_price()) *
+                    PreferenceHelper.getCurrencyValue() );
+            ////////////  //////////////
             if (PreferenceHelper.getCurrencyValue() > 0)
                 holder.price.setText(price + " " + PreferenceHelper.getCurrency());
 
             else
                 holder.price.setText(offerproducts.get(position).getProduct().getProductsizes().get(position).getCurrent_price() + " " + context.getText(R.string.coin));
-
 
             //
 
@@ -85,17 +82,6 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 //                    }
 //            );
 
-            holder.mView.setOnClickListener(v ->
-            {
-                Fragment fragment = new ProductDetailsFragment();
-                Bundle bundle = new Bundle();
-                if (offerproducts.get(position).getProduct() != null)
-                    bundle.putInt(PRODUCT_ID, offerproducts.get(position).getProduct_id());
-                fragment.setArguments(bundle);
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
-                        replace(R.id.mainfram, fragment)
-                        .addToBackStack(null).commit();
-            });
 //            holder.ratingBar.setOnTouchListener((v, event) -> {
 //                if (event.getAction() == MotionEvent.ACTION_UP) {
 //                    Intent intent = new Intent(context, RateActivity.class);
@@ -109,6 +95,18 @@ public class MoreSalesProductsAdapter extends RecyclerView.Adapter<MoreSalesProd
 
         } catch (Exception e) {
         }
+
+        holder.mView.setOnClickListener(v ->
+        {
+            Fragment fragment = new ProductDetailsFragment();
+            Bundle bundle = new Bundle();
+            if (offerproducts.get(position).getProduct() != null)
+                bundle.putInt(PRODUCT_ID, offerproducts.get(position).getProduct_id());
+            fragment.setArguments(bundle);
+            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().
+                    replace(R.id.mainfram, fragment)
+                    .addToBackStack(null).commit();
+        });
     }
 
     @Override
