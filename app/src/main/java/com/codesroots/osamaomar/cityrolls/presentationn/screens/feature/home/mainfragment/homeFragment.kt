@@ -40,9 +40,7 @@ import kotlin.collections.ArrayList
 
 class homeFragment : Fragment() {
 
-
     private lateinit var viewModel: MainFragmentViewModel
-
     var  data : Category? = null
     var pagers: ViewPager? = null
     var indicator: CirclePageIndicator? = null
@@ -76,7 +74,7 @@ class homeFragment : Fragment() {
                 adapterr = CatAdapter(context as FragmentActivity, it.items,viewModel)
                 view.departments.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
                 view.departments?.adapter = adapterr
-                pagers!!.adapter = it?.let { it1 -> SliderPagerAdapter(activity!!, it1.sliders) }
+                pagers!!.adapter = it?.let { it1 -> SliderPagerAdapter(activity!!, it1.sliders)  }
                 it.sliders.let { it1 -> init(it1.size)}
                 slider.setPadding(80, 0, 50, 0)
                 slider.offscreenPageLimit = 3
@@ -84,20 +82,21 @@ class homeFragment : Fragment() {
                 slider.clipToPadding = false
                 slider.clipChildren = false
                 indicator!!.setViewPager(slider)
+
                 stoploading()
+
                 MainData = it
 
                 datArray.addAll(it.items.get(index).items)
+
                 adapter = SubCatsAdapter(context as FragmentActivity, datArray)
                 view.subcategry_Rec.layoutManager = GridLayoutManager(activity, 3)
                 view.subcategry_Rec?.adapter = adapter
-
             })
-
-
 
         Timer()
         SwitchingCategories()
+
         return view
 
     }
