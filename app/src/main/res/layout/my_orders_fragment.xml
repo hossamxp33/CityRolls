@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/unselected_progress"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentationn.screens.feature.home.myorders.MyOrdersFragment">
+    tools:context=".presentationn.screens.feature.home.productfragment.myorders.MyOrdersFragment">
 
     <TextView
         android:id="@+id/head"

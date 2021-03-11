@@ -426,27 +426,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/product_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/product_color"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/guidcenter"
-        app:layout_constraintTop_toBottomOf="@+id/total" />
-
-    <TextView
-        android:id="@+id/product_color_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/product_color"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/guidlinevertical2"
-        app:layout_constraintStart_toEndOf="@+id/product_color"
-        app:layout_constraintTop_toBottomOf="@+id/total" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

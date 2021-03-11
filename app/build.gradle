@@ -11,15 +11,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.codesroots.newshopgate"
+        applicationId "com.codesroots.cityrolls"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1 "
+        versionName "1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,6 +33,12 @@ android {
             matchingFallbacks = ['release', 'debug']
         }
 
+    }
+    dataBinding {
+        enabled = true
+    }
+    androidExtensions {
+        experimental = true
     }
     compileOptions {
         sourceCompatibility = '1.8'

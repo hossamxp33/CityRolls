@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">بوابة التسوق</string>
+    <string name="app_name">سيتي رولز</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -14,7 +14,6 @@
     <string name="newaddress">اضافة عنوان جديد</string>
     <string name="editaddress">تعديل عنوانك </string>
     <string name="read_more">قراءة المزيد...</string>
-
     <string name="save">حفظ</string>
     <string name="choicename">اختر الاسم</string>
     <string name="choicephone">اختر الهاتف</string>
@@ -27,12 +26,13 @@
     <string name="diffs_product">منتجات منوعة</string>
     <string name="addtocart">اضافة الي العربة</string>
     <string name="more">المزيد</string>
-    <string name="more_sale">الأكثر مبيعا  </string>
+    <string name="more_sale">الأكثر مبيعا</string>
+    <string name="best_seller">افضل المنتجات </string>
     <string name="cart">سلة التسوق</string>
     <string name="product_des">وصف المنتج</string>
     <string name="addlocation">اختر عنوان الشارع،صندوق البريد،الشقه،الجناح،الوحده</string>
     <string name="choice_size">اختر الحجم</string>
-    <string name="coin"> دينار عراقي </string>
+    <string name="coin"> ريال عماني </string>
     <string name="remendier">  متوفر  </string>
     <string name="num"> قطع </string>
     <string name="realcoin">ريال</string>
@@ -46,8 +46,6 @@
     <string name="main">الرئيسية</string>
     <string name="my_order">طلباتي</string>
     <string name="offers">عروض</string>
-    <string name="share">مشاركة التطبيق</string>
-
     <string name="day_offers">عروض اليوم </string>
     <string name="notifications">اشعارات</string>
     <string name="charge_ready">جاهزة للشحن</string>
@@ -60,6 +58,7 @@
     <string name="order_date">   تاريخ الطلب : </string>
     <string name="order_num">  رقم الطلب : </string>
     <string name="product_color"> لون المنتج</string>
+
     <string name="total">  المجموع :  </string>
     <string name="order_details">تفاصيل الطلب</string>
     <string name="product_num">  عدد المنتجات : </string>
@@ -150,8 +149,10 @@
     <string name="currency">pound</string>
     <string name="more_sales">الاكثر مبيعا</string>
     <string name="more_rates"> أحدث المنتجات </string>
-    <string name="suggestedproduct">منتجات ينصح بها</string>
+    <string name="suggestedproduct">منتجات يوصي بها</string>
     <string name="aboutus">اتصل بنا</string>
+    <string name="choose_currency">أختار العملة </string>
+
     <string name="conditions">الشروط والاحكام</string>
     <string name="chat">الرسائل الخاصة </string>
     <string name="empty">اكتب رسالتك</string>
@@ -166,6 +167,9 @@
     <string name="change_country">تغيير الدولة</string>
     <string name="charge"> سعر التوصيل : </string>
     <string name="cancel">الغاء</string>
+    <string name="your_selected">اخيارك هو</string>
+    <string name="share">مشاركة التطبيق </string>
+
     <string name="alltotal">الاجمالي :</string>
     <string name="no">لا</string>
     <string name="mail">البريد الالكتروني</string>

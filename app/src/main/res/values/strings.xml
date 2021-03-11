@@ -8,10 +8,9 @@
     <string name="more_sale">More Sales</string>
     <string name="deliveryaddress">choice delivery place</string>
     <string name="noaddressfound">No address found</string>
-    <string name="share">Share App </string>
 
 
-    <string name="app_name">shopGate</string>
+    <string name="app_name">CityRolls</string>
     <string name="action_settings">Settings</string>
     <string name="addcomment">you must add rate!!</string>
     <string name="adddetailsaddress">Add Address details</string>
@@ -36,7 +35,7 @@
     <string name="choice_payment_way">Choice Payment Way</string>
     <string name="choice_size">Choice Size</string>
     <string name="client">Client</string>
-    <string name="coin">IQ</string>
+    <string name="coin">OMR</string>
     <string name="day_offers">Day offers</string>
     <string name="dayoffer">Day offers</string>
     <string name="degree_rate">Rate Ratio</string>
@@ -152,8 +151,12 @@
     <string name="more_rates">  Last Products </string>
     <string name="suggestedproduct">Recommended Products</string>
     <string name="aboutus"> Contact Us</string>
+    <string name="choose_currency">choose currency </string>
+    <string name="your_selected">Your selected item Is</string>
+
     <string name="conditions">Terms and Conditions </string>
     <string name="chat">private messages </string>
+    <string name="best_seller">Best Seller</string>
     <string name="empty">write your message </string>
     <string name="now">now</string>
     <string name="available">available</string>
@@ -206,6 +209,7 @@
     <string name="accountnum"> Account num : </string>
     <string name="ok"> Ok </string>
     <string name="notesvalue">order not confirm untile translate the cost to bank account and send transformation photo to email or whatsapp</string>
+    <string name="share">Share App </string>
 
     <string name="notes">*notes</string>
     <string name="change_country">change country </string>
